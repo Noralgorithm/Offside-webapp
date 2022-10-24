@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import styles from "../common/form.module.css";
 
 const RegistrationForm = () => {
-  var confirmarPass='invisible';
-
   const [inputValues, setInputValues] = useState({
     name: "",
     email: "",
     password: "",
   });
+
+  const [isError, setIsError] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,22 +19,26 @@ const RegistrationForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputValues);
-    alert("registrao :p");
+    //TODO: Confirmaciones de los inputs
+    if (isError) {
+      alert("revisa ese beta");
+    } else {
+      alert("registrao :p");
+    }
   };
 
   //To Do: Hacer que muestre un mensaje debajo de confirmar contraseña que diga
-  //que las dos contraseñas deben ser iguales 
+  //que las dos contraseñas deben ser iguales
   const confirmPassword = (e) => {
-    const { value } = e.target;
-    if (value !== inputValues.password) {
-      confirmarPass = "visible";
+    if (e.target.value !== inputValues.password && e.target.value !== "") {
+      setIsError(true);
     } else {
-      confirmarPass = "invisible";
+      setIsError(false);
     }
   };
 
   return (
-    <div className="form-container">
+    <div className={styles.formContainer}>
       <h1>Registrate</h1>
       <form onSubmit={handleSubmit}>
         <label>
@@ -77,14 +82,14 @@ const RegistrationForm = () => {
             onChange={confirmPassword}
           />
         </label>
-        <p className={confirmarPass}>Las dos contraseñas deben ser iguales</p>
+        {isError && <span>Las dos contraseñas deben ser iguales</span>}
 
         <br />
         <button type="submit">Registrate</button>
       </form>
       <div>
         <p>
-          ¿Ya tienes tienes cuenta?{" "}
+          ¿Ya tienes tienes cuenta?
           <Link to="/signin" className="linked">
             Inicia Sesion
           </Link>

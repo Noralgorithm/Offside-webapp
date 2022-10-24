@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import styles from "../common/form.module.css"
 
 function LoginForm() {
   return (
-    <div className="form-container">
+    <div className={styles.formContainer}>
       <h1>Inicia Sesión</h1>
 
       <form className="">
