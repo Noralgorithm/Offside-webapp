@@ -1,14 +1,28 @@
 import React from "react";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import useLoginForm from "./useLoginForm";
+import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
+
+  const navigate = useNavigate();
+  const state = useSelector(state => state.user);
+  const { handleChange, handleSubmit, isError } = useLoginForm();
+
+  useEffect(() => {
+    if (state.success) navigate('/dashboard');
+  }, [state.success, navigate]);
+
   return (
-    <form className="">
+    <form onSubmit={(e) => handleSubmit(e)} className="">
       <label>
         <input
           type="email"
           required
           placeholder="Ingrese su email"
           name="email"
+          onChange={handleChange}
           className="w-full p-2 rounded mb-5 border-none"
         />
       </label>
@@ -19,6 +33,7 @@ function LoginForm() {
           required
           placeholder="Contraseña"
           name="password"
+          onChange={handleChange}
           className="w-full p-2 rounded mb-5 border-none"
         />
       </label>

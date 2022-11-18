@@ -1,36 +1,11 @@
 import React from "react";
 import ConfirmPasword from "./ConfirmPasword";
-import { useState } from "react";
+import useRegisterForm from "./useRegisterForm";
 
 function RegisterForm() {
-  const [isSamePassword, setIsSamePassword] = useState(false);
-  const [inputValues, setInputValues] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setInputValues({ ...inputValues, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (isSamePassword) {
-      alert("revisa ese beta");
-    } else {
-      alert("registrao :p");
-    }
-  };
-
-  const confirmSamePassword = (e) => {
-    if (e.target.value !== inputValues.password && e.target.value !== "") {
-      setIsSamePassword(true);
-    } else {
-      setIsSamePassword(false);
-    }
-  };
+  
+  const { handleChange, handleSubmit, isSamePassword, confirmSamePassword } = useRegisterForm();
+  
   return (
     <form onSubmit={handleSubmit}>
       <label>
