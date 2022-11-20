@@ -5,6 +5,7 @@ import Login from "./cores/auth/login/Login";
 import Homepage from "./cores/homepage/Homepage";
 import Dashboard from "./cores/dashboard/Dashboard";
 import Auth from "./cores/auth/login/Auth";
+import GetChromes from "./cores/get-chromes/GetChromes";
 
 const App = () => {
 
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/" element={<Homepage />} />
           <Route path="/signup" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/barajita" element={<GetChromes />} /> 
           <Route path="/dashboard" element={
           <Auth>
             <Dashboard />

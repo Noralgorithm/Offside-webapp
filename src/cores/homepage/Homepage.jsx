@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Homepage = () => {
   return (
-    <main className="w-screen">
+    <main className="w-full h-full">
       <h1 className="text-center mt-24">
         home c: <br />
         <Link to="/signup">registrate mi loco</Link>
