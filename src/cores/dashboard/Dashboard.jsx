@@ -1,15 +1,23 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { logout } from '../../features/user/userSlice';
 
 const Dashboard = () => {
 
   const { userInfo } = useSelector(state => state.user);
+  const dispatch = useDispatch();
+
+  const logoutHandle = () => {
+    localStorage.clear();
+    dispatch(logout());
+  }
 
   return (
     <>
     <h1>{userInfo.name}</h1>
     <h1>{userInfo.id}</h1>
     <h1>{userInfo.email}</h1>
+    <button onClick={logoutHandle} className="bg-red-600 block p-5 text-center text-white">Logout</button>
     </>
   )
 }

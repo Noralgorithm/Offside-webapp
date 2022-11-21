@@ -1,28 +1,33 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import useForm from '../../../components/useForm';
-import { register } from '../../../features/user/userActions';
+import * as authServices from '../../../services/auth.services';
 import { useNavigate } from 'react-router-dom';
 
 const useRegisterForm = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [isSamePassword, setIsSamePassword] = useState(false);
+  const [isSamePassword, setIsSamePassword] = useState(true);
   const { inputValues, handleChange } = useForm();
 
   const confirmSamePassword = (e) => {
     if (e.target.value !== inputValues.password && e.target.value !== "") {
-      setIsSamePassword(true);
-    } else {
       setIsSamePassword(false);
+    } else {
+      setIsSamePassword(true);
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isSamePassword) return alert("contraseñas no coinciden paps");
-    dispatch(register(inputValues));
+    try {
+      if (!isSamePassword) return alert("contraseñas no coinciden paps");
+      await authServices.register(inputValues);
+    } catch(e) {
+      alert(e);
+    }
+
     navigate('/');
   };
 

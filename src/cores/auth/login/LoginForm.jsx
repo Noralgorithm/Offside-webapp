@@ -10,10 +10,6 @@ function LoginForm() {
   const state = useSelector(state => state.user);
   const { handleChange, handleSubmit, isError } = useLoginForm();
 
-  useEffect(() => {
-    if (state.success) navigate('/dashboard');
-  }, [state.success, navigate]);
-
   return (
     <form onSubmit={(e) => handleSubmit(e)} className="">
       <label>
