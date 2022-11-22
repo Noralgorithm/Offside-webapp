@@ -1,13 +1,10 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import useForm from '../../../components/useForm';
-import * as authServices from '../../../services/auth.services';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import useForm from "../../../components/useForm";
+import * as authServices from "../../../services/auth.services";
+import { useNavigate } from "react-router-dom";
 
 const useRegisterForm = () => {
-
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [isSamePassword, setIsSamePassword] = useState(true);
   const { inputValues, handleChange } = useForm();
 
@@ -24,14 +21,14 @@ const useRegisterForm = () => {
     try {
       if (!isSamePassword) return alert("contraseñas no coinciden paps");
       await authServices.register(inputValues);
-    } catch(e) {
+    } catch (e) {
       alert(e);
     }
 
-    navigate('/');
+    navigate("/");
   };
 
-  return { handleChange, handleSubmit, isSamePassword, confirmSamePassword }
-}
+  return { handleChange, handleSubmit, isSamePassword, confirmSamePassword };
+};
 
 export default useRegisterForm;

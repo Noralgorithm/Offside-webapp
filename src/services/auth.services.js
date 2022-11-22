@@ -17,6 +17,6 @@ export const login = async ({ email, password }) => {
     const { data } = await axios.post(LOGIN_URL, { email, password });
     return data;
   } catch(e) {
-    throw new Error('Se te venció la clave papi')
+    throw new Error('Datos incorrectos')
   }
 }
