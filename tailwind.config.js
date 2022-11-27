@@ -10,6 +10,7 @@ module.exports = {
       backgroundImage: {
         "fondo-barajita": "url('/src/Images/fondo.jpg')",
         "marco-barajita": "url('/src/Images/marco.png')",
+        "jugador" : "url('/src/Images/Captura_de_Pantalla_2022_11_13_a_la_s_8_05_41_a_m_removebg_preview.png')",
       },
     },
   },
