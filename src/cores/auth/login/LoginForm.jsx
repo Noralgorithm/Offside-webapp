@@ -8,7 +8,7 @@ function LoginForm() {
 
   const navigate = useNavigate();
   const state = useSelector(state => state.user);
-  const { handleChange, handleSubmit, isError } = useLoginForm();
+  const { handleChange, handleSubmit } = useLoginForm();
 
   useEffect(() => {
     if (state.success) navigate('/dashboard');

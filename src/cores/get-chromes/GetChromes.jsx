@@ -7,6 +7,7 @@ import WatchAds from "./WatchAds";
 function GetChromes({ hideDailyPack }) {
   const [watchAd, setWatchAd] = useState(false);
   const [useChromeScreen, setUseChromeScreen] = useState(false);
+  //eslint-disable-next-line
   const [availablePack, setAvailablePack] = useState(true);
 
   return (
