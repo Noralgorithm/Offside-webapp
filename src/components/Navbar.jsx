@@ -1,20 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { MdSportsSoccer, MdOutlineShoppingBasket } from "react-icons/md";
-import { HiOutlineUser, HiOutlineBookOpen, HiMenu } from "react-icons/hi";
+import { HiOutlineUser, HiOutlineBookOpen } from "react-icons/hi";
 import { BsCurrencyDollar } from "react-icons/bs";
 import { GiChest } from "react-icons/gi";
 import { useState } from "react";
-import LateralBar from "./LateralBar";
 import GetChromes from "../cores/get-chromes/GetChromes";
 
 function Navbar() {
-  const [showLateralBar, setShowLateralBar] = useState(false);
   const [showDailyPack, setShowDailyPack] = useState(false);
 
   return (
     <div className="w-screen h-screen">
-      {showLateralBar && <LateralBar hideLateralBar={setShowLateralBar} />}
       {showDailyPack && <GetChromes hideDailyPack={setShowDailyPack} />}
       <nav className="w-full bg-white h-12 flex justify-between">
         <Link className="h-full" to="/">
@@ -52,14 +49,6 @@ function Navbar() {
             >
               <GiChest size="2rem" color="#63130B" />
             </button>
-            <div
-              className="hover:cursor-pointer rounded-full hover:bg-zinc-300 p-1"
-              onClick={() => {
-                setShowLateralBar(!showLateralBar);
-              }}
-            >
-              <HiMenu size="2rem" color="#63130B" />
-            </div>
           </div>
         </div>
       </nav>
