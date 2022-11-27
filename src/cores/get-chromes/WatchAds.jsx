@@ -12,10 +12,10 @@ function WatchAds({ adScreen, showChromesScreen }) {
   useEffect(() => {
     (async () => {
       try {
-      const { ad } = await adServices.watch();
-      setAd(ad);
+      const data = await adServices.watch();
+      setAd(data.ad);
       setLoading(false);
-      setTimeout(setCloseAd, 5000, true);
+      setTimeout(setCloseAd, 10, true);
     } catch(e) {
       alert(e.message);
       setCloseAd(true);

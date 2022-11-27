@@ -1,28 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BsCheckCircle } from "react-icons/bs";
 import Sticker from "../../components/Sticker";
+import * as stickerServices from "../../services/sticker.services";
 
 function ChromesScreen({ hideChromesScreen }) {
+
+  const [stickers, setStickers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const data = await stickerServices.obtain();
+        setStickers(data.stickers);
+        setLoading(false);
+      } catch(e) {
+        alert(e.message);
+      }
+
+    })();
+  }, [])
+
+  if (loading) return <h2>Loading...</h2>;
   return (
     <div className="w-full h-full flex justify-center items-center">
       <div className="absolute h-5/6 w-10/12">
         <div className="h-1/2 flex w-full justify-around items-center my-20">
           <div className="h-full w-[18%]">
-            <Sticker />
+            <Sticker stickerInfo={stickers[0]} />
           </div>
           <div className="h-full w-[18%]">
-            <Sticker />
-          </div>
-
-          <div className="h-full w-[18%]">
-            <Sticker />
+            <Sticker stickerInfo={stickers[1]} />
           </div>
 
           <div className="h-full w-[18%]">
-            <Sticker />
+            <Sticker stickerInfo={stickers[2]} />
+          </div>
+
+          <div className="h-full w-[18%]">
+            <Sticker stickerInfo={stickers[3]} />
           </div>
           <div className="h-full w-[18%]">
-            <Sticker />
+            <Sticker stickerInfo={stickers[4]} />
           </div>
         </div>
         <div className="w-full flex justify-center">
