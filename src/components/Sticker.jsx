@@ -6,7 +6,6 @@ import portero from "../Images/portero.png";
 import delantero from "../Images/delantero.png";
 
 function Sticker({ stickerInfo }) {
-  const a = true;
 
   const positionImage = () => {
     switch (stickerInfo.position) {
@@ -23,21 +22,20 @@ function Sticker({ stickerInfo }) {
     }
   };
 
-  console.log(stickerInfo.img);
+  //console.log(stickerInfo.img);
 
   return (
     <div className="h-full w-full flex justify-center items-center bg-fondo-barajita bg-cover bg-center bg-no-repeat">
       <div
-        className={`${
-          a ? "bg-[url(" + stickerInfo.img + ")]" : "bg-jugador"
-        } bg-[length:90%] w-full h-full bg-no-repeat bg-bottom`}
+        style={{
+          backgroundImage: "url(" + stickerInfo.img + ")",
+          backgroundRepeat: "no-repeat",
+          width: "100%",
+          height: "100%",
+          backgroundSize: "90%",
+          backgroundPosition: "bottom",
+        }}
       >
-
-
-        <picture>
-          <img src={stickerInfo.img} alt="fotico" />
-        </picture>
-
 
         <div className="bg-marco-barajita bg-cover w-full h-full bg-no-repeat bg-center">
           <div className="w-full h-1/2 flex justify-center">
