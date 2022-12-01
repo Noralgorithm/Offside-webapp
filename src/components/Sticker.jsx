@@ -22,13 +22,13 @@ function Sticker({ stickerInfo }) {
     }
   };
 
-  //console.log(stickerInfo.img);
+  console.log(stickerInfo.img);
 
   return (
     <div className="h-full w-full flex justify-center items-center bg-fondo-barajita bg-cover bg-center bg-no-repeat">
       <div
         style={{
-          backgroundImage: "url(" + stickerInfo.img + ")",
+          backgroundImage: `url(${stickerInfo.img.replace(String.fromCharCode(92), '/')})`,
           backgroundRepeat: "no-repeat",
           width: "100%",
           height: "100%",
