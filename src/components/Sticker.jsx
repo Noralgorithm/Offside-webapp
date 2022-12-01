@@ -2,7 +2,7 @@ import React from "react";
 import bandera from "../Images/Bandera-circular-de-Espana.png";
 import medioCentro from "../Images/medioCentro.png";
 import defensa from "../Images/defensa.png";
-import portero from "../Images/portero.png";
+import arquero from "../Images/arquero.png";
 import delantero from "../Images/delantero.png";
 
 function Sticker({ stickerInfo }) {
@@ -15,14 +15,12 @@ function Sticker({ stickerInfo }) {
         return defensa;
       case "Delantero":
         return delantero;
-      case "Portero":
-        return portero;
+      case "Arquero":
+        return arquero;
       default:
         return medioCentro;
     }
   };
-
-  console.log(stickerInfo.img);
 
   return (
     <div className="h-full w-full flex justify-center items-center bg-fondo-barajita bg-cover bg-center bg-no-repeat">

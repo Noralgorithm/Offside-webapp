@@ -5,7 +5,7 @@ const initialState = {
   loading: 'idle',
   userInfo: {}, 
   userToken: null, 
-  success: true
+  success: true //to fast testing
 }
 
 const userSlice = createSlice({
