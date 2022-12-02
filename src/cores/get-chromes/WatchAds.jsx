@@ -39,7 +39,7 @@ function WatchAds({ adScreen, showChromesScreen }) {
         </header>
         <div className="w-full h-4/5 flex justify-center items-center">
           <div className="h-full w-7/12">
-            {loading ? <h2>loading...</h2>  : <Ad adLink={ad.redirecTo} imgSource={'http://localhost:3000/' + ad.img} />}
+            {loading ? <h2>loading...</h2>  : <Ad imgSource={'http://localhost:3000/' + ad.img} id={ad.id} />}
           </div>
         </div>
       </div>

@@ -9,4 +9,15 @@ export const watch = async () => {
   } catch (e) {
     throw new Error(e);
   }
-};
+}
+
+export const visit = async (id) => {
+  try {
+
+    const { data } = await axios.get(BASE_URL + "/watch-detailed/" + id);
+    console.log(BASE_URL + "/watch-detailed/" + id)
+    return data;
+  } catch (e) {
+    throw new Error(e);
+  }
+}
