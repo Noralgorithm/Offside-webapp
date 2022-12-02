@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { login } from "./features/user/userSlice";
 import ProtectedRoutes from "./cores/auth/login/ProtectedRoutes";
 import UnprotectedRoutes from "./cores/auth/login/UnprotectedRoutes";
+import Index from "./cores/album/Index"
 
 const App = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const App = () => {
           </Route>
           <Route path="/" element={<ProtectedRoutes />}>
             <Route path="dashboard" element={<Dashboard />} />
+            <Route path="album" element={<Index />} />
           </Route>
         </Routes>
       </BrowserRouter>
