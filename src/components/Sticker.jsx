@@ -1,11 +1,11 @@
 import React from "react";
-import bandera from "../Images/Bandera-circular-de-Espana.png";
 import medioCentro from "../Images/medioCentro.png";
 import defensa from "../Images/defensa.png";
 import arquero from "../Images/arquero.png";
 import delantero from "../Images/delantero.png";
 
 function Sticker({ stickerInfo }) {
+  console.log(stickerInfo.team.badge)
 
   const positionImage = () => {
     switch (stickerInfo.position) {
@@ -47,7 +47,7 @@ function Sticker({ stickerInfo }) {
             </div>
             <div className="grid grid-cols-1 w-1/2 h-full justify-items-center gap-0">
               <img
-                src={bandera}
+                src={stickerInfo.team.badge}
                 alt=""
                 className="justify-self-end w-auto h-2/5 mt-[28%]"
               />
