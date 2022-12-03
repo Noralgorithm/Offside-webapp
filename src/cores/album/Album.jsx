@@ -21,8 +21,8 @@ function Album() {
         </div>
 
         {showAlbum ? (
-          <div className="w-full h-[70%] bg-blue-900">
-            <header className="h-[10%]">
+          <div className="w-full h-[70%]">
+            <header className="h-[10%] w-full bg-sticker-name">
               <AlbumHeader />
             </header>
             <div className="w-full h-[90%]">
@@ -34,15 +34,23 @@ function Album() {
             <img
               src={AlbumOffside}
               alt=""
-              className="h-full w-1/2 hover:cursor-pointer"
+              className="h-full w-1/2 hover:cursor-pointer bg-gray-100 rounded-xl"
               onClick={() => {
                 setShowAlbum(true);
               }}
             />
           </div>
         )}
-        <div className="w-full h-1/6">
-          <Carousel />
+        <div className="w-full h-[18%]">
+          {showAlbum ? (
+            <Carousel />
+          ) : (
+            <div className="w-full h-full flex justify-center items-center">
+              <h1 className="h-full w-1/2 bg-gray-100 rounded-xl text-sticker-name flex justify-center items-center text-3xl font-semibold">
+                ¡Pega tus cromos!
+              </h1>
+            </div>
+          )}
         </div>
       </div>
     </div>

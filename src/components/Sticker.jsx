@@ -5,11 +5,7 @@ import defensa from "../Images/defensa.png";
 import arquero from "../Images/arquero.png";
 import delantero from "../Images/delantero.png";
 
-function Sticker(
-  {
-    /*stickerInfo*/
-  }
-) {
+function Sticker({ /*stickerInfo,*/ fontSize }) {
   const stickerInfo = {
     playerName: "Pedri",
     position: "medioCentro",
@@ -51,10 +47,16 @@ function Sticker(
         <div className="bg-marco-barajita bg-cover w-full h-full bg-no-repeat bg-center">
           <div className="w-full h-1/2 flex justify-center">
             <div className="w-full h-full gap-y-[4%] grid grid-cols-1 content-center">
-              <h1 className="ml-[19%] text-[4px] font-bold w-full">
+              <h1
+                className={`ml-[19%] font-bold w-full`}
+                style={{ fontSize: fontSize[0] }}
+              >
                 {stickerInfo.height}
               </h1>
-              <h1 className="ml-[21%] text-[4px] font-bold w-full">
+              <h1
+                className={`ml-[21%] font-bold w-full`}
+                style={{ fontSize: fontSize[0] }}
+              >
                 {stickerInfo.weight}
               </h1>
             </div>
@@ -71,7 +73,10 @@ function Sticker(
               />
             </div>
           </div>
-          <h1 className="flex h-1/2 items-end pb-[3%] justify-center w-full text-xs font-semibold text-sticker-name">
+          <h1
+            className={`flex h-1/2 items-end justify-center w-full font-semibold text-sticker-name`}
+            style={{ fontSize: fontSize[1] }}
+          >
             {stickerInfo.playerName}
           </h1>
         </div>

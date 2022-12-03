@@ -9,7 +9,7 @@ function Page() {
       <div className="w-1/2 h-full grid grid-cols-3 grid-rows-2 justify-items-center content-evenly mt-[1%]">
         {array.map((a) => (
           <div className="w-11/12 h-[90%]">
-            {a ? <NoStickerSlot /> : <Sticker />}
+            {a ? <NoStickerSlot /> : <Sticker fontSize={["8px", "16px"]}/>}
           </div>
         ))}
       </div>
@@ -17,7 +17,7 @@ function Page() {
       <div className="w-1/2 h-full grid grid-cols-3 grid-rows-2 justify-items-center content-around mt-[1%]">
         {array.map((a) => (
           <div className="w-11/12 h-[90%]">
-            {a ? <NoStickerSlot /> : <Sticker />}
+            {a ? <NoStickerSlot /> : <Sticker fontSize={["8px", "16px"]}/>}
           </div>
         ))}
       </div>
