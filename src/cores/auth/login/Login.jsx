@@ -1,16 +1,12 @@
-import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import { useSelector } from "react-redux";
 
 function Login() {
   
   const state = useSelector(state => state.user);
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    if (state.success) return navigate('/dashboard');
-  })
+  if (state.success) return <Navigate to="/dashboard" />;
 
   return (
     <div className="w-96 bg-slate-200 p-7 m-auto mt-24 rounded text-black">
