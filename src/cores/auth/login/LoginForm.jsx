@@ -2,8 +2,13 @@ import React from "react";
 import useLoginForm from "./useLoginForm";
 
 function LoginForm() {
-
+  const navigate = useNavigate();
+  const state = useSelector(state => state.user);
   const { handleChange, handleSubmit } = useLoginForm();
+
+  useEffect(() => {
+    if (state.success) navigate('/dashboard');
+  }, [state.success, navigate]);
 
   return (
     <form onSubmit={(e) => handleSubmit(e)} className="">
