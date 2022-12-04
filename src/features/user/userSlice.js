@@ -4,8 +4,8 @@ import { login, register } from "./userActions";
 const initialState = {
   loading: 'idle',
   userInfo: {}, 
-  userToken: null, 
-  success: true //to fast testing
+  token: null, 
+  success: false 
 }
 
 const userSlice = createSlice({

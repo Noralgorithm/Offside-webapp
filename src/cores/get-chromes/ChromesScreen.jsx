@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { BsCheckCircle } from "react-icons/bs";
+import { useSelector } from "react-redux";
 import Sticker from "../../components/Sticker";
 import * as stickerServices from "../../services/sticker.services";
 
 function ChromesScreen({ hideChromesScreen }) {
-
+  const token = useSelector(state => state.user.token)
   const [stickers, setStickers] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       try {
-        const data = await stickerServices.obtain();
+        const data = await stickerServices.obtain(token);
         setStickers(data.stickers);
         setLoading(false);
       } catch(e) {
