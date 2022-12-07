@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import Navbar from '../../components/Navbar';
 import { logout } from '../../features/user/userSlice';
 
 const Dashboard = () => {
@@ -14,6 +15,7 @@ const Dashboard = () => {
 
   return (
     <>
+    <Navbar />
     <h1>{userInfo.name}</h1>
     <h1>{userInfo.id}</h1>
     <h1>{userInfo.email}</h1>

@@ -9,6 +9,7 @@ import { login } from "./features/user/userSlice";
 import ProtectedRoutes from "./cores/auth/login/ProtectedRoutes";
 import UnprotectedRoutes from "./cores/auth/login/UnprotectedRoutes";
 import Index from "./cores/album/Index"
+import Navbar from "./components/Navbar";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,6 @@ const App = () => {
   const data = JSON.parse(localStorage.getItem("loggedUser"));
 
   if (data) {
-    console.log(data);
     dispatch(login(data));
   }
 

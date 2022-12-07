@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AlbumHeader from "./AlbumHeader";
 import AlbumIndex from "./AlbumIndex";
 import Carousel from "./Carousel";
@@ -6,10 +6,26 @@ import Page from "./Page";
 import ProgressBar from "./ProgressBar";
 import AlbumOffside from "../../Images/AlbumOffside.png";
 import { useState } from "react";
+import * as inventoryServices from "../../services/inventory.services";
+import { useSelector } from "react-redux";
 
 function Album() {
   const [showAlbum, setShowAlbum] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [albumInfo, setAlbumInfo] = useState({});
 
+  const token = useSelector(state => state.user.token);
+
+  useEffect(() => {
+    (async () => {
+      const data = await inventoryServices.fetchAlbumInfo(token, 1);
+      console.log(data);
+      setAlbumInfo(data);
+      setLoading(false);
+    })();
+  }, [token])
+
+  if (loading) return <h1>Loading...</h1>
   return (
     <div className="w-screen flex justify-around h-full">
       <div className="w-3/12 h-full flex items-center">
@@ -17,7 +33,7 @@ function Album() {
       </div>
       <div className="w-7/12 flex flex-col justify-evenly h-full">
         <div className="w-full h-[5%]">
-          <ProgressBar />
+          <ProgressBar percentage={albumInfo.actualProgressPercertage}/>
         </div>
 
         {showAlbum ? (

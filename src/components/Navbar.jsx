@@ -30,7 +30,7 @@ function Navbar() {
             <Link className="rounded-full hover:bg-zinc-300 p-1">
               <MdOutlineShoppingBasket size="2rem" color="#63130B" />
             </Link>
-            <Link className="rounded-full hover:bg-zinc-300 p-1">
+            <Link className="rounded-full hover:bg-zinc-300 p-1" to="/dashboard">
               <HiOutlineUser size="2rem" color="#63130B" />
             </Link>
           </div>
