@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3000/ads";
+const BASE_URL = "https://backend.playoffside.online/ads";
 
 export const watch = async () => {
   try {
