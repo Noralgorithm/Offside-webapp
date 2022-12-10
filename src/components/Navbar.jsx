@@ -11,7 +11,7 @@ function Navbar() {
   const [showDailyPack, setShowDailyPack] = useState(false);
 
   return (
-    <div className="w-screen h-screen">
+    <div className="w-full">
       {showDailyPack && <GetChromes hideDailyPack={setShowDailyPack} />}
       <nav className="w-full bg-white h-12 flex justify-between">
         <Link className="h-full" to="/">
