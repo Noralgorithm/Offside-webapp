@@ -20,6 +20,7 @@ import { useLocation } from "react-router-dom";
 
 function Navbar() {
   const [showDailyPack, setShowDailyPack] = useState(false);
+  const [avalaiblePack, setAvailablePack] = useState(false);
   const location = useLocation().pathname;
 
   return (
@@ -69,11 +70,17 @@ function Navbar() {
               <p>50</p>
             </div>
             <button
-              className="hover:cursor-pointer rounded-full hover:bg-zinc-300 p-1"
+              className="hover:cursor-pointer rounded-full hover:bg-zinc-300 p-1 relative"
               onClick={() => {
                 setShowDailyPack(true);
               }}
             >
+              {avalaiblePack && (
+                <div className="absolute bottom-1 left-2 w-full h-full">
+                  <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-red-400"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                </div>
+              )}
               {showDailyPack ? (
                 <IoGift size="2rem" color="#63130B" />
               ) : (
