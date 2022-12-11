@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        offsideColorWine: "#B02419",
+        "offsideColorWine": "#B02419",
         "sticker-name": "#34545D",
       },
       backgroundImage: {
