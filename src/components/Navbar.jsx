@@ -3,20 +3,21 @@ import { Link } from "react-router-dom";
 import { MdSportsSoccer, MdOutlineShoppingBasket } from "react-icons/md";
 import { HiOutlineUser, HiOutlineBookOpen } from "react-icons/hi";
 import { BsCurrencyDollar } from "react-icons/bs";
-import { GiChest } from "react-icons/gi";
+import { IoGiftOutline } from "react-icons/io5"
 import { useState } from "react";
 import GetChromes from "../cores/get-chromes/GetChromes";
+import logoOffside from "../Images/logo-offside.png"
 
 function Navbar() {
   const [showDailyPack, setShowDailyPack] = useState(false);
 
   return (
-    <div className="w-screen h-screen">
+    <div className="w-screen">
       {showDailyPack && <GetChromes hideDailyPack={setShowDailyPack} />}
       <nav className="w-full bg-white h-12 flex justify-between">
         <Link className="h-full" to="/">
           <img
-            src="https://s3-alpha-sig.figma.com/img/718f/4119/fe709b99deb1fa770e894c7854ab6c12?Expires=1670198400&Signature=BJaRCmNmHXKR5duRQCC5xEwPK8RIYjZ4zZ3KHBQ~0AdO-o0eQY3NwjhFzMGPe3XrqUnHmpnTuv61tGHGMrNrb6H0a78axx3yKGVpNCrZGarPm~mc0KfuTTKeUrqeI1rGBz443bdLSsaSRZlwgksRDogFDeBSF19rVwQjz-Cvj9LB9vrfm8P56eyVGWPRdY4QWfTp~jKWAuo5~UtAezhWtR9caLr2qEZ3mEu~6LplNihaa3P590~NKB2i9GeXxxibhga2GtL~vwu3mZQ5JUbquwvT39-hP-PDeA8Dp5kZ2D3YSZ~StjZ-YwU2VpXbbEYmOVGb6X3Kno0iCOqKrILK0w__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+            src={logoOffside}
             alt=""
             className="h-full"
           />
@@ -47,7 +48,7 @@ function Navbar() {
                 setShowDailyPack(true);
               }}
             >
-              <GiChest size="2rem" color="#63130B" />
+              <IoGiftOutline size="2rem" color="#63130B" />
             </button>
           </div>
         </div>

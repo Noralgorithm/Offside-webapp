@@ -14,13 +14,13 @@ const Dashboard = () => {
   }
 
   return (
-    <>
+    <div className='w-screen h-screen'>
     <Navbar />
     <h1>{userInfo.name}</h1>
     <h1>{userInfo.id}</h1>
     <h1>{userInfo.email}</h1>
     <button onClick={logoutHandle} className="bg-red-600 block p-5 text-center text-white">Logout</button>
-    </>
+    </div>
   );
 };
 
