@@ -1,44 +1,71 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { MdSportsSoccer, MdOutlineShoppingBasket } from "react-icons/md";
-import { HiOutlineUser, HiOutlineBookOpen } from "react-icons/hi";
-import { BsCurrencyDollar } from "react-icons/bs";
-import { GiChest } from "react-icons/gi";
+import { RiMoneyDollarCircleFill } from "react-icons/ri";
+import {
+  IoGiftOutline,
+  IoGift,
+  IoBookOutline,
+  IoBook,
+  IoFootballOutline,
+  IoFootball,
+  IoBasketOutline,
+  IoBasket,
+  IoPersonOutline,
+  IoPerson,
+} from "react-icons/io5";
 import { useState } from "react";
 import GetChromes from "../cores/get-chromes/GetChromes";
+import logoOffside from "../Images/logo-offside.png";
+import { useLocation } from "react-router-dom";
 
 function Navbar() {
   const [showDailyPack, setShowDailyPack] = useState(false);
+  const location = useLocation().pathname;
 
   return (
-    <div className="w-full">
+    <div className="w-screen">
       {showDailyPack && <GetChromes hideDailyPack={setShowDailyPack} />}
-      <nav className="w-full bg-white h-12 flex justify-between">
-        <Link className="h-full" to="/">
-          <img
-            src="https://s3-alpha-sig.figma.com/img/718f/4119/fe709b99deb1fa770e894c7854ab6c12?Expires=1670198400&Signature=BJaRCmNmHXKR5duRQCC5xEwPK8RIYjZ4zZ3KHBQ~0AdO-o0eQY3NwjhFzMGPe3XrqUnHmpnTuv61tGHGMrNrb6H0a78axx3yKGVpNCrZGarPm~mc0KfuTTKeUrqeI1rGBz443bdLSsaSRZlwgksRDogFDeBSF19rVwQjz-Cvj9LB9vrfm8P56eyVGWPRdY4QWfTp~jKWAuo5~UtAezhWtR9caLr2qEZ3mEu~6LplNihaa3P590~NKB2i9GeXxxibhga2GtL~vwu3mZQ5JUbquwvT39-hP-PDeA8Dp5kZ2D3YSZ~StjZ-YwU2VpXbbEYmOVGb6X3Kno0iCOqKrILK0w__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-            alt=""
-            className="h-full"
-          />
+      <nav className="w-full bg-white h-12 flex justify-between relative overflow-hidden">
+        <Link className="h-full flex items-center" to="/">
+          <img src={logoOffside} alt="" className="h-36 absolute" />
         </Link>
-        <div className="h-full flex w-1/2 items-center justify-between">
+        <div className="h-full flex w-5/12 items-center justify-between">
           <div className="flex h-full w-1/2 items-center justify-evenly">
             <Link className="rounded-full hover:bg-zinc-300 p-1">
-              <HiOutlineBookOpen size="2rem" color="#63130B" />
+              {location === "/album" ? (
+                <IoBook size="2rem" color="#63130B" />
+              ) : (
+                <IoBookOutline size="2rem" color="#63130B" />
+              )}
+            </Link>
+            <Link to="/fantasy" className="rounded-full hover:bg-zinc-300 p-1">
+              {location === "/fantasy" ||
+              location === "/fantasy/plantilla" ||
+              location === "/fantasy/almacen" ? (
+                <IoFootball size="2rem" color="#63130B" />
+              ) : (
+                <IoFootballOutline size="2rem" color="#63130B" />
+              )}
             </Link>
             <Link className="rounded-full hover:bg-zinc-300 p-1">
-              <MdSportsSoccer size="2rem" color="#63130B" />
+              {location === "/tienda" ? (
+                <IoBasket size="2rem" color="#63130B" />
+              ) : (
+                <IoBasketOutline size="2rem" color="#63130B" />
+              )}
             </Link>
             <Link className="rounded-full hover:bg-zinc-300 p-1">
-              <MdOutlineShoppingBasket size="2rem" color="#63130B" />
-            </Link>
-            <Link className="rounded-full hover:bg-zinc-300 p-1">
-              <HiOutlineUser size="2rem" color="#63130B" />
+              {location === "/perfil" ? (
+                <IoPerson size="2rem" color="#63130B" />
+              ) : (
+                <IoPersonOutline size="2rem" color="#63130B" />
+              )}
             </Link>
           </div>
+          <div className="w-0.5 h-full bg-black"></div>
           <div className="w-1/2 h-full flex items-center justify-evenly">
-            <div className="rounded-full bg-stone-400 w-1/5 flex items-center h-4/6 text-xl">
-              <BsCurrencyDollar />
+            <div className="rounded-full bg-stone-400 w-2/5 flex items-center h-4/6 text-xl">
+              <RiMoneyDollarCircleFill size="2rem" color="#63130B" />
               <p>50</p>
             </div>
             <button
@@ -47,7 +74,11 @@ function Navbar() {
                 setShowDailyPack(true);
               }}
             >
-              <GiChest size="2rem" color="#63130B" />
+              {showDailyPack ? (
+                <IoGift size="2rem" color="#63130B" />
+              ) : (
+                <IoGiftOutline size="2rem" color="#63130B" />
+              )}
             </button>
           </div>
         </div>
