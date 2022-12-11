@@ -25,9 +25,9 @@ function Navbar() {
   return (
     <div className="w-screen">
       {showDailyPack && <GetChromes hideDailyPack={setShowDailyPack} />}
-      <nav className="w-full bg-white h-12 flex justify-between relative overflow-hidden">
+      <nav className="w-full bg-white h-12 flex justify-between overflow-hidden">
         <Link className="h-full flex items-center" to="/">
-          <img src={logoOffside} alt="" className="h-36 absolute" />
+          <img src={logoOffside} alt="" className="h-36" />
         </Link>
         <div className="h-full flex w-5/12 items-center justify-between">
           <div className="flex h-full w-1/2 items-center justify-evenly">

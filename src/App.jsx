@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { login } from "./features/user/userSlice";
 import ProtectedRoutes from "./cores/auth/login/ProtectedRoutes";
 import UnprotectedRoutes from "./cores/auth/login/UnprotectedRoutes";
-import {Index as Fantasy} from "./cores/fantasy/Index";
+import {Homepage as Fantasy} from "./cores/fantasy/Homepage";
 
 const App = () => {
   const dispatch = useDispatch();
