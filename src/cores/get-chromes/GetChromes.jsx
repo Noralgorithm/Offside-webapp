@@ -30,7 +30,7 @@ function GetChromes({ hideDailyPack }) {
             </button>
           </header>
           <div className="w-full h-1/2 flex justify-center items-center">
-            <div className="w-1/3 h-2/5 relative flex items-center">
+            <div className="md:w-1/2 md:h-2/5 w-full relative flex items-center">
               <img
                 src={SobreOffside}
                 alt="Sobre Offside"

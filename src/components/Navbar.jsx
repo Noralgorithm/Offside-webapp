@@ -25,17 +25,13 @@ function Navbar() {
 
   return (
     <div className="w-screen">
-      {showDailyPack && (
-        <GetChromes
-          hideDailyPack={setShowDailyPack}
-        />
-      )}
+      {showDailyPack && <GetChromes hideDailyPack={setShowDailyPack} />}
       <nav className="w-full bg-white h-12 flex justify-between overflow-hidden">
         <Link className="h-full flex items-center" to="/">
           <img src={logoOffside} alt="" className="h-36" />
         </Link>
-        <div className="h-full flex w-5/12 items-center justify-between">
-          <div className="flex h-full w-1/2 items-center justify-evenly">
+        <div className="h-full flex md:w-5/12 w-3/5 items-center justify-between">
+          <div className="flex h-full md:w-1/2 items-center justify-evenly">
             <Link className="rounded-full hover:bg-zinc-300 p-1">
               {location === "/album" ? (
                 <IoBook size="2rem" color="#B02419" />
@@ -68,8 +64,8 @@ function Navbar() {
             </Link>
           </div>
           <div className="w-0.5 h-full bg-black"></div>
-          <div className="w-1/2 h-full flex items-center justify-evenly">
-            <div className="rounded-full bg-stone-400 w-2/5 flex items-center h-4/6 text-xl">
+          <div className="w-1/2 h-full flex items-center justify-around md:justify-evenly">
+            <div className="rounded-full bg-stone-400 md:w-2/5 w-3/5 flex items-center h-4/6 text-xl">
               <RiMoneyDollarCircleFill size="2rem" color="#63130B" />
               <p>50</p>
             </div>
