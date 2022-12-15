@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, BrowserRouter} from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Register from "./cores/auth/registration/Register";
 import Login from "./cores/auth/login/Login";
 import Homepage from "./cores/homepage/Homepage";
@@ -8,7 +8,8 @@ import { useDispatch } from "react-redux";
 import { login } from "./features/user/userSlice";
 import ProtectedRoutes from "./cores/auth/login/ProtectedRoutes";
 import UnprotectedRoutes from "./cores/auth/login/UnprotectedRoutes";
-import {Homepage as Fantasy} from "./cores/fantasy/Homepage";
+import { Homepage as Fantasy } from "./cores/fantasy/Homepage";
+import { Fantasy as Plantilla } from "./cores/fantasy/plantilla/Fantasy";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="/" element={<ProtectedRoutes />}>
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="fantasy" element={<Fantasy />} />
+            <Route path="fantasy/plantilla" element={<Plantilla />} />
           </Route>
         </Routes>
       </BrowserRouter>
