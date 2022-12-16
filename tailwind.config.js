@@ -13,6 +13,7 @@ module.exports = {
         "fondo-barajita": "url('/src/Images/fondo.jpg')",
         "marco-barajita": "url('/src/Images/marco.png')",
         "fondo-homepage-fantasy": "url('/src/Images/fondo-jugador-fantasy.png')",
+        "campo-plantilla": "url('/src/Images/campo-fantasy-1.jpg')"
       },
     },
   },
