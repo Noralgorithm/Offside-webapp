@@ -9,7 +9,7 @@ function FantasyPlayer() {
         className=""
       />
       <div className="rounded-full bg-sticker-name w-full h-6 flex items-center justify-center">
-        <p className="text-white text-[1vw]">Pedri</p>
+        <p className="text-white text-[1vw] overflow-hidden">Pedri</p>
       </div>
     </div>
   );

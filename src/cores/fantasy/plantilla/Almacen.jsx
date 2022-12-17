@@ -13,9 +13,7 @@ function Almacen() {
       <div className="grid grid-cols-4 h-full w-4/5 gap-2">
         {a.map((a) => {
           return (
-            <div className="">
               <FantasyPlayer />
-            </div>
           );
         })}
       </div>
