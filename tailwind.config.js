@@ -6,6 +6,7 @@ module.exports = {
       colors: {
         "offsideColorWine": "#B02419",
         "sticker-name": "#34545D",
+        "bg-offside" : "#7EA6AE",
       },
       backgroundImage: {
         "fondo-barajita": "url('/src/Images/fondo.jpg')",
