@@ -9,8 +9,7 @@ import { login } from "./features/user/userSlice";
 import ProtectedRoutes from "./cores/auth/login/ProtectedRoutes";
 import UnprotectedRoutes from "./cores/auth/login/UnprotectedRoutes";
 import Index from "./cores/album/Index"
-import Navbar from "./components/Navbar";
-import Inventario from "./cores/album/inventario/Inventario";
+import Inventory from "./cores/album/inventario/Inventory";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -33,7 +32,7 @@ const App = () => {
           <Route path="/" element={<ProtectedRoutes />}>
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="album" element={<Index />} />
-            <Route path="album/inventario" element={<Inventario />} />
+            <Route path="album/inventario" element={<Inventory />} />
           </Route>
         </Routes>
       </BrowserRouter>

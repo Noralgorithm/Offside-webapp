@@ -6,13 +6,13 @@ import arquero from "../Images/arquero.png";
 import delantero from "../Images/delantero.png";
 
 function Sticker({ stickerInfo, fontSize }) {
-  /* const stickerInfo = {
+  stickerInfo = {
     playerName: "Pedri",
     position: "medioCentro",
     height: "1.78",
     weight: "70",
     img: "https://www.footyrenders.com/render/pedri-34.png",
-  }; */
+  }; 
   console.log(stickerInfo)
   const positionImage = () => {
     switch (stickerInfo.position) {

@@ -4,7 +4,7 @@ const initialState = {
   loading: 'idle',
   userInfo: {}, 
   userToken: null, 
-  success: false
+  success: true
 }
 
 const userSlice = createSlice({
