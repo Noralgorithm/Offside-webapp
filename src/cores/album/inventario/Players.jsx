@@ -20,9 +20,10 @@ function Players(a) {
       {a.map(() => {
         return (
           <div
-            className="lg:w-[64%] md:w-[84%] w-[90%]"
+            className="lg:w-[64%] md:w-[84%] w-[90%] relative"
             style={{ height: stickerSize }}
           >
+            <span className="absolute w-6 h-6 rounded-full bg-offsideColorWine right-0 flex items-center justify-center text-white font-bold text-lg">2</span>
             <Sticker fontSize={["9px", "18px"]} />
           </div>
         );
