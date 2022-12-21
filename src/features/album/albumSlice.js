@@ -5,7 +5,6 @@ const initialState = {
   percentage: 0,
   teamsList: [],
   eventId: 1,
-  filter: "",
   currentTeam: {
     name: "",
     index: 0,
