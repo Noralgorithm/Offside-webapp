@@ -5,7 +5,7 @@ import arquero from "../Images/arquero.png";
 import delantero from "../Images/delantero.png";
 
 function Sticker({ stickerInfo, fontSize }) {
-  /* const stickerInfo = {
+  stickerInfo = {
     playerName: "Pedri",
     position: "medioCentro",
     height: "1.78",

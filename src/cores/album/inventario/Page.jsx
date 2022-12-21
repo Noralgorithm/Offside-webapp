@@ -5,9 +5,9 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 function Page() {
   return (
-    <div className="bg-white w-11/12 h-5/6 flex flex-col items-center justify-around">
+    <div className="bg-white w-11/12 h-[90%] flex flex-col items-center md:justify-around justify-start">
       <FilterPlayer />
-      <div className="w-full flex justify-around h-5/6 items-center">
+      <div className="w-full flex justify-around md:h-5/6 h-[95%] items-center">
         <IoIosArrowBack
           size="2rem"
           className="bg-offsideColorWine rounded-full text-gray-100 cursor-pointer hover:bg-red-800"
