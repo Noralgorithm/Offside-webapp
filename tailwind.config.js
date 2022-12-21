@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         "offsideColorWine": "#B02419",
+        "offsideColorWineDark": "#63130B",
         "sticker-name": "#34545D",
         "bg-offside" : "#7EA6AE",
       },
