@@ -1,12 +1,12 @@
 import React from 'react'
 import Navbar from '../../components/Navbar'
-import Album from './Album'
+import PreAlbum from './PreAlbum'
 
 function Index() {
   return (
     <div className='flex flex-col w-screen h-screen'>
         <Navbar />
-        <Album />
+        <PreAlbum />
     </div>
   )
 }

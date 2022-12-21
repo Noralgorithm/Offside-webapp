@@ -1,26 +1,58 @@
-import React from "react";
+import React, { useMemo } from "react";
 import Sticker from "../../components/Sticker";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useEffect } from "react";
 import { useState } from "react";
 import * as inventoryServices from "../../services/inventory.services";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { putSticker } from "../../features/album/albumSlice";
+import CarouselSticker from "./CarouselSticker";
 
 function Carousel() {
-  const jugadores = [1, 2, 3, 4, 5];
-  
-  const [ isLoading, setIsLoading ] = useState(true);
-  const [ players, setPlayers ] = useState([]);
-  const [ currentPage, setCurrentPage ] = useState(0);
+  const stickersPerView = 4;
+  const [isLoading, setIsLoading] = useState(true);
+  const [stickers, setStickers] = useState([]);
+  const [stickersView, setStickersView] = useState([]);
+  const [currentBaseStickerIndex, setCurrentBaseStickerIndex] = useState(0);
 
-  const token = useSelector(state => state.user.token);
+  const maxStickerIndex = useMemo(() => stickers.length - 1, [stickers]);
+
+  const token = useSelector((state) => state.user.token);
+  const album = useSelector((state) => state.album);
 
   useEffect(() => {
     (async () => {
-      const data = await inventoryServices.fetchInventory(token, 1, currentPage);
-      setPlayers(data.stickers);
-    })()
-  }, [token, currentPage])
+      try {
+        const data = await inventoryServices.fetchCarousel(token, album.eventId);
+        setStickers(data.items);
+      } catch (e) {
+        alert(e.message);
+      }
+    })();
+  }, [token, album.eventId, album.claimedSticker]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    if (stickers.length !== 0) {
+      let stickersToShow = stickers.slice(
+        currentBaseStickerIndex,
+        currentBaseStickerIndex + stickersPerView
+      );
+      let i = 0;
+      stickersToShow = stickersToShow.filter(
+        (sticker) => sticker !== undefined
+      );
+      while (stickersToShow.length < stickersPerView) {
+        console.log(i);
+        stickersToShow.push(stickers[i]);
+        i === maxStickerIndex ? (i = 0) : i++;
+      }
+      setStickersView(stickersToShow);
+      setIsLoading(false);
+    }
+  }, [currentBaseStickerIndex, stickers]);
+
+  if (isLoading) return <h1>Loading...</h1>;
 
   return (
     <div className="h-full w-full flex justify-center">
@@ -29,19 +61,31 @@ function Carousel() {
           <IoIosArrowBack
             size="1.5rem"
             className="bg-offsideColorWine rounded-full text-gray-100 cursor-pointer hover:bg-red-800"
-            onClick={() => {if (currentPage > 0) setCurrentPage(currentPage - 1)}}
+            onClick={() => {
+              if (currentBaseStickerIndex === 0)
+                setCurrentBaseStickerIndex(maxStickerIndex);
+              else setCurrentBaseStickerIndex(currentBaseStickerIndex - 1);
+            }}
           />
         </div>
-        {players.map(player => (
-          <div className="w-1/6 cursor-pointer" onClick={() => {}} key={player.sticker.id}>
-            <Sticker fontSize={["4px", "10px"]} stickerInfo={player.sticker} />
-          </div>
-        ))}
+        {stickersView.map((sticker, index) => {
+          return (
+            <CarouselSticker
+              eventId={album.eventId}
+              sticker={sticker}
+              index={index}
+            />
+          );
+        })}
         <div className="h-full flex items-center">
           <IoIosArrowForward
             size="1.5rem"
             className="bg-offsideColorWine rounded-full text-gray-100 cursor-pointer hover:bg-red-800"
-            onClick={() => {setCurrentPage(currentPage + 1)}}
+            onClick={() => {
+              if (currentBaseStickerIndex === maxStickerIndex)
+                setCurrentBaseStickerIndex(0);
+              else setCurrentBaseStickerIndex(currentBaseStickerIndex + 1);
+            }}
           />
         </div>
       </div>
