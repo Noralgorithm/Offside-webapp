@@ -1,6 +1,7 @@
 import axios from "axios";
+import { api } from "../config";
 
-const BASE_URL = "https://backend-staging.playoffside.online/inventory";
+const BASE_URL = api + "/inventory";
 
 export const fetchAlbumInfo = async (token, eventId) => {
   const { data } = await axios.get(
