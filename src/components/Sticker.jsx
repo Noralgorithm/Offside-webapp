@@ -11,7 +11,7 @@ function Sticker({ stickerInfo, fontSize }) {
     height: "1.78",
     weight: "70",
     img: "https://www.footyrenders.com/render/pedri-34.png",
-  }; */
+  };
   const positionImage = () => {
     switch (stickerInfo.position) {
       case "MedioCentro":
