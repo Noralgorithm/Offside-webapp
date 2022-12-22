@@ -17,6 +17,25 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.banca::-webkit-scrollbar {
+  width: 20px;
+}
+
+.banca::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.banca::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+.banca::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
