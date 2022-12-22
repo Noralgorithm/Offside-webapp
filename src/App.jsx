@@ -8,8 +8,7 @@ import { useDispatch } from "react-redux";
 import { login } from "./features/user/userSlice";
 import ProtectedRoutes from "./cores/auth/login/ProtectedRoutes";
 import UnprotectedRoutes from "./cores/auth/login/UnprotectedRoutes";
-import { Homepage as Fantasy } from "./cores/fantasy/Homepage";
-import { Fantasy as Plantilla } from "./cores/fantasy/plantilla/Fantasy";
+import { Fantasy as Plantilla } from "./cores/fantasy/squad/Fantasy";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -32,8 +31,7 @@ const App = () => {
           </Route>
           <Route path="/" element={<ProtectedRoutes />}>
             <Route path="dashboard" element={<Dashboard />} />
-            <Route path="fantasy" element={<Fantasy />} />
-            <Route path="fantasy/plantilla" element={<Plantilla />} />
+            <Route path="fantasy" element={<Plantilla />} />
           </Route>
         </Routes>
       </BrowserRouter>
