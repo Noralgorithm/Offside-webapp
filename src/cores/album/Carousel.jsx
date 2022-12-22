@@ -74,6 +74,7 @@ function Carousel() {
               eventId={album.eventId}
               sticker={sticker}
               index={index}
+              key={sticker.sticker.id}
             />
           );
         })}

@@ -13,10 +13,10 @@ const initialState = {
     obtainedCount: 0,
     quantity: 0,
     pages: 0,
-    currentPage: 0
+    currentPage: 0,
   },
   selectedSticker: null,
-  claimedSticker: false
+  claimedSticker: false,
 };
 
 const albumSlice = createSlice({
@@ -50,7 +50,8 @@ const albumSlice = createSlice({
       if (state.currentTeam.index > 0) state.currentTeam.index--;
     },
     setNextPage: (state) => {
-      if (state.currentTeam.currentPage < state.currentTeam.pages) state.currentTeam.currentPage++;
+      if (state.currentTeam.currentPage < state.currentTeam.pages)
+        state.currentTeam.currentPage++;
     },
     setPrevPage: (state) => {
       if (state.currentTeam.currentPage > 0) state.currentTeam.currentPage--;
@@ -59,12 +60,21 @@ const albumSlice = createSlice({
       state.claimedSticker = !state.claimedSticker;
     },
     selectSticker: (state, { payload }) => {
-      if (state.selectedSticker === payload) state.selectedSticker = null; 
+      if (state.selectedSticker === payload) state.selectedSticker = null;
       else state.selectedSticker = payload;
-    }
-  }
+    },
+  },
 });
 
-export const { setTeamsList, setCurrentTeam, setNextTeam, setPrevTeam, setNextPage, setPrevPage, putSticker, selectSticker, clickEmptySlot } =
-  albumSlice.actions;
+export const {
+  setTeamsList,
+  setCurrentTeam,
+  setNextTeam,
+  setPrevTeam,
+  setNextPage,
+  setPrevPage,
+  putSticker,
+  selectSticker,
+  clickEmptySlot,
+} = albumSlice.actions;
 export default albumSlice.reducer;

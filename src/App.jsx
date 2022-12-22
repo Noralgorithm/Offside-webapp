@@ -31,7 +31,7 @@ const App = () => {
           <Route path="/" element={<ProtectedRoutes />}>
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="album" element={<Index />} />
-            <Route path="album/inventario" element={<Inventory />} />
+            <Route path="album/inventory" element={<Inventory />} />
           </Route>
         </Routes>
       </BrowserRouter>

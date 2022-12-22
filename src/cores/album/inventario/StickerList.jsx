@@ -2,29 +2,29 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import Sticker from "../../../components/Sticker";
 
-function Players(a) {
-  a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+function StickerList({ stickers }) {
   const [stickerSize, setStickerSize] = useState();
   useEffect(() => {
-    if (a.length <= 4) {
+    if (stickers.length <= 4) {
       setStickerSize("33.3%");
-    } else if (a.length <= 8) {
+    } else if (stickers.length <= 8) {
       setStickerSize("66.6%");
-    } else if (a.length <= 12) {
+    } else if (stickers.length <= 12) {
       setStickerSize("100%");
     }
-  }, a);
+  }, [stickers]);
 
   return (
     <div className="w-11/12 h-full grid md:grid-cols-4 grid-cols-2 justify-items-center gap-y-3">
-      {a.map(() => {
+      {stickers.map(sticker => {
         return (
           <div
             className="lg:w-[64%] md:w-[84%] w-[90%] relative"
             style={{ height: stickerSize }}
+            key={sticker.id}
           >
-            <span className="absolute w-6 h-6 rounded-full bg-offsideColorWine right-0 flex items-center justify-center text-white font-bold text-lg">2</span>
-            <Sticker fontSize={["9px", "18px"]} />
+            <span className="absolute w-6 h-6 rounded-full bg-offsideColorWine right-0 flex items-center justify-center text-white font-bold text-lg">{sticker.Quantity}</span>
+            <Sticker stickerInfo={sticker.sticker} fontSize={["9px", "18px"]} />
           </div>
         );
       })}
@@ -32,4 +32,4 @@ function Players(a) {
   );
 }
 
-export default Players;
+export default StickerList;
