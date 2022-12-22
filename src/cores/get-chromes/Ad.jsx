@@ -1,6 +1,5 @@
 import React from "react";
-
-const VISIT_URL = 'http://localhost:3000/ads/watch-detailed/'
+import { VISIT_URL } from "../../services/ad.services";
 
 const Ad = ({ imgSource, id }) => {
   return (

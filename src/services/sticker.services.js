@@ -1,6 +1,7 @@
 import axios from "axios";
+import { api } from "../config";
 
-const BASE_URL = 'https://backend.playoffside.online/stickers';
+const BASE_URL = api + 'stickers';
 
 export const obtain = async (token) => {
   try {
