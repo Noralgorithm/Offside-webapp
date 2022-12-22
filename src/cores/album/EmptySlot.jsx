@@ -14,9 +14,8 @@ function EmptySlot({ stickerInfo }) {
 
   const claimSticker = async (eventId, stickerId) => {
     try {
-      if (album.selectedSticker !== stickerInfo.id)
-        throw new Error("Ese sticker no va en esa posición");
-      await inventoryServices.claimSticker(token, eventId, stickerId);
+      if (album.selectedSticker === stickerInfo.id)
+        await inventoryServices.claimSticker(token, eventId, stickerId);
       dispatch(putSticker());
     } catch (e) {
       alert(e.message);

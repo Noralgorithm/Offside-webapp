@@ -32,7 +32,7 @@ function Carousel() {
   }, [token, album.eventId, album.claimedSticker]);
 
   useEffect(() => {
-    setIsLoading(true);
+    setIsLoading(false);
     if (stickers.length !== 0) {
       let stickersToShow = stickers.slice(
         currentBaseStickerIndex,
@@ -48,7 +48,7 @@ function Carousel() {
         i === maxStickerIndex ? (i = 0) : i++;
       }
       setStickersView(stickersToShow);
-      setIsLoading(false);
+
     }
   }, [currentBaseStickerIndex, stickers]);
 
