@@ -31,7 +31,7 @@ function Navbar() {
         </Link>
         <div className="h-full flex w-5/12 items-center justify-between">
           <div className="flex h-full w-1/2 items-center justify-evenly">
-            <Link className="rounded-full hover:bg-zinc-300 p-1">
+            <Link to='/album' className="rounded-full hover:bg-zinc-300 p-1">
               {location === "/album" ? (
                 <IoBook size="2rem" color="#63130B" />
               ) : (
