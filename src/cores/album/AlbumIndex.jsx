@@ -1,29 +1,17 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentTeam } from "../../features/album/albumSlice";
-import * as inventoryServices from "../../services/inventory.services";
+import { filterTeam } from "../../features/album/albumSlice";
 
 function AlbumIndex() {
   const teamsList = useSelector((state) => state.album.teamsList);
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.user.token);
 
   const handleChange = async (e) => {
     if (e.target.value !== "") {
-      try {
-        const teamInfo = await inventoryServices.fetchTeam(
-          token,
-          1,
-          e.target.value
-        );
-        console.log(teamInfo)
-        dispatch(setCurrentTeam(teamInfo));
+        dispatch(filterTeam(e.target.value));
         e.target.value = '';
-      } catch (e) {
-        alert(e);
       }
     }
-  };
 
   return (
     <div className="w-full h-4/5">
