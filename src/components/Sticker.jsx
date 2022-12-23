@@ -38,7 +38,7 @@ function Sticker({ stickerInfo, fontSize }) {
           backgroundRepeat: "no-repeat",
           width: "100%",
           height: "100%",
-          backgroundSize: "90%",
+          backgroundSize: "100%",
           backgroundPosition: "bottom",
         }}
       >
