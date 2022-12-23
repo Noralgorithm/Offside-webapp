@@ -9,8 +9,8 @@ function EmptySlot({ stickerInfo }) {
   const token = useSelector((state) => state.user.token);
 
   const isSelectedStyles = album.selectedSticker
-    ? "bg-gray-400 w-full h-full flex flex-col justify-center items-center cursor-pointer"
-    : "bg-gray-400 w-full h-full flex flex-col justify-center items-center";
+    ? "bg-[#656565] w-full h-full flex flex-col justify-center items-center cursor-pointer"
+    : "bg-[#656565] w-full h-full flex flex-col justify-center items-center";
 
   const claimSticker = async (eventId, stickerId) => {
     try {

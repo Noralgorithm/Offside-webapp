@@ -56,7 +56,7 @@ function Carousel() {
 
   return (
     <div className="h-full w-full flex justify-center">
-      <div className="h-full w-7/12 bg-gray-200 rounded flex justify-around">
+      <div className="h-full w-7/12 bg-gray-300 rounded flex justify-around">
         <div className="h-full flex items-center">
           <IoIosArrowBack
             size="1.5rem"
