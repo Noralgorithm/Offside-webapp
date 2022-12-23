@@ -7,10 +7,8 @@ import { RiArrowDownSFill } from "react-icons/ri";
 function AlbumIndex() {
   const teamsList = useSelector((state) => state.album.teamsList);
   const dispatch = useDispatch();
-  console.log(teamsList);
 
   const handleChange = async (e) => {
-    console.log(e.value);
     if (e.value !== "") {
       dispatch(filterTeam(e.value));
       e.value = "";
