@@ -13,7 +13,7 @@ const initialState = {
     obtainedCount: 0,
     quantity: 0,
     pages: 0,
-    currentPage: 0,
+    currentPage: 1,
   },
   selectedSticker: null,
   claimedSticker: false,
@@ -32,7 +32,6 @@ const albumSlice = createSlice({
       const { id } = album.currentTeam;
       state.currentTeam.id = id;
       state.currentTeam.stickers = stickers;
-      state.currentTeam.currentPage = 1;
       state.currentTeam.pages = Math.ceil(
         stickers.length / state.stickersPerPage
       );
@@ -41,6 +40,11 @@ const albumSlice = createSlice({
       state.currentTeam.obtainedCount = stickers.filter(
         (sticker) => sticker.isAttached
       ).length;
+    },
+    filterTeam: (state, { payload }) => {
+      const encounteredTeam = state.teamsList.filter(team => team.id === Number(payload));
+      state.currentTeam.index = state.teamsList.indexOf(encounteredTeam[0]);
+      state.currentTeam.currentPage = 1;
     },
     setNextTeam: (state) => {
       if (state.currentTeam.index < state.teamsList.length - 1)
@@ -69,6 +73,7 @@ const albumSlice = createSlice({
 export const {
   setTeamsList,
   setCurrentTeam,
+  filterTeam,
   setNextTeam,
   setPrevTeam,
   setNextPage,
