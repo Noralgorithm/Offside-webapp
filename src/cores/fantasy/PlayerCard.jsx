@@ -4,13 +4,13 @@ import { BsCheck } from "react-icons/bs";
 function PlayerCard({ playerInfo }) {
   return (
     <div className="w-full h-full flex items-center bg-gradient-to-r from-[#92C8C9] to-[#254E5A] relative rounded">
-      <h1 className="-rotate-90 text-white text-lg font-semibold absolute left-[-32px] bottom-8">
+      <h1 className="-rotate-90 text-white text-base font-semibold absolute left-[-32px] bottom-11 w-28 h-">
         {playerInfo.playerName}
       </h1>
-      <img src={playerInfo.img} alt="" className="h-full ml-3" />
+      <img src={playerInfo.img} alt="" className="h-full ml-7" />
       <div className="h-full w-full flex flex-col justify-around">
         <header className="w-full h-1/6 flex items-center gap-3">
-          <img src={playerInfo.team.badge} alt="" className="h-[14%] rounded absolute left-20" />
+          <img src={playerInfo.team.badge} alt="" className="h-[14%] rounded absolute left-[94px]" />
           <h1 className="bg-gradient-to-b from-[#B02419] to-[#FE4648] text-white p-0.5 text-xs rounded ml-2">
             {playerInfo.position}
           </h1>
