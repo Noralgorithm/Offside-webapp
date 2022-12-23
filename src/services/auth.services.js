@@ -1,14 +1,15 @@
 import axios from "axios";
+import { api } from "../config";
 
-const LOGIN_URL = 'http://localhost:3000/auth/login';
-const REGISTER_URL = 'http://localhost:3000/auth/register';
+const LOGIN_URL = api + 'auth/login';
+const REGISTER_URL = api + 'auth/register';
 
 export const register = async ({ name, email, password }) => {
   try {
     const { data } = await axios.post(REGISTER_URL, { name, email, password });
     return data;
   } catch(e) {
-    throw new Error('error registrandote perra');
+    throw new Error(e);
   }
 }
 

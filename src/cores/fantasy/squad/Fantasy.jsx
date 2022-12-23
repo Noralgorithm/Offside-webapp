@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../../../components/Navbar";
-import Storage from "../storage/Storage";
+import Bench from "../bench/Bench";
 import Squad from "./Squad";
 
 export function Fantasy() {
@@ -11,7 +11,7 @@ export function Fantasy() {
         <h1 className="text-white text-3xl w-1/4 text-center font-bold">Fantasy</h1>
         <div className="w-full flex h-full mt-10 justify-around">
           <Squad />
-          <Storage />
+          <Bench />
         </div>
       </div>
     </div>

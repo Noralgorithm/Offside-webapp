@@ -1,20 +1,18 @@
 import React from "react";
 import { BsCheck } from "react-icons/bs";
-import Neymar from "../../Images/Neymar.png";
-import Brasil from "../../Images/Brasil.png";
 
-function PlayerCard() {
+function PlayerCard({ playerInfo }) {
   return (
     <div className="w-full h-full flex items-center bg-gradient-to-r from-[#92C8C9] to-[#254E5A] relative rounded">
       <h1 className="-rotate-90 text-white text-lg font-semibold absolute left-[-32px] bottom-8">
-        Neymar Jr
+        {playerInfo.playerName}
       </h1>
-      <img src={Neymar} alt="" className="h-full ml-3" />
+      <img src={playerInfo.img} alt="" className="h-full ml-3" />
       <div className="h-full w-full flex flex-col justify-around">
         <header className="w-full h-1/6 flex items-center gap-3">
-          <img src={Brasil} alt="" className="h-[14%] rounded absolute left-20" />
+          <img src={playerInfo.team.badge} alt="" className="h-[14%] rounded absolute left-20" />
           <h1 className="bg-gradient-to-b from-[#B02419] to-[#FE4648] text-white p-0.5 text-xs rounded ml-2">
-            Delantero
+            {playerInfo.position}
           </h1>
         </header>
         <section className="w-full h-4/6 flex relative">
