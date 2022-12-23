@@ -4,9 +4,7 @@ import defensa from "../Images/defensa.png";
 import arquero from "../Images/arquero.png";
 import delantero from "../Images/delantero.png";
 
-function Sticker({ stickerInfo }) {
-  console.log(stickerInfo.team.badge)
-
+function Sticker({ stickerInfo, fontSize }) {
   const positionImage = () => {
     switch (stickerInfo.position) {
       case "MedioCentro":
@@ -26,22 +24,30 @@ function Sticker({ stickerInfo }) {
     <div className="h-full w-full flex justify-center items-center bg-fondo-barajita bg-cover bg-center bg-no-repeat">
       <div
         style={{
-          backgroundImage: `url(${stickerInfo.img.replace(String.fromCharCode(92), '/')})`,
+          backgroundImage: `url(${stickerInfo.img.replace(
+            String.fromCharCode(92),
+            "/"
+          )})`,
           backgroundRepeat: "no-repeat",
           width: "100%",
           height: "100%",
-          backgroundSize: "90%",
+          backgroundSize: "100%",
           backgroundPosition: "bottom",
         }}
       >
-
         <div className="bg-marco-barajita bg-cover w-full h-full bg-no-repeat bg-center">
           <div className="w-full h-1/2 flex justify-center">
             <div className="w-full h-full gap-y-[4%] grid grid-cols-1 content-center">
-              <h1 className="ml-[19%] text-xs font-bold w-full">
+              <h1
+                className={`ml-[19%] font-bold w-full`}
+                style={{ fontSize: fontSize[0] }}
+              >
                 {stickerInfo.height}
               </h1>
-              <h1 className="ml-[21%] text-xs font-bold w-full">
+              <h1
+                className={`ml-[21%] font-bold w-full`}
+                style={{ fontSize: fontSize[0] }}
+              >
                 {stickerInfo.weight}
               </h1>
             </div>
@@ -58,7 +64,10 @@ function Sticker({ stickerInfo }) {
               />
             </div>
           </div>
-          <h1 className="flex h-1/2 items-end pb-[3%] justify-center w-full text-2xl font-semibold text-sticker-name">
+          <h1
+            className={`flex h-1/2 items-end justify-center w-full font-semibold text-sticker-name`}
+            style={{ fontSize: fontSize[1] }}
+          >
             {stickerInfo.playerName}
           </h1>
         </div>

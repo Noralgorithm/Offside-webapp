@@ -1,8 +1,8 @@
 import axios from "axios";
 import { api } from "../config";
 
-const LOGIN_URL = api + 'auth/login';
-const REGISTER_URL = api + 'auth/register';
+const LOGIN_URL = api + '/auth/login';
+const REGISTER_URL = api + '/auth/register';
 
 export const register = async ({ name, email, password }) => {
   try {

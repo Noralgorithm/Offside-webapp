@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import Navbar from "../../components/Navbar";
+import Navbar from '../../components/Navbar';
 import { logout } from '../../features/user/userSlice';
 
 const Dashboard = () => {
