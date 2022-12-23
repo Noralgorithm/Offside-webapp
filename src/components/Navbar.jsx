@@ -20,6 +20,7 @@ import { useLocation } from "react-router-dom";
 
 function Navbar() {
   const [showDailyPack, setShowDailyPack] = useState(false);
+  const [avalaiblePack, setAvailablePack] = useState(true);
   const location = useLocation().pathname;
 
   return (
@@ -31,34 +32,34 @@ function Navbar() {
         </Link>
         <div className="h-full flex w-5/12 items-center justify-between">
           <div className="flex h-full w-1/2 items-center justify-evenly">
-            <Link to='/album' className="rounded-full hover:bg-zinc-300 p-1">
+            <Link to="/album" className="rounded-full hover:bg-zinc-300 p-1">
               {location === "/album" ? (
-                <IoBook size="2rem" color="#63130B" />
+                <IoBook size="2rem" color="#B02419" />
               ) : (
-                <IoBookOutline size="2rem" color="#63130B" />
+                <IoBookOutline size="2rem" color="grey" />
               )}
             </Link>
             <Link className="rounded-full hover:bg-zinc-300 p-1">
               {location === "/fantasy" ||
               location === "/fantasy/plantilla" ||
               location === "/fantasy/almacen" ? (
-                <IoFootball size="2rem" color="#63130B" />
+                <IoFootball size="2rem" color="#B02419" />
               ) : (
-                <IoFootballOutline size="2rem" color="#63130B" />
+                <IoFootballOutline size="2rem" color="grey" />
               )}
             </Link>
             <Link className="rounded-full hover:bg-zinc-300 p-1">
               {location === "/tienda" ? (
-                <IoBasket size="2rem" color="#63130B" />
+                <IoBasket size="2rem" color="#B02419" />
               ) : (
-                <IoBasketOutline size="2rem" color="#63130B" />
+                <IoBasketOutline size="2rem" color="grey" />
               )}
             </Link>
             <Link className="rounded-full hover:bg-zinc-300 p-1">
               {location === "/perfil" ? (
-                <IoPerson size="2rem" color="#63130B" />
+                <IoPerson size="2rem" color="#B02419" />
               ) : (
-                <IoPersonOutline size="2rem" color="#63130B" />
+                <IoPersonOutline size="2rem" color="grey" />
               )}
             </Link>
           </div>
@@ -69,15 +70,21 @@ function Navbar() {
               <p>50</p>
             </div>
             <button
-              className="hover:cursor-pointer rounded-full hover:bg-zinc-300 p-1"
+              className="hover:cursor-pointer rounded-full hover:bg-zinc-300 p-1 relative"
               onClick={() => {
-                setShowDailyPack(true);
+                setShowDailyPack(!showDailyPack);
               }}
             >
+              {avalaiblePack && (
+                <div className="absolute bottom-1 left-2 w-full h-full">
+                  <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-red-400"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                </div>
+              )}
               {showDailyPack ? (
-                <IoGift size="2rem" color="#63130B" />
+                <IoGift size="2rem" color="#B02419" />
               ) : (
-                <IoGiftOutline size="2rem" color="#63130B" />
+                <IoGiftOutline size="2rem" color="grey" />
               )}
             </button>
           </div>
