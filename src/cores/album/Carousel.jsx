@@ -1,15 +1,13 @@
 import React, { useMemo } from "react";
-import Sticker from "../../components/Sticker";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useEffect } from "react";
 import { useState } from "react";
 import * as inventoryServices from "../../services/inventory.services";
-import { useDispatch, useSelector } from "react-redux";
-import { putSticker } from "../../features/album/albumSlice";
+import { useSelector } from "react-redux";
 import CarouselSticker from "./CarouselSticker";
 
 function Carousel() {
-  const stickersPerView = 4;
+  const STICKERS_PER_VIEW = 4;
   const [isLoading, setIsLoading] = useState(true);
   const [stickers, setStickers] = useState([]);
   const [stickersView, setStickersView] = useState([]);
@@ -33,24 +31,23 @@ function Carousel() {
 
   useEffect(() => {
     setIsLoading(false);
-    if (stickers.length !== 0) {
+    if (stickers.length !== 0 && stickers.length > STICKERS_PER_VIEW) {
       let stickersToShow = stickers.slice(
         currentBaseStickerIndex,
-        currentBaseStickerIndex + stickersPerView
+        currentBaseStickerIndex + STICKERS_PER_VIEW
       );
       let i = 0;
       stickersToShow = stickersToShow.filter(
         (sticker) => sticker !== undefined
       );
-      while (stickersToShow.length < stickersPerView) {
+      while (stickersToShow.length < STICKERS_PER_VIEW) {
         console.log(i);
         stickersToShow.push(stickers[i]);
         i === maxStickerIndex ? (i = 0) : i++;
       }
       setStickersView(stickersToShow);
-
-    }
-  }, [currentBaseStickerIndex, stickers]);
+    } else setStickersView(stickers);
+  }, [currentBaseStickerIndex, stickers, maxStickerIndex]);
 
   if (isLoading) return <h1>Loading...</h1>;
 
