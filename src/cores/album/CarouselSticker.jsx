@@ -12,7 +12,7 @@ const CarouselSticker = ({ eventId, sticker, index }) => {
     dispatch(selectSticker(sticker.sticker.id));
   }
 
-  const isSelectedStyles = album.selectedSticker === sticker.sticker.id ? "w-1/6 cursor-pointer border-4 border-red-800 rounded-md" : "w-1/6 cursor-pointer";
+  const isSelectedStyles = album.selectedSticker === sticker.sticker.id ? "w-1/6 cursor-pointer ring-4 ring-red-800 rounded-md" : "w-1/6 cursor-pointer";
 
   return (
     <div
