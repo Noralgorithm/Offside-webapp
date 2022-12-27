@@ -16,7 +16,7 @@ const useLoginForm = () => {
       localStorage.setItem("loggedUser", JSON.stringify(data));
       dispatch(login(data));
     } catch(e) {
-      alert(e);
+      alert(e.message);
     }
   }
 

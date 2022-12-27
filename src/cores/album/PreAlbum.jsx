@@ -5,8 +5,9 @@ import ProgressBar from "./ProgressBar";
 import AlbumOffside from "../../Images/AlbumOffside.png";
 import { useState } from "react";
 import * as inventoryServices from "../../services/inventory.services";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Album from "./Album";
+import { setTeamsList } from "../../features/album/albumSlice";
 
 function PreAlbum() {
   const [showAlbum, setShowAlbum] = useState(false);
@@ -16,9 +17,15 @@ function PreAlbum() {
   const token = useSelector((state) => state.user.token);
   const eventId = useSelector((state) => state.album.eventId);
   const album = useSelector((state) => state.album);
+  const dispatch = useDispatch()
 
   useEffect(() => {
     (async () => {
+      const fetchedTeams = await inventoryServices.fetchTeamsList(
+        token,
+        album.eventId
+      );
+      dispatch(setTeamsList(fetchedTeams));
       const data = await inventoryServices.fetchAlbumInfo(token, eventId);
       setAlbumInfo(data);
       setLoading(false);
