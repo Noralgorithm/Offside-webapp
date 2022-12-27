@@ -15,15 +15,10 @@ const Album = () => {
 
   useEffect(() => {
     (async () => {
-      const fetchedTeams = await inventoryServices.fetchTeamsList(
-        token,
-        album.eventId
-      );
-      dispatch(setTeamsList(fetchedTeams));
       const teamInfo = await inventoryServices.fetchTeam(
         token,
         album.eventId,
-        album.currentTeam.id || fetchedTeams[0].id
+        album.currentTeam.id || album.teamsList[0].id
       );
       dispatch(setCurrentTeam(teamInfo));
       setIsLoading(false);

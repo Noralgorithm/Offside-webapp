@@ -10,10 +10,9 @@ export const watch = async (token) => {
         Authorization: 'Bearer ' + token
       }
     });
-    console.log(data)
     return data;
   } catch (e) {
-    throw new Error(e);
+    throw new Error(e?.response?.data?.message || 'unknown error');
   }
 }
 
