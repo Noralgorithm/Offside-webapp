@@ -9,8 +9,6 @@ function Page({ stickers }) {
   const baseStickerIndex = album.stickersPerPage * (album.currentTeam.currentPage - 1);
   const halfStickerIndex = baseStickerIndex + 6;
 
-  console.log(stickers, baseStickerIndex, halfStickerIndex)
-
   return (
     <div className="w-full h-full bg-gray-300 flex">
       <HalfPage stickers={stickers.slice(baseStickerIndex, halfStickerIndex)} />

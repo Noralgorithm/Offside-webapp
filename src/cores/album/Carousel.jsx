@@ -41,7 +41,6 @@ function Carousel() {
         (sticker) => sticker !== undefined
       );
       while (stickersToShow.length < STICKERS_PER_VIEW) {
-        console.log(i);
         stickersToShow.push(stickers[i]);
         i === maxStickerIndex ? (i = 0) : i++;
       }

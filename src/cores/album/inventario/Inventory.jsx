@@ -17,7 +17,6 @@ function Inventory() {
   useEffect(() => {
     (async () => {
       try {
-        console.log(inventory.paginate.page)
         const data = await inventoryServices.fetchInventory(token, eventId, inventory.paginate.page);
         dispatch(storeInventory(data));
         setLoading(false);
