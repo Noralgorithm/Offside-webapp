@@ -2,9 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   loading: 'idle',
-  userInfo: {}, 
-  token: null, 
-  success: false 
+  userInfo: {},
+  token: null,
+  success: false
 }
 
 const userSlice = createSlice({

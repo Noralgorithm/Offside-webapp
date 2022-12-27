@@ -1,7 +1,7 @@
 import axios from "axios";
 import { api } from "../config";
 
-const BASE_URL = api + 'stickers';
+const BASE_URL = api + '/stickers';
 
 export const obtain = async (token) => {
   try {
@@ -12,6 +12,6 @@ export const obtain = async (token) => {
     });
     return data;
   } catch(e) {
-    throw new Error(e);
+    throw new Error(e?.response?.data?.message || 'unknown error');
   }
 };

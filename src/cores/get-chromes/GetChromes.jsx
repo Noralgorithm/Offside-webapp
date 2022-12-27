@@ -12,13 +12,13 @@ function GetChromes({ hideDailyPack }) {
   const [availablePack, setAvailablePack] = useState(true);
 
   return (
-    <div className="w-screen h-screen fixed top-0 left-0 bg-black bg-opacity-80">
+    <div className="w-screen md:h-screen h-[1000px] absolute z-50 top-0 left-0 bg-black bg-opacity-80">
       <div
         className={`w-full h-full flex justify-center items-center ${
           watchAd || useChromeScreen ? "hidden" : ""
         }`}
       >
-        <div className="w-1/2 h-2/3 bg-white rounded">
+        <div className="md:w-1/2 w-[90%] md:h-2/3 h-1/2 bg-white rounded">
           <header className="w-full flex justify-end">
             <button
               className="py-1 px-2"
@@ -29,8 +29,8 @@ function GetChromes({ hideDailyPack }) {
               <AiOutlineClose size="2rem" />
             </button>
           </header>
-          <div className="w-full h-1/2 flex justify-center items-center">
-            <div className="w-1/3 h-2/5 relative flex items-center">
+          <div className="w-full h-1/2 flex justify-center items-center mt-7 md:mt-0">
+            <div className="md:w-1/2 md:h-2/5 w-full relative flex items-center">
               <img
                 src={SobreOffside}
                 alt="Sobre Offside"

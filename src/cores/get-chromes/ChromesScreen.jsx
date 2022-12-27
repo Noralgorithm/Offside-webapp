@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { BsCheckCircle } from "react-icons/bs";
 import { useSelector } from "react-redux";
-import Sticker from "../../components/Sticker";
 import * as stickerServices from "../../services/sticker.services";
+import ObtainedSticker from "./ObtainedSticker";
 
 function ChromesScreen({ hideChromesScreen }) {
   const token = useSelector(state => state.user.token)
   const [stickers, setStickers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const fontSize = ['12px', '18px'];
 
   useEffect(() => {
     (async () => {
@@ -20,35 +21,21 @@ function ChromesScreen({ hideChromesScreen }) {
       }
 
     })();
-  }, [])
+  }, [token])
 
   if (loading) return <h2>Loading...</h2>;
   return (
-    <div className="w-full h-full flex justify-center items-center">
-      <div className="absolute h-5/6 w-10/12">
-        <div className="h-1/2 flex w-full justify-around items-center my-20">
-          <div className="h-full w-[18%]">
-            <Sticker stickerInfo={stickers[0]} />
-          </div>
-          <div className="h-full w-[18%]">
-            <Sticker stickerInfo={stickers[1]} />
-          </div>
-
-          <div className="h-full w-[18%]">
-            <Sticker stickerInfo={stickers[2]} />
-          </div>
-
-          <div className="h-full w-[18%]">
-            <Sticker stickerInfo={stickers[3]} />
-          </div>
-          <div className="h-full w-[18%]">
-            <Sticker stickerInfo={stickers[4]} />
-          </div>
+    <div className="w-full h-full flex justify-center md:items-center">
+      <div className="absolute md:h-5/6 h-[90%] md:w-10/12 w-11/12 md:mt-0 mt-4">
+        <div className="md:h-1/2 h-full md:flex w-full md:justify-around md:items-center md:my-20 grid grid-cols-2 gap-2">
+          {stickers.map(sticker => <ObtainedSticker sticker={sticker} fontSize={fontSize} />)}
         </div>
         <div className="w-full flex justify-center">
           <button
-            className="bg-green-700 text-white text-2xl w-2/12 rounded-full p-4 flex justify-around hover:bg-green-800"
-            onClick={() => hideChromesScreen(false)}
+            className="bg-green-700 text-white text-2xl md:w-2/12 w-1/2 rounded-full p-4 flex justify-around hover:bg-green-800"
+            onClick={() => {
+              hideChromesScreen(false);
+            }}
           >
             {" "}
             <BsCheckCircle size="2rem" />

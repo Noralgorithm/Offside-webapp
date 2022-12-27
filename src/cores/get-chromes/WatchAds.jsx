@@ -24,11 +24,11 @@ function WatchAds({ adScreen, showChromesScreen }) {
       setCloseAd(true);
     }
   })();
-  }, []);
+  }, [token]);
 
   return (
-    <div className="w-full h-full flex justify-center items-center">
-      <div className="absolute h-2/3 w-2/6 bg-white">
+    <div className="w-full h-full flex justify-center md:items-center mt-20 md:mt-0">
+      <div className="absolute md:w-2/6 w-[90%] bg-white pb-7">
         <header className="w-full flex justify-end">
           <button className={`py-1 px-2 ${closeAd ? "visible" : "invisible"}`}>
             <AiOutlineClose
