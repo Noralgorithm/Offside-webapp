@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filterTeam } from "../../features/album/albumSlice";
 import Select from "react-select";
-import { RiArrowDownSFill } from "react-icons/ri";
 
 function AlbumIndex() {
   const teamsList = useSelector((state) => state.album.teamsList);
@@ -22,23 +21,18 @@ function AlbumIndex() {
       </div>
     );
   };
-  const DropdownIndicator = () => {
-    return <RiArrowDownSFill size="2rem" />;
-  };
 
   return (
     <div className="w-full h-4/5 bg-[#EFEFEF] rounded p-2">
       <Select
         value=""
         options={teamsList.map((team) => {
-          console.log(team);
           return { value: team.id, label: team.name, image: team.badge };
         })}
         formatOptionLabel={renderCustomItem}
-        className=""
+        className="z-0"
         onChange={handleChange}
         menuIsOpen={true}
-        components={{ DropdownIndicator }}
         placeholder="Equipos"
         styles={{
           control: (baseStyles, props) => ({
@@ -49,6 +43,14 @@ function AlbumIndex() {
             ...baseStyles,
             color: "white",
             fontWeight: 600,
+          }),
+          dropdownIndicator: (baseStyles, props) => ({
+            ...baseStyles,
+            display: "none",
+          }),
+          indicatorSeparator: (baseStyles, props) => ({
+            ...baseStyles,
+            display: "none",
           }),
         }}
       />
