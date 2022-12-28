@@ -12,7 +12,7 @@ function GetChromes({ hideDailyPack }) {
   const [availablePack, setAvailablePack] = useState(true);
 
   return (
-    <div className="w-screen h-screen absolute z-50 top-0 left-0 bg-black bg-opacity-80">
+    <div className="w-screen h-screen fixed z-50 top-0 left-0 bg-black bg-opacity-80">
       <div
         className={`w-full h-full flex justify-center items-center ${
           watchAd || useChromeScreen ? "hidden" : ""
