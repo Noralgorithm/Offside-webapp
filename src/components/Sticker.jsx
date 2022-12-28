@@ -31,7 +31,7 @@ function Sticker({ stickerInfo, fontSize }) {
           backgroundRepeat: "no-repeat",
           width: "100%",
           height: "100%",
-          backgroundSize: "100%",
+          backgroundSize: "70%",
           backgroundPosition: "bottom",
         }}
       >
@@ -55,7 +55,7 @@ function Sticker({ stickerInfo, fontSize }) {
               <img
                 src={stickerInfo.team.badge}
                 alt=""
-                className="justify-self-end w-auto h-2/5 mt-[28%]"
+                className="justify-self-end w-auto h-2/5 mt-[28%] mr-[20%]"
               />
               <img
                 src={positionImage()}
