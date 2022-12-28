@@ -1,11 +1,12 @@
 import React from 'react'
 import FantasyPlayer from "../FantasyPlayer";
+import EmptyFantasyPlayer from '../EmptyFantasyPlayer';
 
 function Defenders() {
   return (
-    <div className='w-full flex justify-center items-center gap-2'>
+    <div className='w-full flex justify-center items-end gap-2'>
         <FantasyPlayer />
-        <FantasyPlayer />
+        <EmptyFantasyPlayer />
         <FantasyPlayer />
         <FantasyPlayer />
     </div>

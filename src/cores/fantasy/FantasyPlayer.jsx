@@ -2,7 +2,7 @@ import React from "react";
 
 function FantasyPlayer() {
   return (
-    <div className="w-1/5 h-full">
+    <div className="w-1/5">
       <img
         src="https://assets.laliga.com/squad/2022/t178/p490541/2048x2225/p490541_t178_2022_0_001_000.png"
         alt=""
