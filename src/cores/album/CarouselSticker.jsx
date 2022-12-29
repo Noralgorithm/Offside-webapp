@@ -20,7 +20,7 @@ const CarouselSticker = ({ eventId, sticker, index }) => {
       onClick={handleClick}
       key={sticker.sticker.id + "" + index}
     >
-      <Sticker fontSize={["4px", "10px"]} stickerInfo={sticker.sticker} />
+      <Sticker fontSize={["6px", "9px"]} stickerInfo={sticker.sticker} />
     </div>
   );
 };

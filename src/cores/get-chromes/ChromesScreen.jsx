@@ -8,7 +8,7 @@ function ChromesScreen({ hideChromesScreen }) {
   const token = useSelector(state => state.user.token)
   const [stickers, setStickers] = useState([]);
   const [loading, setLoading] = useState(true);
-  const fontSize = ['12px', '18px'];
+  const fontSize = ['12px', '20px'];
 
   useEffect(() => {
     (async () => {

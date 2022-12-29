@@ -3,6 +3,8 @@ import medioCentro from "../Images/medioCentro.png";
 import defensa from "../Images/defensa.png";
 import arquero from "../Images/arquero.png";
 import delantero from "../Images/delantero.png";
+import altura from "../Images/altura.png";
+import peso from "../Images/peso.png";
 
 function Sticker({ stickerInfo, fontSize }) {
   const positionImage = () => {
@@ -21,7 +23,7 @@ function Sticker({ stickerInfo, fontSize }) {
   };
 
   return (
-    <div className="h-full w-full flex justify-center items-center bg-fondo-barajita bg-cover bg-center bg-no-repeat">
+    <div className="h-full w-full flex justify-center items-center bg-fondo-barajita bg-cover bg-center bg-no-repeat relative">
       <div
         style={{
           backgroundImage: `url(${stickerInfo.img.replace(
@@ -29,48 +31,45 @@ function Sticker({ stickerInfo, fontSize }) {
             "/"
           )})`,
           backgroundRepeat: "no-repeat",
-          width: "100%",
-          height: "100%",
-          backgroundSize: "70%",
+          width: "80%",
+          height: "80%",
+          backgroundSize: "contain",
           backgroundPosition: "bottom",
         }}
-      >
-        <div className="bg-marco-barajita bg-cover w-full h-full bg-no-repeat bg-center">
-          <div className="w-full h-1/2 flex justify-center">
-            <div className="w-full h-full gap-y-[4%] grid grid-cols-1 content-center">
+      ></div>
+      <div className="bg-marco-barajita bg-cover w-full h-full bg-no-repeat bg-center absolute">
+        <div className="w-full h-1/2 relative">
+          <div className="w-[20%] h-1/2 absolute left-[8%] top-[27%] flex flex-col items-center justify-center gap-1">
+            <div className="flex justify-between ml-[10%]">
+              <img src={altura} alt="" className="w-1/3" />
               <h1
-                className={`ml-[19%] font-bold w-full`}
+                className={`font-bold`}
                 style={{ fontSize: fontSize[0] }}
               >
                 {stickerInfo.height}
               </h1>
+            </div>
+            <div className="flex justify-around">
+              <img src={peso} alt="" className="w-1/2" />
               <h1
-                className={`ml-[21%] font-bold w-full`}
+                className={`font-bold`}
                 style={{ fontSize: fontSize[0] }}
               >
                 {stickerInfo.weight}
               </h1>
             </div>
-            <div className="grid grid-cols-1 w-1/2 h-full justify-items-center gap-0">
-              <img
-                src={stickerInfo.team.badge}
-                alt=""
-                className="justify-self-end w-auto h-2/5 mt-[28%] mr-[20%]"
-              />
-              <img
-                src={positionImage()}
-                alt=""
-                className="h-1/2 w-auto ml-[18%]"
-              />
-            </div>
           </div>
-          <h1
-            className={`flex h-1/2 items-end justify-center w-full font-semibold text-sticker-name`}
-            style={{ fontSize: fontSize[1] }}
-          >
-            {stickerInfo.playerName}
-          </h1>
+          <div className="flex flex-col gap-2 absolute w-1/6 right-[8%] top-[15%]">
+            <img src={stickerInfo.team.badge} alt="" className="" />
+            <img src={positionImage()} alt="" className="" />
+          </div>
         </div>
+        <h1
+          className={`flex h-1/2 items-end justify-center w-full font-semibold text-sticker-name`}
+          style={{ fontSize: fontSize[1] }}
+        >
+          {stickerInfo.playerName}
+        </h1>
       </div>
     </div>
   );
