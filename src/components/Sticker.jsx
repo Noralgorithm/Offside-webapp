@@ -42,19 +42,13 @@ function Sticker({ stickerInfo, fontSize }) {
           <div className="w-[20%] h-1/2 absolute left-[8%] top-[27%] flex flex-col items-center justify-center gap-1">
             <div className="flex justify-between ml-[10%]">
               <img src={altura} alt="" className="w-1/3" />
-              <h1
-                className={`font-bold`}
-                style={{ fontSize: fontSize[0] }}
-              >
+              <h1 className={`font-bold`} style={{ fontSize: fontSize[0] }}>
                 {stickerInfo.height}
               </h1>
             </div>
             <div className="flex justify-around">
               <img src={peso} alt="" className="w-1/2" />
-              <h1
-                className={`font-bold`}
-                style={{ fontSize: fontSize[0] }}
-              >
+              <h1 className={`font-bold`} style={{ fontSize: fontSize[0] }}>
                 {stickerInfo.weight}
               </h1>
             </div>
