@@ -3,60 +3,62 @@ import ConfirmPasword from "./ConfirmPasword";
 import useRegisterForm from "./useRegisterForm";
 
 function RegisterForm() {
-  
-  const { handleChange, handleSubmit, isSamePassword, confirmSamePassword } = useRegisterForm();
-  
+  const { handleChange, handleSubmit, isSamePassword, confirmSamePassword } =
+    useRegisterForm();
+
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
+    <form
+      onSubmit={handleSubmit}
+      className="h-[70%] w-7/12 flex flex-col gap-2"
+    >
+      <label className="border-b-2 border-black border-opacity-20">
         <input
           type="text"
           required
-          placeholder="Ingrese su nombre"
+          placeholder="Nombre de usuario"
           name="name"
           onChange={handleChange}
-          className="w-full p-2 rounded mb-5 border-none"
+          className="w-full p-2 rounded border-none font-semibold focus:outline-none"
         />
       </label>
-      <label>
+      <label className="border-b-2 border-black border-opacity-20">
         <input
           type="email"
           required
-          placeholder="Ingrese su email"
+          placeholder="Correo electrónico"
           name="email"
           onChange={handleChange}
-          className="w-full p-2 rounded mb-5 border-none"
+          className="w-full p-2 rounded border-none font-semibold focus:outline-none"
         />
       </label>
-      <label>
+      <label className="border-b-2 border-black border-opacity-20">
         <input
           type="password"
           required
           placeholder="Contraseña"
           name="password"
           onChange={handleChange}
-          className="w-full p-2 rounded mb-5 border-none"
+          className="w-full p-2 rounded border-none font-semibold focus:outline-none"
         />
       </label>
 
-      <label>
+      <label className="border-b-2 border-black border-opacity-20">
         <input
           type="password"
           required
           placeholder="Confirmar contraseña"
           name="confirmPassword"
           onChange={confirmSamePassword}
-          className="w-full p-2 rounded border-none"
+          className="w-full p-2 rounded border-none font-semibold focus:outline-none"
         />
       </label>
       <ConfirmPasword samePassword={isSamePassword} />
-      <br />
       <button
         type="submit"
-        className="w-full bg-green-700 border-none p-3 text-white text-base
-          hover:bg-green-900 hover:cursor-pointer mt-5"
+        className="w-full bg-offsideColorWine border-none p-3 text-white text-lg
+          hover:bg-red-800 hover:cursor-pointer font-semibold rounded-lg mt-5"
       >
-        Registrate
+        Crear cuenta
       </button>
     </form>
   );
