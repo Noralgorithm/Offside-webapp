@@ -4,7 +4,11 @@ import { useState } from "react";
 import AlbumHeader from "./AlbumHeader";
 import Page from "./Page";
 import * as inventoryServices from "../../services/inventory.services";
-import { setCurrentTeam, setTeamsList } from "../../features/album/albumSlice";
+import {
+  setCurrentTeam,
+  setPage,
+  setTeamsList,
+} from "../../features/album/albumSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../../components/Loading";
 
@@ -43,7 +47,12 @@ const Album = () => {
     })();
   }, [album.currentTeam.index, album.claimedSticker]);
 
-  if (isLoading) return <div className="w-full h-[70%] relative"><Loading /></div>;
+  if (isLoading)
+    return (
+      <div className="w-full h-[70%] relative">
+        <Loading />
+      </div>
+    );
   return (
     <div className="w-full h-[70%]">
       <header className="h-[10%] w-full bg-sticker-name">

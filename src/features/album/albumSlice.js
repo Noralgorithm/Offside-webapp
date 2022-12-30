@@ -29,29 +29,38 @@ const albumSlice = createSlice({
     },
     setCurrentTeam: (state, { payload }) => {
       const { album, stickers } = payload.item;
+      const pagesQuantity = Math.ceil(stickers.length / state.stickersPerPage);
       const { id } = album.currentTeam;
       state.currentTeam.id = id;
       state.currentTeam.stickers = stickers;
-      state.currentTeam.pages = Math.ceil(
-        stickers.length / state.stickersPerPage
-      );
+      state.currentTeam.pages = pagesQuantity;
       state.currentTeam.quantity = stickers.length;
       state.currentTeam.name = album.currentTeam.name;
       state.currentTeam.obtainedCount = stickers.filter(
         (sticker) => sticker.isAttached
       ).length;
+
+      if (state.currentTeam.currentPage === 1) {
+        state.currentTeam.currentPage = pagesQuantity;
+      } else {
+        state.currentTeam.currentPage = 1;
+      }
     },
     filterTeam: (state, { payload }) => {
-      const encounteredTeam = state.teamsList.filter(team => team.id === Number(payload));
+      const encounteredTeam = state.teamsList.filter(
+        (team) => team.id === Number(payload)
+      );
       state.currentTeam.index = state.teamsList.indexOf(encounteredTeam[0]);
-      state.currentTeam.currentPage = 1;
     },
     setNextTeam: (state) => {
-      if (state.currentTeam.index < state.teamsList.length - 1)
+      if (state.currentTeam.index < state.teamsList.length - 1) {
         state.currentTeam.index++;
+      }
     },
     setPrevTeam: (state) => {
-      if (state.currentTeam.index > 0) state.currentTeam.index--;
+      if (state.currentTeam.index > 0) {
+        state.currentTeam.index--;
+      }
     },
     setNextPage: (state) => {
       if (state.currentTeam.currentPage < state.currentTeam.pages)
