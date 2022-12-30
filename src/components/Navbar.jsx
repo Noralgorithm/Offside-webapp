@@ -49,14 +49,14 @@ function Navbar() {
               )}
             </Link>
             <Link className="rounded-full hover:bg-zinc-300 p-1">
-              {location === "/tienda" ? (
+              {location === "/store" ? (
                 <IoBasket size="2rem" color="#B02419" />
               ) : (
                 <IoBasketOutline size="2rem" color="grey" />
               )}
             </Link>
-            <Link className="rounded-full hover:bg-zinc-300 p-1">
-              {location === "/perfil" ? (
+            <Link to="/profile" className="rounded-full hover:bg-zinc-300 p-1">
+              {location === "/profile" ? (
                 <IoPerson size="2rem" color="#B02419" />
               ) : (
                 <IoPersonOutline size="2rem" color="grey" />
