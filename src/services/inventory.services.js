@@ -57,7 +57,7 @@ export const claimSticker = async (token, eventId, stickerId) => {
 export const fetchTeamsList = async (token, eventId) => {
   try {
     const { data } = await axios.get(
-      "https://backend-staging.playoffside.online/teams/all/" + eventId,
+      api + "/teams/all/" + eventId,
       {
         headers: {
           Authorization: "Bearer " + token,

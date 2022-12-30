@@ -8,6 +8,7 @@ import * as inventoryServices from "../../services/inventory.services";
 import { useDispatch, useSelector } from "react-redux";
 import Album from "./Album";
 import { setTeamsList } from "../../features/album/albumSlice";
+import Loading from "../../components/Loading";
 
 function PreAlbum() {
   const [showAlbum, setShowAlbum] = useState(false);
@@ -31,7 +32,7 @@ function PreAlbum() {
       setLoading(false);
     })();
   }, [token, eventId, album.claimedSticker]);
-  if (loading) return <h1>Loading...</h1>;
+  if (loading) return <Loading />;
   return (
     <div className="w-screen flex justify-around h-full">
       <div className="w-3/12 h-full flex items-center">

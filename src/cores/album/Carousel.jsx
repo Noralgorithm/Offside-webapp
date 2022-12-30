@@ -5,6 +5,7 @@ import { useState } from "react";
 import * as inventoryServices from "../../services/inventory.services";
 import { useSelector } from "react-redux";
 import CarouselSticker from "./CarouselSticker";
+import Loading from "../../components/Loading";
 
 function Carousel() {
   const STICKERS_PER_VIEW = 4;
@@ -48,7 +49,7 @@ function Carousel() {
     } else setStickersView(stickers);
   }, [currentBaseStickerIndex, stickers, maxStickerIndex]);
 
-  if (isLoading) return <h1>Loading...</h1>;
+  if (isLoading) return <div className="w-full h-1/2 relative"><Loading /></div>;
 
   return (
     <div className="h-full w-full flex justify-center">

@@ -10,7 +10,7 @@ const HalfPage = ({ stickers }) => {
           {!sticker.isAttached ? (
             <EmptySlot stickerInfo={sticker} />
           ) : (
-            <Sticker stickerInfo={sticker} fontSize={["8px", "16px"]} />
+            <Sticker stickerInfo={sticker} fontSize={["8px", "15px"]} />
           )}
         </div>
       ))}
