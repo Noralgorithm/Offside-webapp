@@ -1,15 +1,15 @@
 import React from "react";
 
-function FantasyPlayer() {
+function FantasyPlayer({ playerInfo }) {
   return (
     <div className="w-1/5">
       <img
-        src="https://assets.laliga.com/squad/2022/t178/p490541/2048x2225/p490541_t178_2022_0_001_000.png"
+        src={playerInfo.img}
         alt=""
         className=""
       />
       <div className="rounded-full bg-sticker-name w-full h-6 flex items-center justify-center">
-        <p className="text-white text-[1vw] overflow-hidden">Pedri</p>
+        <p className="text-white text-[1vw] overflow-hidden">{playerInfo.playerName}</p>
       </div>
     </div>
   );

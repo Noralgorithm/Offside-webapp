@@ -1,11 +1,11 @@
 import axios from "axios";
 import { api } from "../config";
 
-const BASE_URL = api + "/stickers";
+const BASE_URL = api + "/teams/all/";
 
-export const obtain = async (token) => {
+export const fetchTeamsList = async (token, eventId) => {
   try {
-    const { data } = await axios.get(BASE_URL + "/obtain/1", {
+    const { data } = await axios.get(BASE_URL + eventId, {
       headers: {
         Authorization: "Bearer " + token,
       },

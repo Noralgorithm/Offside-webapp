@@ -1,15 +1,23 @@
-import React from 'react'
+import React from "react";
 import FantasyPlayer from "../FantasyPlayer";
-import EmptyFantasyPlayer from '../EmptyFantasyPlayer';
+import useEmptyPositions from "./useEmptyPositions";
 
-function Strikers() {
+function Strikers({ players, insertPlayer }) {
+  const MAX_STRIKERS_AMOUNT = 3;
+  const { emptyPositions } = useEmptyPositions(
+    players.length,
+    MAX_STRIKERS_AMOUNT,
+    () => insertPlayer('Delantero')
+  );
+
   return (
-    <div className='w-full flex justify-evenly items-end'>
-        <FantasyPlayer />
-        <FantasyPlayer />
-        <FantasyPlayer />
+    <div className="w-full flex justify-evenly items-end">
+      {players.map((player) => (
+        <FantasyPlayer playerInfo={player} key={player.id} />
+      ))}
+      {emptyPositions}
     </div>
-  )
+  );
 }
 
-export default Strikers
+export default Strikers;

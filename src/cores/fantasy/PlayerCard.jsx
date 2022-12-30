@@ -1,9 +1,12 @@
 import React from "react";
 import { BsCheck } from "react-icons/bs";
 
-function PlayerCard({ playerInfo }) {
+function PlayerCard({ playerInfo, isInLineup, handleClick, selected}) {
+
+  const selectedStyle = selected ? 'ring-4 ring-red-600' : '';
+
   return (
-    <div className="w-full h-full flex items-center bg-gradient-to-r from-[#92C8C9] to-[#254E5A] relative rounded">
+    <div onClick={handleClick} className={"w-full h-full flex items-center bg-gradient-to-r from-[#92C8C9] to-[#254E5A] relative rounded " + selectedStyle}>
       <h1 className="-rotate-90 text-white text-base font-semibold absolute left-[-32px] bottom-11 w-28 h-">
         {playerInfo.playerName}
       </h1>
@@ -16,14 +19,14 @@ function PlayerCard({ playerInfo }) {
           </h1>
         </header>
         <section className="w-full h-4/6 flex relative">
-          <div className="w-4/6 h-full flex text-white font-semibold gap-2">
+          {isInLineup && <div className="w-4/6 h-full flex text-white font-semibold gap-2">
             <BsCheck
               size="1.3rem"
               color="#FFFFFF"
               className="bg-[#50DE2C] rounded-full"
             />
             En alineación
-          </div>
+          </div>}
           <h1 className="text-white w-2/6 flex gap-2 font-semibold absolute right-0 top-[-8px]">
             <span className="opacity-70 mt-2">PTS</span>{" "}
             <span className="text-2xl">49</span>

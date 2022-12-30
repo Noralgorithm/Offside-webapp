@@ -1,30 +1,57 @@
 import React, { useEffect, useState } from "react";
 import PlayerList from "./PlayerList";
 import Filters from "./Filters";
-import * as benchServices from "../../../services/bench.services";
+import * as benchServices from "../../../services/squad.services";
 import { useDispatch, useSelector } from "react-redux";
-import { storeBenchInfo } from "../../../features/fantasy/fantasySlice";
+import {
+  selectPlayer,
+  storeBenchInfo,
+  storeTeamList,
+} from "../../../features/fantasy/fantasySlice";
+import * as teamServices from "../../../services/team.services";
 
 function Bench() {
   const eventId = 1;
   const token = useSelector((state) => state.user.token);
-  const [ isLoading, setIsLoading ] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const fantasyState = useSelector((state) => state.fantasy);
 
   const dispatch = useDispatch();
+
+  const handleSelectPlayer = (id, position) => {
+    dispatch(selectPlayer({ id, position }));
+  }
 
   useEffect(() => {
     (async () => {
       try {
-        const data = await benchServices.fetchBench(token, eventId);
+        const data = await benchServices.fetchBench(
+          token,
+          eventId,
+          fantasyState.bench.teamFilter,
+          fantasyState.bench.positionFilter,
+          fantasyState.bench.playerNameSearch,
+          fantasyState.bench.paginate.page
+        );
+        const teamList = await teamServices.fetchTeamsList(token, eventId);
+        dispatch(storeTeamList(teamList));
         dispatch(storeBenchInfo(data));
         setIsLoading(false);
       } catch (e) {
         alert(e.message);
       }
     })();
-  }, [token, eventId, dispatch]);
+  }, [
+    token,
+    eventId,
+    dispatch,
+    fantasyState.bench.teamFilter,
+    fantasyState.bench.positionFilter,
+    fantasyState.bench.playerNameSearch,
+    fantasyState.bench.paginate.page,
+  ]);
 
-  if (isLoading) return <h1>Loading...</h1>
+  if (isLoading) return <h1>Loading...</h1>;
 
   return (
     <div className="w-5/12 h-[80%] bg-[#647B80] rounded-t">
@@ -32,9 +59,9 @@ function Bench() {
         <h1 className="w-2/5 text-center text-[#EFEFEF] text-lg">
           Almacén de jugadores
         </h1>
-        <Filters />
+        <Filters dispatch={dispatch} />
       </header>
-      <PlayerList />
+      <PlayerList handleSelectPlayer={handleSelectPlayer} />
     </div>
   );
 }

@@ -1,16 +1,23 @@
-import React from 'react'
+import React from "react";
 import FantasyPlayer from "../FantasyPlayer";
-import EmptyFantasyPlayer from '../EmptyFantasyPlayer';
+import useEmptyPositions from "./useEmptyPositions";
 
-function Defenders() {
+function Defenders({ players, insertPlayer }) {
+  const MAX_DEFENDERS_AMOUNT = 4;
+  const { emptyPositions } = useEmptyPositions(
+    players.length,
+    MAX_DEFENDERS_AMOUNT,
+    () => insertPlayer('Defensa')
+  );
+
   return (
-    <div className='w-full flex justify-center items-end gap-2'>
-        <FantasyPlayer />
-        <EmptyFantasyPlayer />
-        <FantasyPlayer />
-        <FantasyPlayer />
+    <div className="w-full flex justify-center items-end gap-2">
+      {players.map((player) => (
+        <FantasyPlayer playerInfo={player} key={player.id} />
+      ))}
+      {emptyPositions}
     </div>
-  )
+  );
 }
 
-export default Defenders
+export default Defenders;

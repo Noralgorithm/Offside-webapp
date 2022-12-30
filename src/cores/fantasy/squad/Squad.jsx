@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Defenders from "./Defenders";
 import GoalKeeper from "./GoalKeeper";
 import Midfielders from "./Midfielders";
 import Strikers from "./Strikers";
+import useSquad from "./useSquad";
 
 function Squad() {
+
+  const { players, fetchSquadInfo, insertPlayer } = useSquad();
+
+  useEffect(() => {
+    fetchSquadInfo();
+  }, [fetchSquadInfo]);
+
   return (
     <div className="w-5/12 h-full">
       <div className="bg-[#325D69] h-[8%] flex items-center justify-around rounded-t">
@@ -14,10 +22,10 @@ function Squad() {
         </h1>
       </div>
       <div className="w-full h-[84%] bg-campo-plantilla bg-center bg-contain bg-no-repeat flex flex-col justify-around items-center">
-        <GoalKeeper />
-        <Defenders />
-        <Midfielders />
-        <Strikers />
+        <GoalKeeper players={players.filter(p => p.position === 'Arquero')} insertPlayer={insertPlayer} />
+        <Defenders players={players.filter(p => p.position === 'Defensa')} insertPlayer={insertPlayer} />
+        <Midfielders players={players.filter(p => p.position === 'MedioCampo')} insertPlayer={insertPlayer} />
+        <Strikers players={players.filter(p => p.position === 'Delantero')} insertPlayer={insertPlayer} />
       </div>
     </div>
   );
