@@ -39,7 +39,7 @@ function Navbar() {
                 <IoBookOutline size="2rem" color="grey" />
               )}
             </Link>
-            <Link className="rounded-full hover:bg-zinc-300 p-1">
+            <Link to="/fantasy" className="rounded-full hover:bg-zinc-300 p-1">
               {location === "/fantasy" ? (
                 <IoFootball size="2rem" color="#B02419" />
               ) : (
