@@ -10,6 +10,7 @@ import ProtectedRoutes from "./cores/auth/login/ProtectedRoutes";
 import UnprotectedRoutes from "./cores/auth/login/UnprotectedRoutes";
 import Index from "./cores/album/Index";
 import Inventory from "./cores/album/inventario/Inventory";
+import Profile from "./cores/profile/Profile";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ const App = () => {
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="album" element={<Index />} />
             <Route path="album/inventory" element={<Inventory />} />
+            <Route path="profile" element={<Profile />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -5,10 +5,10 @@ import LogoOffside from "../../../Images/logo-offside.png";
 const Register = () => {
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-around">
-      <div className="h-1/6 w-full flex items-center overflow-y-hidden justify-center">
-        <img src={LogoOffside} alt="" className="md:w-[25%] w-[75%]" />
+      <div className="h-1/6 lg:w-3/12 md:w-5/12 w-8/12 flex items-center justify-center">
+        <img src={LogoOffside} alt="" className="" />
       </div>
-      <div className="md:w-5/12 h-3/4 bg-white p-7 rounded-xl text-black flex flex-col justify-around items-center w-11/12">
+      <div className="md:w-7/12 h-3/4 bg-white p-7 rounded-xl text-black flex flex-col justify-around items-center w-10/12 lg:w-5/12">
         <h1 className="text-3xl w-full text-center h-[20%] text-sticker-name font-bold">
           Regístrate
         </h1>

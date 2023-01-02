@@ -10,10 +10,10 @@ function Login() {
 
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-evenly">
-      <div className="h-1/6 w-full flex items-center overflow-y-hidden justify-center">
-        <img src={LogoOffside} alt="" className="md:w-[25%] w-[75%]" />
+      <div className="h-1/6 lg:w-4/12 md:w-6/12 w-9/12 flex items-center justify-center">
+        <img src={LogoOffside} alt="" className="" />
       </div>
-      <div className="md:w-5/12 h-3/5 bg-white p-7 rounded-xl text-black flex flex-col justify-around items-center w-11/12">
+      <div className="lg:w-5/12 md:w-7/12 h-3/5 bg-white p-7 rounded-xl text-black flex flex-col justify-around items-center w-11/12">
         <h1 className="text-3xl w-full text-center h-[15%] text-sticker-name font-bold">
           Inicia Sesión
         </h1>
