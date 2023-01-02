@@ -56,9 +56,9 @@ function PlayerList({ handleSelectPlayer }) {
                 isInLineup={player.isInLineup}
                 handleClick={() => {
                   if (!player.isInLineup)
-                    handleSelectPlayer(player.id, player.sticker.position);
+                    handleSelectPlayer(player.sticker.id, player.sticker.position);
                 }}
-                selected={fantasy.selectedPlayer.id === player.id}
+                selected={fantasy.selectedPlayer.id === player.sticker.id}
               />
             </div>
           );

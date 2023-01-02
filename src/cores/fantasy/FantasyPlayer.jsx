@@ -1,8 +1,8 @@
 import React from "react";
 
-function FantasyPlayer({ playerInfo }) {
+function FantasyPlayer({ playerInfo, handleClick }) {
   return (
-    <div className="w-1/5">
+    <div className="w-1/5" onClick={handleClick}>
       <img
         src={playerInfo.img}
         alt=""

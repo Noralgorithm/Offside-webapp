@@ -44,7 +44,7 @@ export const fetchSquadPlayers = async (token, eventId) => {
 
 export const insertPlayer = async (token, eventId, playerId) => {
   try {
-    const { data } = axios.post(
+    const res = axios.post(
       BASE_URL + eventId + "/squad/player",
       { playerId },
       {
@@ -53,21 +53,23 @@ export const insertPlayer = async (token, eventId, playerId) => {
         },
       }
     );
-    return data;
+    return res;
   } catch (e) {
     throw new Error(e?.response?.data?.message || "unknown error");
   }
 };
 
-export const extractPlayer = async (token, eventId, playerId) => {
+export const removePlayer = async (token, eventId, playerId) => {
   try {
-    const { data } = axios.delete(
-      BASE_URL + eventId + "/squad/players/" + playerId,
+    const res = axios.delete(
+      BASE_URL + eventId + "/squad/player/" + playerId,
       {
-        Authorization: "Bearer " + token,
+        headers: {
+          Authorization: "Bearer " + token,
+        },
       }
     );
-    return data;
+    return res;
   } catch (e) {
     throw new Error(e?.response?.data?.message || "unknown error");
   }

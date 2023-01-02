@@ -3,20 +3,22 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   bench: {
     paginate: {},
-    positionFilter: '',
+    positionFilter: "",
     players: [],
-    teamFilter: '',
-    playerNameSearch: ''
+    teamFilter: "",
+    playerNameSearch: "",
   },
   teamList: [],
   selectedPlayer: {
     id: null,
-    position: null
-  }
+    position: null,
+  },
+  insertedPlayer: 0,
+  removedPlayer: 0
 };
 
 const fantasySlice = createSlice({
-  name: 'fantasy',
+  name: "fantasy",
   initialState,
   reducers: {
     storeBenchInfo: (state, { payload }) => {
@@ -32,7 +34,7 @@ const fantasySlice = createSlice({
     setBenchPositionFilter: (state, { payload }) => {
       state.bench.positionFilter = payload;
     },
-    setBenchPlayerNameSearch:  (state, { payload }) => {
+    setBenchPlayerNameSearch: (state, { payload }) => {
       state.bench.playerNameSearch = payload;
     },
     setNextBenchPage: (state) => {
@@ -40,10 +42,30 @@ const fantasySlice = createSlice({
     },
     selectPlayer: (state, { payload }) => {
       state.selectedPlayer = payload;
-    }
-  }
-})
+    },
+    insertPlayer: (state) => {
+      state.insertedPlayer++;
+      state.selectedPlayer = {
+        id: null,
+        position: null,
+      };
+    },
+    removePlayer: (state) => {
+      state.removedPlayer++;
+    },
+  },
+});
 
-export const { storeBenchInfo, storeTeamList, setBenchTeamFilter, setBenchPositionFilter, setBenchPlayerNameSearch, setNextBenchPage, selectPlayer } = fantasySlice.actions;
+export const {
+  storeBenchInfo,
+  storeTeamList,
+  setBenchTeamFilter,
+  setBenchPositionFilter,
+  setBenchPlayerNameSearch,
+  setNextBenchPage,
+  selectPlayer,
+  insertPlayer,
+  removePlayer
+} = fantasySlice.actions;
 
 export default fantasySlice.reducer;

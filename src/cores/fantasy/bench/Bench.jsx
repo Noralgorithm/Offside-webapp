@@ -20,7 +20,7 @@ function Bench() {
 
   const handleSelectPlayer = (id, position) => {
     dispatch(selectPlayer({ id, position }));
-  }
+  };
 
   useEffect(() => {
     (async () => {
@@ -49,6 +49,8 @@ function Bench() {
     fantasyState.bench.positionFilter,
     fantasyState.bench.playerNameSearch,
     fantasyState.bench.paginate.page,
+    fantasyState.insertedPlayer,
+    fantasyState.removedPlayer
   ]);
 
   if (isLoading) return <h1>Loading...</h1>;
