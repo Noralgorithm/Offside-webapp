@@ -40,16 +40,14 @@ function Navbar() {
               )}
             </Link>
             <Link className="rounded-full hover:bg-zinc-300 p-1">
-              {location === "/fantasy" ||
-              location === "/fantasy/plantilla" ||
-              location === "/fantasy/almacen" ? (
+              {location === "/fantasy" ? (
                 <IoFootball size="2rem" color="#B02419" />
               ) : (
                 <IoFootballOutline size="2rem" color="grey" />
               )}
             </Link>
             <Link className="rounded-full hover:bg-zinc-300 p-1">
-              {location === "/store" ? (
+              {location === "/market" ? (
                 <IoBasket size="2rem" color="#B02419" />
               ) : (
                 <IoBasketOutline size="2rem" color="grey" />
