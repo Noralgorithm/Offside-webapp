@@ -7,7 +7,7 @@ function Defenders({ players, insertPlayer, removePlayer }) {
   const { emptyPositions } = useEmptyPositions(
     players.length,
     MAX_DEFENDERS_AMOUNT,
-    () => insertPlayer('Defensa')
+    () => insertPlayer('defender')
   );
 
   return (

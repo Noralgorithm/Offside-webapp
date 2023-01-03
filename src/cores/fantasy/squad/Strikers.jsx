@@ -7,7 +7,7 @@ function Strikers({ players, insertPlayer, removePlayer }) {
   const { emptyPositions } = useEmptyPositions(
     players.length,
     MAX_STRIKERS_AMOUNT,
-    () => insertPlayer('Delantero')
+    () => insertPlayer('forward')
   );
 
   return (

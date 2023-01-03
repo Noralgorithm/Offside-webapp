@@ -7,7 +7,7 @@ function Midfielders({ players, insertPlayer, removePlayer }) {
   const { emptyPositions } = useEmptyPositions(
     players.length,
     MAX_MIDFIELDERS_AMOUNT,
-    () => insertPlayer('MedioCentro')
+    () => insertPlayer('midfielder')
   );
 
   return (

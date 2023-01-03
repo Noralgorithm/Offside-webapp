@@ -21,10 +21,10 @@ function FilterPlayer({ dispatch }) {
   }
 
   const positions = [
-    {id: 'delantero', name: 'Delantero'},
-    {id: 'defensa', name: 'Defensa'},
-    {id: 'medio campo', name: 'Medio Campo'},
-    {id: 'arquero', name: 'Arquero'}
+    {id: 'forward', name: 'Delantero'},
+    {id: 'defender', name: 'Defensa'},
+    {id: 'midfielder', name: 'Medio Campo'},
+    {id: 'goalkeeper', name: 'Arquero'}
   ]
 
   return (
