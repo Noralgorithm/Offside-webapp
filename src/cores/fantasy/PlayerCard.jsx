@@ -7,7 +7,7 @@ function PlayerCard({ playerInfo, isInLineup, handleClick, selected}) {
 
   return (
     <div onClick={handleClick} className={"w-full h-full flex items-center bg-gradient-to-r from-[#92C8C9] to-[#254E5A] relative rounded " + selectedStyle}>
-      <h1 className="-rotate-90 text-white text-base font-semibold absolute left-[-32px] bottom-11 w-28 h-">
+      <h1 className="-rotate-90 text-white text-base font-semibold absolute left-[-32px] w-28">
         {playerInfo.playerName}
       </h1>
       <img src={playerInfo.img} alt="" className="h-full ml-7" />

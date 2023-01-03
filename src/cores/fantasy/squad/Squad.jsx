@@ -22,7 +22,7 @@ function Squad() {
           180 PTS
         </h1>
       </div>
-      <div className="w-full h-[84%] bg-campo-plantilla bg-center bg-contain bg-no-repeat flex flex-col justify-around items-center">
+      <div className="w-full xl:h-[84%] lg:h-[70%] md:h-[62%] bg-campo-plantilla bg-center bg-contain bg-no-repeat flex flex-col justify-around items-center">
         <GoalKeeper
           players={players.filter((p) => p.position === "Arquero")}
           insertPlayer={insertPlayer}
