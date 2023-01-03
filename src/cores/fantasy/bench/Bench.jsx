@@ -56,7 +56,7 @@ function Bench() {
   if (isLoading) return <h1>Loading...</h1>;
 
   return (
-    <div className="w-5/12 h-[80%] bg-[#647B80] rounded-t">
+    <div className="md:w-5/12 w-11/12 md:h-[80%] h-1/2 bg-[#647B80] rounded-t">
       <header className="w-full bg-[#325D69] h-[15%] flex flex-col justify-center rounded-t">
         <h1 className="w-2/5 text-center text-[#EFEFEF] text-lg">
           Almacén de jugadores

@@ -7,7 +7,7 @@ import Squad from "./Squad";
 export function Fantasy() {
   const [showSquad, setShowSquad] = useState(true);
   return (
-    <div className="w-screen h-[970px] flex flex-col">
+    <div className="w-screen md:h-[970px] h-[1500px] flex flex-col">
       <Navbar />
       <div className="w-full bg-black bg-opacity-40">
         <h1 className="text-white text-4xl w-1/4 text-center font-bold mt-4">
@@ -42,7 +42,7 @@ export function Fantasy() {
       </div>
       <div className="w-full h-full mt-10">
         {showSquad ? (
-          <div className="w-full flex h-full justify-around">
+          <div className="w-full flex md:flex-row flex-col h-full md:justify-around items-center justify-around md:items-start">
             <Squad />
             <Bench />
           </div>
