@@ -9,7 +9,7 @@ function FantasyPlayer({ playerInfo, handleClick }) {
         className=""
       />
       <div className="rounded-full bg-sticker-name w-full h-6 flex items-center justify-center">
-        <p className="text-white text-[1vw] overflow-hidden">{playerInfo.playerName}</p>
+        <p className="text-white md:text-[1vw] text-[10px] overflow-hidden">{playerInfo.playerName}</p>
       </div>
     </div>
   );
