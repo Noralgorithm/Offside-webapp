@@ -19,12 +19,12 @@ function Login() {
         </h1>
         <LoginForm />
         <div className="h-[10%] flex items-center justify-center gap-2 font-semibold text-lg">
-          <p className="">¿Ya tienes tienes cuenta?</p>
+          <p className="">¿No tienes cuenta aún?</p>
           <Link
             to="/signup"
             className="hover:underline text-blue-900 font-semibold"
           >
-            Inicia Sesion
+            Registrate
           </Link>
         </div>
       </div>
