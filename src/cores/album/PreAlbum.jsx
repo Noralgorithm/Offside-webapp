@@ -18,7 +18,7 @@ function PreAlbum() {
   const token = useSelector((state) => state.user.token);
   const eventId = useSelector((state) => state.album.eventId);
   const album = useSelector((state) => state.album);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
     (async () => {
@@ -34,23 +34,27 @@ function PreAlbum() {
   }, [token, eventId, album.claimedSticker]);
   if (loading) return <Loading />;
   return (
-    <div className="w-screen flex justify-around h-full">
-      <div className="w-3/12 h-full flex items-center">
+    <div className="w-screen flex md:justify-around md:flex-row flex-col h-full md:items-start items-center">
+      <div className="w-3/12 h-full md:flex items-center hidden">
         <AlbumIndex />
       </div>
-      <div className="w-[62%] flex flex-col justify-evenly h-full">
-        <div className="w-full h-[5%]">
+      <div className="md:w-[62%] w-11/12 flex flex-col md:justify-evenly justify-start gap-5 md:gap-0 md:mt-0 mt-5 h-full">
+        <div className="w-full md:h-[5%] h-[3%]">
           <ProgressBar percentage={albumInfo.actualProgressPercentage} />
+        </div>
+
+        <div className="w-11/12 h-[5%] flex items-center md:hidden">
+          <AlbumIndex />
         </div>
 
         {showAlbum ? (
           <Album />
         ) : (
-          <div className="w-full h-4/6 flex justify-center">
+          <div className="w-full md:h-4/6 h-2/5 flex justify-center">
             <img
               src={AlbumOffside}
               alt=""
-              className="h-full w-1/2 hover:cursor-pointer bg-gray-100 rounded-xl"
+              className="h-full md:w-1/2 w-full hover:cursor-pointer bg-gray-100 rounded-xl"
               onClick={() => {
                 setShowAlbum(true);
               }}
@@ -62,12 +66,12 @@ function PreAlbum() {
             <Carousel />
           ) : (
             <div
-              className="w-full h-full flex justify-center items-center cursor-pointer"
+              className="w-full md:h-full h-1/2 flex justify-center items-center cursor-pointer"
               onClick={() => {
                 setShowAlbum(true);
               }}
             >
-              <h1 className="h-full w-1/2 bg-gray-100 rounded-xl text-sticker-name flex justify-center items-center text-3xl font-semibold">
+              <h1 className="h-full md:w-1/2 w-11/12 bg-gray-100 rounded-xl text-sticker-name flex justify-center items-center text-3xl font-semibold">
                 ¡Pega tus cromos!
               </h1>
             </div>

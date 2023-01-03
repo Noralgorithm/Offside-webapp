@@ -6,6 +6,8 @@ import Select from "react-select";
 function AlbumIndex() {
   const teamsList = useSelector((state) => state.album.teamsList);
   const dispatch = useDispatch();
+  const windowSize = window.innerWidth;
+  const menuOpen = { ...(windowSize > 768 && { menuIsOpen: true }) };
 
   const handleChange = async (e) => {
     if (e.value !== "") {
@@ -23,7 +25,7 @@ function AlbumIndex() {
   };
 
   return (
-    <div className="w-full h-4/5 bg-[#EFEFEF] rounded p-2">
+    <div className={`w-full md:h-4/5 h-full bg-[#EFEFEF] rounded p-2`}>
       <Select
         value=""
         options={teamsList.map((team) => {
@@ -32,8 +34,9 @@ function AlbumIndex() {
         formatOptionLabel={renderCustomItem}
         className="z-0"
         onChange={handleChange}
-        menuIsOpen={true}
+        {...menuOpen}
         placeholder="Equipos"
+        openMenu
         styles={{
           control: (baseStyles, props) => ({
             ...baseStyles,
@@ -46,11 +49,12 @@ function AlbumIndex() {
           }),
           dropdownIndicator: (baseStyles, props) => ({
             ...baseStyles,
-            display: "none",
+
+            display: windowSize < 768 ? "block" : "none",
           }),
           indicatorSeparator: (baseStyles, props) => ({
             ...baseStyles,
-            display: "none",
+            display: windowSize < 768 ? "block" : "none",
           }),
         }}
       />
