@@ -1,29 +1,15 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
 import Navbar from "../../components/Navbar";
-import { logout } from "../../features/user/userSlice";
+import HomePage from "./HomePage";
 
 const Dashboard = () => {
-  const { userInfo } = useSelector((state) => state.user);
-  const dispatch = useDispatch();
-
-  const logoutHandle = () => {
-    localStorage.clear();
-    dispatch(logout());
-  };
-
   return (
-    <div className="w-screen h-screen">
+    <div className="w-screen h-screen flex flex-col gap-5">
       <Navbar />
-      <h1>{userInfo.name}</h1>
-      <h1>{userInfo.id}</h1>
-      <h1>{userInfo.email}</h1>
-      <button
-        onClick={logoutHandle}
-        className="bg-red-600 block p-5 text-center text-white"
-      >
-        Logout
-      </button>
+      <h1 className="h-[8%] text-2xl font-bold w-full pl-[4%] text-offside-titles">
+        Home
+      </h1>
+      <HomePage />
     </div>
   );
 };
