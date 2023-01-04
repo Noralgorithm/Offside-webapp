@@ -50,7 +50,7 @@ function AlbumIndex() {
           return { value: team.id, label: team.name, image: team.badge };
         })}
         formatOptionLabel={renderCustomItem}
-        className="z-0"
+        className=""
         onChange={handleChange}
         {...menuOpen}
         placeholder="Equipos"

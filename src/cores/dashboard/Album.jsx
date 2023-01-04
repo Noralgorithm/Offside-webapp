@@ -11,8 +11,8 @@ function Album() {
             Colecciona todos los cromos
           </h2>
         </div>
-        <footer className="w-full flex justify-end h-2/5 gap-2">
-          <Link className="bg-transparent border-2 border-offside-titles rounded-full w-[38%] py-2  text-offside-titles font-bold flex items-center justify-center  mb-2">
+        <footer className="w-full flex md:justify-end justify-center h-2/5 gap-2">
+          <Link className="bg-transparent border-2 border-offside-titles rounded-full md:w-[38%] w-1/2 py-2  text-offside-titles font-bold flex items-center justify-center mb-2">
             Intercambiar cromos
           </Link>
           <Link className="bg-gradient-offside text-white py-2 w-4/12 font-semibold rounded-full flex items-center justify-center mr-7 mb-2" to="/album">
