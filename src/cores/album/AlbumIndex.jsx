@@ -2,8 +2,9 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filterTeam } from "../../features/album/albumSlice";
 import Select from "react-select";
+import BallTeams from "../../Images/EquiposBall.png";
 
-function AlbumIndex() {
+function AlbumIndex({ currentTeam }) {
   const teamsList = useSelector((state) => state.album.teamsList);
   const dispatch = useDispatch();
   const windowSize = window.innerWidth;
@@ -15,11 +16,25 @@ function AlbumIndex() {
       e.value = "";
     }
   };
+  console.log(currentTeam);
+
   const renderCustomItem = (item) => {
     return (
       <div className="w-full h-full flex gap-3">
-        <img src={item.image} alt="" className="h-5 w-7 rounded-full" />{" "}
-        <h1 className="text-black font-semibold">{item.label}</h1>
+        <img
+          src={item.image}
+          alt=""
+          className={`${
+            item.label === "Equipos" ? "h-7 w-8" : "h-6 w-6"
+          } rounded-full`}
+        />{" "}
+        <h1
+          className={`${
+            item.label === "Equipos" ? "text-white" : "text-black"
+          } font-semibold`}
+        >
+          {item.label}
+        </h1>
       </div>
     );
   };
@@ -27,7 +42,11 @@ function AlbumIndex() {
   return (
     <div className={`w-full md:h-4/5 h-full bg-[#EFEFEF] rounded p-2`}>
       <Select
-        value=""
+        value={{
+          value: currentTeam ? currentTeam.id : "",
+          label: "Equipos",
+          image: BallTeams,
+        }}
         options={teamsList.map((team) => {
           return { value: team.id, label: team.name, image: team.badge };
         })}
@@ -36,7 +55,6 @@ function AlbumIndex() {
         onChange={handleChange}
         {...menuOpen}
         placeholder="Equipos"
-        openMenu
         styles={{
           control: (baseStyles, props) => ({
             ...baseStyles,
