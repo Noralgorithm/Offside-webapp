@@ -52,13 +52,13 @@ function PlayerList({ handleSelectPlayer }) {
           return (
             <div className="w-[90%] h-28" key={player.id}>
               <PlayerCard
-                playerInfo={player.sticker}
+                playerInfo={player}
                 isInLineup={player.isInLineup}
                 handleClick={() => {
                   if (!player.isInLineup)
-                    handleSelectPlayer(player.sticker.id, player.sticker.position);
+                    handleSelectPlayer(player.sticker.id, player.position);
                 }}
-                selected={fantasy.selectedPlayer.id === player.sticker.id}
+                selected={fantasy.selectedPlayer.id === player.id}
               />
             </div>
           );
