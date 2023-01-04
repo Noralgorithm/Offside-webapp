@@ -23,7 +23,7 @@ const CarouselSticker = ({ eventId, sticker, index }) => {
       key={sticker.sticker.id + "" + index}
     >
       <Sticker
-        fontSize={["6px", "9px"]}
+        fontSize={["6px", "8px"]}
         stickerInfo={sticker.sticker}
       />
     </div>

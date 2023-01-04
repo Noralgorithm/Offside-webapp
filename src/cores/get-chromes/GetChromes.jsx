@@ -29,8 +29,8 @@ function GetChromes({ hideDailyPack }) {
               <AiOutlineClose size="2rem" />
             </button>
           </header>
-          <div className="w-full h-1/2 flex justify-center items-center mt-7 md:mt-0">
-            <div className="md:w-1/2 md:h-2/5 w-full relative flex items-center">
+          <div className="w-full h-1/2 flex justify-center items-center mt-16 md:mt-0">
+            <div className="md:w-1/2 md:h-2/5 w-full flex items-center justify-center">
               <img
                 src={SobreOffside}
                 alt="Sobre Offside"
