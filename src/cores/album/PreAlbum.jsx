@@ -43,7 +43,7 @@ function PreAlbum() {
           <ProgressBar percentage={albumInfo.actualProgressPercentage} />
         </div>
 
-        <div className="w-11/12 h-[5%] flex items-center md:hidden">
+        <div className="w-11/12 h-[6%] flex items-center md:hidden">
           <AlbumIndex />
         </div>
 
