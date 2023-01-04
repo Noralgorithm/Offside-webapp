@@ -42,10 +42,6 @@ function Bench() {
         alert(e.message);
       }
     })();
-
-    return () => {
-      dispatch(resetFilters())
-    }
   }, [
     token,
     eventId,
