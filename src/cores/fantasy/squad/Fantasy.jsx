@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import Navbar from "../../../components/Navbar";
 import Bench from "../bench/Bench";
 import Squad from "./Squad";
+import { useDispatch } from "react-redux";
+import { resetFilters } from "../../../features/fantasy/fantasySlice";
 
 export function Fantasy() {
   const [showSquad, setShowSquad] = useState(true);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetFilters());
+    }
+  }, [dispatch])
+
   return (
     <div className="w-screen md:h-[970px] h-[1500px] flex flex-col">
       <Navbar />
