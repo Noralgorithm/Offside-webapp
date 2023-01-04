@@ -17,16 +17,11 @@ function AlbumHeader() {
     album.currentTeam.index === album.teamsList.length - 1 &&
     (album.currentTeam.currentPage === album.currentTeam.pages || album.currentTeam.pages === 0);
 
-  console.log(
-    album.currentTeam.index,
-    album.teamsList.length,
-    album.currentTeam.currentPage,
-    album.currentTeam.pages
-  );
+  const isInFirstPage = album.currentTeam.index === 0 && album.currentTeam.currentPage === 1;
 
   return (
     <header className="h-full w-full flex items-center justify-around text-gray-100">
-      {album.currentTeam.index !== 0 && (
+      {!isInFirstPage && (
         <IoIosArrowBack
           size="2rem"
           className="cursor-pointer rounded-full hover:bg-black hover:bg-opacity-40"
