@@ -34,8 +34,6 @@ function FilterPlayer({ dispatch }) {
     return { id: team.name, name: team.name };
   });
 
-  const teams = fantasyState.teamList.map(team => {return {id: team.name, name: team.name}})
-
   return (
     <div className="w-full h-full flex justify-evenly gap-2 items-center">
       <label
