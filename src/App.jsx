@@ -11,6 +11,7 @@ import UnprotectedRoutes from "./cores/auth/login/UnprotectedRoutes";
 import Index from "./cores/album/Index";
 import Inventory from "./cores/album/inventario/Inventory";
 import Profile from "./cores/profile/Profile";
+import Market from "./cores/market/Market";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const App = () => {
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="album" element={<Index />} />
             <Route path="album/inventory" element={<Inventory />} />
+            <Route path="market" element={<Market />} />
             <Route path="profile" element={<Profile />} />
           </Route>
         </Routes>

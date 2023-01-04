@@ -46,7 +46,7 @@ function Navbar() {
                 <IoFootballOutline size="2rem" color="grey" />
               )}
             </Link>
-            <Link className="rounded-full hover:bg-zinc-300 p-1">
+            <Link to="/market" className="rounded-full hover:bg-zinc-300 p-1">
               {location === "/market" ? (
                 <IoBasket size="2rem" color="#B02419" />
               ) : (
@@ -61,7 +61,7 @@ function Navbar() {
               )}
             </Link>
           </div>
-          <div className="w-0.5 h-full bg-black"></div>
+          <div className="w-0.5 h-full bg-black bg-opacity-30"></div>
           <div className="w-1/2 h-full flex items-center justify-evenly">
             <div className="rounded-full bg-stone-400 md:w-2/5 w-3/5 flex items-center h-4/6 text-xl">
               <RiMoneyDollarCircleFill size="2rem" color="#63130B" />
