@@ -34,7 +34,7 @@ function WatchAds({ adScreen, showChromesScreen }) {
           <button
             className={`py-1 px-2 ${
               closeAd ? "visible" : "invisible"
-            } hover:cursor-pointer hover:bg-gray-400 z-20`}
+            } hover:cursor-pointer`}
             onClick={() => {
               adScreen(false);
               showChromesScreen(true);
