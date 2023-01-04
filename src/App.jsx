@@ -11,7 +11,6 @@ import UnprotectedRoutes from "./cores/auth/login/UnprotectedRoutes";
 import Index from "./cores/album/Index";
 import Inventory from "./cores/album/inventario/Inventory";
 import Profile from "./cores/profile/Profile";
-import { Fantasy as Plantilla } from "./cores/fantasy/squad/Fantasy";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -35,7 +34,6 @@ const App = () => {
             <Route path="album" element={<Index />} />
             <Route path="album/inventory" element={<Inventory />} />
             <Route path="profile" element={<Profile />} />
-            <Route path="fantasy" element={<Plantilla />} />
           </Route>
         </Routes>
       </BrowserRouter>
