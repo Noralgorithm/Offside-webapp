@@ -52,8 +52,8 @@ function Carousel() {
   if (isLoading) return <div className="w-full h-1/2 relative"><Loading /></div>;
 
   return (
-    <div className="h-full w-full flex justify-center">
-      <div className="h-full w-7/12 bg-gray-300 rounded flex justify-around">
+    <div className="h-full w-full flex justify-center md:items-start items-center">
+      <div className="md:h-full h-1/2 md:w-7/12 w-full bg-gray-300 rounded flex justify-around">
         <div className="h-full flex items-center">
           <IoIosArrowBack
             size="1.5rem"
