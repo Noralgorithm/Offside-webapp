@@ -38,7 +38,7 @@ function PreAlbum() {
       <div className="xl:w-3/12 md:w-2/12 h-full md:flex items-center hidden">
         <AlbumIndex currentTeam={album.currentTeam} />
       </div>
-      <div className="xl:w-[62%] md:w-[80%] w-11/12 flex flex-col md:justify-evenly justify-start gap-5 md:gap-0 md:mt-0 mt-5 h-full">
+      <div className="xl:w-[65%] md:w-[80%] w-11/12 flex flex-col md:justify-evenly justify-start gap-5 md:gap-0 md:mt-0 mt-5 h-full items-center md:items-start">
         <div className="w-full md:h-[5%] h-[3%]">
           <ProgressBar percentage={albumInfo.actualProgressPercentage} />
         </div>
