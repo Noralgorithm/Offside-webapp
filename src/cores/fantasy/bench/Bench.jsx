@@ -7,6 +7,7 @@ import {
   selectPlayer,
   storeBenchInfo,
   storeTeamList,
+  resetFilters
 } from "../../../features/fantasy/fantasySlice";
 import * as teamServices from "../../../services/team.services";
 
