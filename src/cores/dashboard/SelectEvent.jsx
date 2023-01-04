@@ -10,6 +10,7 @@ function SelectEvent() {
     <Select
       className=""
       unstyled
+      placeholder="Evento..."
       components={{ DropdownIndicator }}
       styles={{
         control: (baseStyles, props) => ({

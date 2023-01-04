@@ -12,6 +12,7 @@ module.exports = {
         "red-offside": "#B02419",
         "offside-titles": "#3D405B",
         "offside-secondary-titles": "#808080",
+        "skyblue-offside": "#8FCCCA",
 
       },
       backgroundImage: {
@@ -19,7 +20,11 @@ module.exports = {
         "marco-barajita": "url('/src/Images/marco.png')",
         "fondo-homepage-fantasy": "url('/src/Images/fondo-jugador-fantasy.png')",
         "campo-plantilla": "url('/src/Images/campo-fantasy.jpg')",
-        "gradient-offside":"linear-gradient(to bottom, #D13256, #FE5F42)", 
+        "gradient-offside":"linear-gradient(to bottom, #D13256, #FE5F42)",
+        "campo-homepage":"url('/src/Images/campo-fantasy-gray.png')",
+        "jugador":"url('/src/Images/jugador.png')",
+        "SobreOffside": "url('/src/Images/SobreOffside.png')",
+        "AlbumOffside": "url('/src/Images/AlbumOffside.png')"
       },
     },
   },
