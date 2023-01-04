@@ -27,12 +27,14 @@ function FilterPlayer({ dispatch }) {
     {id: 'goalkeeper', name: 'Arquero'}
   ]
 
+  const teams = fantasyState.teamList.map(team => {return {id: team.name, name: team.name}})
+
   return (
     <div className='w-full h-full flex justify-evenly gap-2 items-center'>
         <label htmlFor="" className='flex bg-black bg-opacity-30 rounded md:p-2 p-1 gap-1' >
             <input type="text" onChange={handlePlayerNameSearch} placeholder='Buscar... ' className='rounded bg-black bg-opacity-0 text-white text-center font-semibold' /><BiSearch size="1.5rem" color='white' />
         </label>
-        <Filter handleFilter={handleTeamFilter} options={fantasyState.teamList}>Equipo</Filter>
+        <Filter handleFilter={handleTeamFilter} options={teams}>Equipo</Filter>
         <Filter handleFilter={handlePositionFilter} options={positions}>Posición</Filter>
     </div>
   )
