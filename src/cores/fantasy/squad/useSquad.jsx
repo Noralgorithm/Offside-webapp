@@ -27,12 +27,11 @@ const useSquad = () => {
         "NO VA ALLIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII"
       );
     try {
-      const res = await squadServices.insertPlayer(
+      await squadServices.insertPlayer(
         token,
         eventId,
         fantasy.selectedPlayer.id
       );
-      console.log(res)
       dispatch(reduxInsertPlayer());
       fetchSquadInfo();
       console.log("insertaoo")
@@ -43,7 +42,7 @@ const useSquad = () => {
 
   const removePlayer = async (id) => {
     try {
-      const res = await squadServices.removePlayer(token, eventId, id);
+      await squadServices.removePlayer(token, eventId, id);
       fetchSquadInfo();
       console.log("borraooo")
       dispatch(reduxRemovePlayer())

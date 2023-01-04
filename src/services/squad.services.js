@@ -17,6 +17,7 @@ export const fetchBench = async (
     if (teamFilter) queryString += `&teamname=${teamFilter}`;
     if (positionFilter) queryString += `&position=${positionFilter}`;
     if (page) queryString += `&page=${page}`;
+    console.log(BASE_URL + eventId + "/squad?" + queryString);
     const { data } = await axios.get(
       BASE_URL + eventId + "/squad?" + queryString,
       {
