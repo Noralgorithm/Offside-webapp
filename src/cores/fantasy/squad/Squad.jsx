@@ -24,22 +24,22 @@ function Squad() {
       </div>
       <div className="w-full xl:h-[84%] lg:h-[70%] md:h-[62%] h-[85%] bg-campo-plantilla bg-center bg-contain bg-no-repeat flex flex-col justify-around items-center">
         <GoalKeeper
-          players={players.filter((p) => p.position === "goalkeeper")}
+          players={players.filter((p) => p.position === "Arquero")}
           insertPlayer={insertPlayer}
           removePlayer={removePlayer}
         />
         <Defenders
-          players={players.filter((p) => p.position === "defender")}
+          players={players.filter((p) => p.position === "Defensa")}
           insertPlayer={insertPlayer}
           removePlayer={removePlayer}
         />
         <Midfielders
-          players={players.filter((p) => p.position === "midfielder")}
+          players={players.filter((p) => p.position === "MedioCampo")}
           insertPlayer={insertPlayer}
           removePlayer={removePlayer}
         />
         <Strikers
-          players={players.filter((p) => p.position === "forward")}
+          players={players.filter((p) => p.position === "Delantero")}
           insertPlayer={insertPlayer}
           removePlayer={removePlayer}
         />

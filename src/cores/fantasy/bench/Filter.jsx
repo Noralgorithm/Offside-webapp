@@ -13,7 +13,7 @@ function Filter({ children, handleFilter, options }) {
           {children} 🔻
         </option>
         {options?.map((option) => (
-          <option value={option.id} key={option?.id} className="bg-[#325D69] opacity-50">
+          <option value={option.name} key={option?.id} className="bg-[#325D69] opacity-50">
             {option?.name}
           </option>
         ))}

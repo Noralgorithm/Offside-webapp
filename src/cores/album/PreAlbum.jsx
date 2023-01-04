@@ -31,7 +31,7 @@ function PreAlbum() {
       setAlbumInfo(data);
       setLoading(false);
     })();
-  }, [token, eventId, album.claimedSticker, album.eventId, dispatch]);
+  }, [token, eventId, album.claimedSticker]);
   if (loading) return <Loading />;
   return (
     <div className="w-screen flex md:justify-around md:flex-row flex-col h-full md:items-start items-center">

@@ -4,8 +4,8 @@ import { filterTeam } from "../../features/album/albumSlice";
 import Select from "react-select";
 import BallTeams from "../../Images/EquiposBall.png";
 
-function AlbumIndex() {
-  const album = useSelector((state) => state.album);
+function AlbumIndex({ currentTeam }) {
+  const teamsList = useSelector((state) => state.album.teamsList);
   const dispatch = useDispatch();
   const windowSize = window.innerWidth;
   const menuOpen = { ...(windowSize > 768 && { menuIsOpen: true }) };
@@ -16,6 +16,7 @@ function AlbumIndex() {
       e.value = "";
     }
   };
+  console.log(currentTeam);
 
   const renderCustomItem = (item) => {
     return (
@@ -42,11 +43,11 @@ function AlbumIndex() {
     <div className={`w-full md:h-4/5 h-full bg-[#EFEFEF] rounded p-2`}>
       <Select
         value={{
-          value: album.currentTeam ? album.currentTeam.id : "",
+          value: currentTeam ? currentTeam.id : "",
           label: "Equipos",
           image: BallTeams,
         }}
-        options={album.teamsList.map((team) => {
+        options={teamsList.map((team) => {
           return { value: team.id, label: team.name, image: team.badge };
         })}
         formatOptionLabel={renderCustomItem}
