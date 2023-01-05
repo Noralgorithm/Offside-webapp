@@ -2,10 +2,13 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filterTeam } from "../../features/album/albumSlice";
 import Select from "react-select";
+import BallTeams from "../../Images/EquiposBall.png";
 
 function AlbumIndex() {
-  const teamsList = useSelector((state) => state.album.teamsList);
+  const album = useSelector((state) => state.album);
   const dispatch = useDispatch();
+  const windowSize = window.innerWidth;
+  const menuOpen = { ...(windowSize > 768 && { menuIsOpen: true }) };
 
   const handleChange = async (e) => {
     if (e.value !== "") {
@@ -13,26 +16,43 @@ function AlbumIndex() {
       e.value = "";
     }
   };
+
   const renderCustomItem = (item) => {
     return (
       <div className="w-full h-full flex gap-3">
-        <img src={item.image} alt="" className="h-5 w-7 rounded-full" />{" "}
-        <h1 className="text-black font-semibold">{item.label}</h1>
+        <img
+          src={item.image}
+          alt=""
+          className={`${
+            item.label === "Equipos" ? "h-7 w-8" : "h-6 w-6"
+          } rounded-full`}
+        />{" "}
+        <h1
+          className={`${
+            item.label === "Equipos" ? "text-white" : "text-black"
+          } font-semibold`}
+        >
+          {item.label}
+        </h1>
       </div>
     );
   };
 
   return (
-    <div className="w-full h-4/5 bg-[#EFEFEF] rounded p-2">
+    <div className={`w-full md:h-4/5 h-full bg-[#EFEFEF] rounded p-2`}>
       <Select
-        value=""
-        options={teamsList.map((team) => {
+        value={{
+          value: album.currentTeam ? album.currentTeam.id : "",
+          label: "Equipos",
+          image: BallTeams,
+        }}
+        options={album.teamsList.map((team) => {
           return { value: team.id, label: team.name, image: team.badge };
         })}
         formatOptionLabel={renderCustomItem}
-        className="z-0"
+        className=""
         onChange={handleChange}
-        menuIsOpen={true}
+        {...menuOpen}
         placeholder="Equipos"
         styles={{
           control: (baseStyles, props) => ({
@@ -46,11 +66,12 @@ function AlbumIndex() {
           }),
           dropdownIndicator: (baseStyles, props) => ({
             ...baseStyles,
-            display: "none",
+
+            display: windowSize < 768 ? "block" : "none",
           }),
           indicatorSeparator: (baseStyles, props) => ({
             ...baseStyles,
-            display: "none",
+            display: windowSize < 768 ? "block" : "none",
           }),
         }}
       />

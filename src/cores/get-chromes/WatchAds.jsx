@@ -28,17 +28,19 @@ function WatchAds({ adScreen, showChromesScreen }) {
   }, [token]);
 
   return (
-    <div className="w-full h-full flex justify-center md:items-center mt-20 md:mt-0">
+    <div className="w-full h-full flex justify-center md:items-center pt-20 md:pt-0">
       <div className="absolute md:w-2/6 w-[90%] bg-white pb-7">
         <header className="w-full flex justify-end">
-          <button className={`py-1 px-2 ${closeAd ? "visible" : "invisible"}`}>
-            <AiOutlineClose
-              size="2rem"
-              onClick={() => {
-                adScreen(false);
-                showChromesScreen(true);
-              }}
-            />
+          <button
+            className={`py-1 px-2 ${
+              closeAd ? "visible" : "invisible"
+            } hover:cursor-pointer`}
+            onClick={() => {
+              adScreen(false);
+              showChromesScreen(true);
+            }}
+          >
+            <AiOutlineClose size="2rem" />
           </button>
         </header>
         <div className="w-full h-4/5 flex justify-center items-center">

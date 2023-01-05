@@ -18,6 +18,7 @@ const initialState = {
   selectedSticker: null,
   claimedSticker: false,
   claimedFlag: false,
+  filtering: false
 };
 
 const albumSlice = createSlice({
@@ -42,6 +43,15 @@ const albumSlice = createSlice({
         (sticker) => sticker.isAttached
       ).length;
 
+      if (pagesQuantity === 0) state.currentTeam.currentPage = 0;
+
+      if (state.filtering) {
+        console.log('hola')
+        state.currentTeam.currentPage = 1;
+        state.filtering = false;
+        return;
+      }
+
       if (!state.claimedFlag) {
         if (state.currentTeam.currentPage === pagesQuantity || prevPagesQuantiy === 1) {
           state.currentTeam.currentPage = 1;
@@ -52,6 +62,7 @@ const albumSlice = createSlice({
       state.claimedFlag = false;
     },
     filterTeam: (state, { payload }) => {
+      state.filtering = true;
       const encounteredTeam = state.teamsList.filter(
         (team) => team.id === Number(payload)
       );

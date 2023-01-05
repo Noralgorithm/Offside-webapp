@@ -14,6 +14,6 @@ export const watch = async (token) => {
   } catch (e) {
     throw new Error(e?.response?.data?.message || 'unknown error');
   }
-}
+};
 
 export const VISIT_URL = BASE_URL + "/watch-detailed/";

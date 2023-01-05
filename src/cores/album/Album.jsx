@@ -55,10 +55,10 @@ const Album = () => {
     );
   return (
     <div className="w-full h-[70%]">
-      <header className="h-[10%] w-full bg-sticker-name">
-        <AlbumHeader teamName={album.teamsList[album.currentTeam.index].name} />
+      <header className="md:h-[10%] h-[7%] w-full bg-sticker-name">
+        <AlbumHeader />
       </header>
-      <div className="w-full h-[90%]">
+      <div className="w-full md:h-[90%] h-full">
         <Page stickers={album.currentTeam.stickers} />
       </div>
     </div>

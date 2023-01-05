@@ -10,9 +10,9 @@ function Page({ stickers }) {
   const halfStickerIndex = baseStickerIndex + 6;
 
   return (
-    <div className="w-full h-full bg-gray-300 flex">
+    <div className="w-full h-full bg-gray-300 flex md:flex-row flex-col">
       <HalfPage stickers={stickers.slice(baseStickerIndex, halfStickerIndex)} />
-      <div className="bg-black w-0.5 h-full"></div>
+      <div className="bg-black w-0.5 h-full md:block hidden"></div>
       <HalfPage stickers={stickers.slice(halfStickerIndex, halfStickerIndex + 6)} />
     </div>
   );
