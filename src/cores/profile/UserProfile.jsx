@@ -13,7 +13,7 @@ function UserProfile() {
 
   return (
     <div className="w-screen h-full flex items-center justify-center">
-      <div className="bg-white w-2/5 h-3/5 flex flex-col justify-evenly items-center rounded-lg">
+      <div className="bg-white md:w-2/5 w-4/5 md:h-3/5 h-2/5 flex flex-col justify-evenly items-center rounded-lg">
         <h1 className="text-xl font-semibold overflow-x-auto w-full text-center">
           <span className="font-bold text-sticker-name">
             Nombre de usuario:{" "}
