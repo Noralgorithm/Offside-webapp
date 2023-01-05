@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
 import { SlOptionsVertical } from "react-icons/sl";
@@ -14,9 +14,16 @@ import {
 } from "react-icons/io5";
 import logoOffside from "../Images/logo-offside.png";
 import { useLocation } from "react-router-dom";
+import useNavbar from "./useNavbar";
 
 function Navbar() {
   const location = useLocation().pathname;
+
+  const { money, fetchMoney } = useNavbar();
+
+  useEffect(() => {
+    fetchMoney();
+  }, [fetchMoney]);
 
   return (
     <div className="w-screen">
@@ -59,7 +66,7 @@ function Navbar() {
           <div className="w-1/2 h-full flex items-center justify-evenly">
             <div className="rounded-full bg-stone-400 md:w-2/5 w-[70%] flex items-center h-4/6 text-xl">
               <RiMoneyDollarCircleFill size="2rem" color="#63130B" />
-              <p>50</p>
+              <p>{money}</p>
             </div>
             <button className="hover:cursor-pointer rounded-full hover:bg-zinc-300 p-1">
               <SlOptionsVertical size="1.5rem" color="grey" />

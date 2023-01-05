@@ -12,6 +12,7 @@ import Index from "./cores/album/Index";
 import Inventory from "./cores/album/inventario/Inventory";
 import Profile from "./cores/profile/Profile";
 import { Fantasy as Plantilla } from "./cores/fantasy/squad/Fantasy";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -22,8 +23,9 @@ const App = () => {
   }
 
   return (
-    <div>
+    <>
       <BrowserRouter>
+      <Navbar />
         <Routes>
           <Route path="/" element={<UnprotectedRoutes />}>
             <Route path="/" element={<Homepage />} />
@@ -39,7 +41,7 @@ const App = () => {
           </Route>
         </Routes>
       </BrowserRouter>
-    </div>
+    </>
   );
 };
 
