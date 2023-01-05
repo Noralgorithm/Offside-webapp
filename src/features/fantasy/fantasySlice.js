@@ -34,6 +34,10 @@ const fantasySlice = createSlice({
     setBenchPositionFilter: (state, { payload }) => {
       state.bench.positionFilter = payload;
     },
+    resetFilters: (state) => {
+      state.bench.teamFilter = '';
+      state.bench.positionFilter = '';
+    },
     setBenchPlayerNameSearch: (state, { payload }) => {
       state.bench.playerNameSearch = payload;
     },
@@ -61,6 +65,7 @@ export const {
   storeTeamList,
   setBenchTeamFilter,
   setBenchPositionFilter,
+  resetFilters,
   setBenchPlayerNameSearch,
   setNextBenchPage,
   selectPlayer,
