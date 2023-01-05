@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useLayoutEffect } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Register from "./cores/auth/registration/Register";
 import Login from "./cores/auth/login/Login";
@@ -15,21 +15,18 @@ import { Fantasy as Plantilla } from "./cores/fantasy/squad/Fantasy";
 import Navbar from "./components/Navbar";
 
 const App = () => {
-  const user = useSelector(state => state.user);
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  const data = useMemo(() => {
-    if (localStorage.getItem("loggedUser")) {
+  useLayoutEffect(() => {
+    if (localStorage.getItem("loggedUser"))
       dispatch(login(JSON.parse(localStorage.getItem("loggedUser"))));
-    }
-    return JSON.parse(localStorage.getItem("loggedUser"));
-    // eslint-disable-next-line
-  },[dispatch, user.success])
+  }, [dispatch]);
 
   return (
     <>
       <BrowserRouter>
-        {data && <Navbar />}
+        {user.success && <Navbar />}
         <Routes>
           <Route path="/" element={<UnprotectedRoutes />}>
             <Route path="/" element={<Homepage />} />
