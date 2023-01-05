@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import PlayerCard from "../PlayerCard";
+import MarketCardSales from "./MarketCardSales";
 import { useSelector } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
 import * as benchServices from "../../../services/squad.services";
 
-function PlayerList({ handleSelectPlayer }) {
+function MarketPlayerList({ handleSelectPlayer }) {
   const eventId = 1;
   const token = useSelector((state) => state.user.token);
   const fantasy = useSelector((state) => state.fantasy);
@@ -37,21 +37,21 @@ function PlayerList({ handleSelectPlayer }) {
   return (
     <section
       id="scrollableSection"
-      className="bg-[#68878D] h-[80%] w-full justify-items-center overflow-y-scroll py-4 banca"
+      className="bg-[#EAEAEA] h-[80%] w-full justify-items-center overflow-y-scroll py-4 banca"
     >
       <InfiniteScroll
-        className="bg-[#68878D] h-full w-full grid grid-cols-1 justify-items-center gap-2"
+        className="bg-[#EAEAEA] bg-opacity-80 h-full w-full grid grid-cols-1 justify-items-center gap-2 noScroll"
         scrollableTarget="scrollableSection"
         hasMore={nextPage < fantasy.bench.paginate.pages}
         dataLength={players.length}
         next={fetchNextPage}
-        endMessage={<h1 className="text-white font-bold">No hay más</h1>}
-        loader={<h1 className="text-white font-bold">Loading...</h1>}
+        endMessage={<h1 className="text-offside-titles font-bold">No hay más</h1>}
+        loader={<h1 className="text-offside-titles font-bold">Loading...</h1>}
       >
         {players.map((player) => {
           return (
             <div className="w-[90%] h-28" key={player.id}>
-              <PlayerCard
+              <MarketCardSales
                 playerInfo={player}
                 isInLineup={player.isInLineup}
                 handleClick={() => {
@@ -68,4 +68,4 @@ function PlayerList({ handleSelectPlayer }) {
   );
 }
 
-export default PlayerList;
+export default MarketPlayerList;

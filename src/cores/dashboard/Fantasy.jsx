@@ -14,7 +14,10 @@ function Fantasy() {
           </div>
           <footer className="w-full h-1/4 flex justify-end">
             <div className="w-3/4 h-3/4 flex justify-center gap-4">
-              <Link className="bg-transparent border-2 border-offside-titles rounded-full w-5/12 py-2 text-offside-titles font-bold flex items-center justify-center">
+              <Link
+                className="bg-transparent border-2 border-offside-titles rounded-full w-5/12 py-2 text-offside-titles font-bold flex items-center justify-center"
+                to="/market"
+              >
                 Ver subastas
               </Link>
               <Link

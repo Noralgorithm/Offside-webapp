@@ -18,6 +18,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.noScroll::-webkit-scrollbar {
+  width: 0px;
+}
+
 .banca::-webkit-scrollbar {
   width: 20px;
 }
