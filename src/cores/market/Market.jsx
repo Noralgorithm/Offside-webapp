@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Navbar from "../../components/Navbar";
-import GlobalOffers from "./GlobalOffers";
+import GlobalOffers from "./globalOffers/GlobalOffers";
 import MarketFilters from "./MarketFilters";
-import MyOffers from "./MyOffers";
-import MySales from "./MySales";
+import MyOffers from "./myOffers/MyOffers";
+import MySales from "./mySales/MySales";
 import { BiQuestionMark } from "react-icons/bi";
 
 function Market() {

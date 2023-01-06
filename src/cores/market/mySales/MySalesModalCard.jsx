@@ -1,5 +1,5 @@
 import React from "react";
-import MarketModal from "./MarketModal";
+import MarketModal from "../MarketModal";
 import { TbCurrencyDollar } from "react-icons/tb";
 
 function MySalesModalCard({ setSalesModal }) {

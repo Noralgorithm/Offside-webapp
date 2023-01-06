@@ -1,9 +1,9 @@
 import React from "react";
-import MarketCard from "./MarketCard";
+import MarketCard from "../MarketCard";
 import { TbCurrencyDollar } from "react-icons/tb";
 import { FiClock } from "react-icons/fi";
 
-function MySalesCard({ setSalesModal }) {
+function MyOffersCard({ setEditMyOfferModal, setMyOffersBuyModal }) {
   return (
     <MarketCard>
       <section className="w-full h-4/6 flex items-center">
@@ -23,14 +23,22 @@ function MySalesCard({ setSalesModal }) {
             <h1 className="text-offside-titles font-bold text-lg">2h 20s</h1>
           </div>
         </div>
-        <div className="h-3/4 w-1/2 flex justify-center items-center">
+        <div className="h-full w-1/2 flex flex-col justify-between items-center">
+          <button
+            className="bg-gradient-offside text-white px-11 py-1 rounded-full"
+            onClick={() => {
+              setEditMyOfferModal(true);
+            }}
+          >
+            Editar
+          </button>
           <button
             className="bg-gradient-offside text-white px-2 py-1 rounded-full"
             onClick={() => {
-              setSalesModal(true);
+              setMyOffersBuyModal(true);
             }}
           >
-            Ver información
+            Compra directa
           </button>
         </div>
       </section>
@@ -38,4 +46,4 @@ function MySalesCard({ setSalesModal }) {
   );
 }
 
-export default MySalesCard;
+export default MyOffersCard;

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
-import MarketSquad from "./marketSquad/MarketSquad";
+import MarketSquad from "../marketSquad/MarketSquad";
 import MySalesCard from "./MySalesCard";
 import MySalesModalCard from "./MySalesModalCard";
 

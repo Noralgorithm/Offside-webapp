@@ -1,13 +1,24 @@
 import React from "react";
-import MarketModal from "./MarketModal";
+import MarketModal from "../MarketModal";
 import { TbCurrencyDollar } from "react-icons/tb";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
 
-function GlobalOffersModal({ setGlobalOffersModal }) {
+function EditMyOfferModal({ setEditMyOfferModal }) {
   return (
     <MarketModal>
       <div className="flex flex-col justify-evenly w-full h-full pt-5">
-        <div className="w-full flex justify-around text-offside-titles">
+        <div className="w-full flex justify-evenly text-offside-titles">
+          <div className="flex flex-col items-center">
+            <span className="font-semibold">Mi anterior oferta</span>
+            <h1 className="flex text-xl font-bold items-center gap-1">
+              <TbCurrencyDollar
+                size="1.4rem"
+                color="white"
+                className="bg-gradient-offside rounded-full p-[1px]"
+              />
+              200
+            </h1>
+          </div>
           <div className="flex flex-col items-center">
             <span className="font-semibold">Oferta ganadora actual</span>
             <h1 className="flex text-xl font-bold items-center gap-1">
@@ -16,12 +27,14 @@ function GlobalOffersModal({ setGlobalOffersModal }) {
                 color="white"
                 className="bg-gradient-offside rounded-full p-[1px]"
               />
-              50
+              750
             </h1>
           </div>
-          <div className="flex items-end justify-end w-2/6">
+        </div>
+        <div className="w-full flex justify-around text-offside-titles">
+          <div className="flex items-end justify-end w-[40%]">
             <div className="flex flex-col items-center">
-              <span className="font-semibold">Mi oferta</span>
+              <span className="font-semibold">Mi nueva oferta</span>
               <label
                 htmlFor=""
                 className="bg-gradient-offside p-[1px] rounded-full"
@@ -39,24 +52,24 @@ function GlobalOffersModal({ setGlobalOffersModal }) {
               150)
             </h1>
           </div>
-        </div>
-        <div className="w-full flex flex-col items-center text-offside-titles">
-          <span className="font-semibold">Saldo luego de la recuperación</span>
-          <h1 className="flex text-xl font-bold items-center gap-1">
-            <TbCurrencyDollar
-              size="1.4rem"
-              color="white"
-              className="bg-gradient-offside rounded-full p-[1px]"
-            />
-            250
-          </h1>
+          <div className="flex flex-col items-center">
+            <span className="font-semibold">Saldo luego de la operación</span>
+            <h1 className="flex text-xl font-bold items-center gap-1">
+              <TbCurrencyDollar
+                size="1.4rem"
+                color="white"
+                className="bg-gradient-offside rounded-full p-[1px]"
+              />
+              500
+            </h1>
+          </div>
         </div>
         <div className="w-full flex justify-evenly">
           <span className="bg-gradient-offside p-[1px] rounded-full">
             <button
               className="bg-white rounded-full py-1 px-14"
               onClick={() => {
-                setGlobalOffersModal(false);
+                setEditMyOfferModal(false);
               }}
             >
               <h1 className="text-offside-gradient font-semibold ">Cancelar</h1>
@@ -71,4 +84,4 @@ function GlobalOffersModal({ setGlobalOffersModal }) {
   );
 }
 
-export default GlobalOffersModal;
+export default EditMyOfferModal;

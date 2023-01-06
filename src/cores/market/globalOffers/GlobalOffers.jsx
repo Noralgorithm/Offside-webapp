@@ -1,9 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import GlobalOffersCard from "./marketSquad/GlobalOffersCard";
-import MarketSquad from "./marketSquad/MarketSquad";
+import GlobalOffersCard from "./GlobalOffersCard";
 import GlobalOffersModal from "./GlobalOffersModal";
-import DirectBuyModal from "./DirectBuyModal";
+import DirectBuyModal from "../DirectBuyModal";
 
 function GlobalOffers() {
   const [globalOffersModal, setGlobalOffersModal] = useState(false);
