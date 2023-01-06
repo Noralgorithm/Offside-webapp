@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   points: 0,
-  money: 0,
   bench: {
     paginate: {},
     positionFilter: "",
@@ -59,9 +58,8 @@ const fantasySlice = createSlice({
     removePlayer: (state) => {
       state.removedPlayer++;
     },
-    setFantasyInfo: (state, { payload }) => {
+    setPoints: (state, { payload }) => {
       state.points = payload.points;
-      state.money = payload.money;
     }
   },
 });
@@ -77,7 +75,7 @@ export const {
   selectPlayer,
   insertPlayer,
   removePlayer,
-  setFantasyInfo
+  setPoints
 } = fantasySlice.actions;
 
 export default fantasySlice.reducer;

@@ -14,16 +14,12 @@ import {
 } from "react-icons/io5";
 import logoOffside from "../Images/logo-offside.png";
 import { useLocation } from "react-router-dom";
-import useNavbar from "./useNavbar";
+import { useSelector } from "react-redux";
 
 function Navbar() {
+
+  const money = useSelector(state => state.user.money);
   const location = useLocation().pathname;
-
-  const { money, fetchMoney } = useNavbar();
-
-  useEffect(() => {
-    fetchMoney();
-  }, [fetchMoney]);
 
   return (
     <div className="w-screen">
