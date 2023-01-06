@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
 import * as benchServices from "../../../services/squad.services";
 
-function MarketPlayerList({ handleSelectPlayer }) {
+function MarketPlayerList({ setSelectedPlayer }) {
   const eventId = 1;
   const token = useSelector((state) => state.user.token);
   const fantasy = useSelector((state) => state.fantasy);
@@ -55,10 +55,8 @@ function MarketPlayerList({ handleSelectPlayer }) {
                 playerInfo={player}
                 isInLineup={player.isInLineup}
                 handleClick={() => {
-                  if (!player.isInLineup)
-                    handleSelectPlayer(player.id, player.position);
+                  setSelectedPlayer(player); 
                 }}
-                selected={fantasy.selectedPlayer.id === player.id}
               />
             </div>
           );

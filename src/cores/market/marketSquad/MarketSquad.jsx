@@ -10,18 +10,17 @@ import {
   resetFilters,
 } from "../../../features/fantasy/fantasySlice";
 import * as teamServices from "../../../services/team.services";
+import SelectedPlayerModal from "../SelectedPlayerModal";
+import { BiQuestionMark } from "react-icons/bi";
 
-function MarketBench({ setMarketBench }) {
+function MarketSquad({ setMarketSquad }) {
   const eventId = 1;
   const token = useSelector((state) => state.user.token);
   const [isLoading, setIsLoading] = useState(true);
   const fantasyState = useSelector((state) => state.fantasy);
+  const [selectedPlayer, setSelectedPlayer] = useState();
 
   const dispatch = useDispatch();
-
-  const handleSelectPlayer = (id, position) => {
-    dispatch(selectPlayer({ id, position }));
-  };
 
   useEffect(() => {
     (async () => {
@@ -63,28 +62,41 @@ function MarketBench({ setMarketBench }) {
 
   return (
     <div className="w-screen h-screen absolute top-0 left-0 bg-black bg-opacity-80 z-30 flex justify-center items-center">
-      <div className="md:w-5/12 w-11/12 md:h-[90%] h-1/2 bg-[#647B80] rounded-t">
-        <header className="w-full bg-[#EAEAEA] h-[20%] flex flex-col justify-center rounded-t drop-shadow-2xl">
-          <div className="w-full flex justify-between">
-            <h1 className="w-1/5 text-center text-offside-titles text-xl font-semibold">
-              Almacén
-            </h1>
-            <button
-              className="text-xl w-1/12 font-semibold opacity-60    "
-              onClick={() => {
-                setMarketBench(false);
-              }}
-            >
-              X
-            </button>
-          </div>
+      {!selectedPlayer ? (
+        <div className="md:w-5/12 w-11/12 md:h-[90%] h-1/2 bg-[#647B80] rounded-t">
+          <header className="w-full bg-[#EAEAEA] h-[20%] flex flex-col justify-center rounded-t drop-shadow-2xl pt-2">
+            <div className="w-full flex justify-between">
+              <h1 className="w-1/5 text-center text-offside-titles text-xl font-semibold">
+                Almacén
+              </h1>
+              <div className="w-1/5 flex items-center justify-around">
+                <button className="rounded-full bg-gradient-offside p-[2px]">
+                  <BiQuestionMark size="1.3rem" color="white" />
+                </button>
+                <button
+                  className="text-xl font-semibold opacity-60"
+                  onClick={() => {
+                    setMarketSquad(false);
+                  }}
+                >
+                  X
+                </button>
+              </div>
+            </div>
 
-          <Filters dispatch={dispatch} />
-        </header>
-        <MarketPlayerList handleSelectPlayer={handleSelectPlayer} />
-      </div>
+            <Filters dispatch={dispatch} />
+          </header>
+          <MarketPlayerList setSelectedPlayer={setSelectedPlayer} />
+        </div>
+      ) : (
+        <SelectedPlayerModal
+          player={selectedPlayer}
+          setSelectedPlayer={setSelectedPlayer}
+          setMarketSquad={setMarketSquad}
+        />
+      )}
     </div>
   );
 }
 
-export default MarketBench;
+export default MarketSquad;

@@ -1,9 +1,7 @@
 import React from "react";
 import { BsCheck } from "react-icons/bs";
 
-function MarketCardSales({ playerInfo, isInLineup, handleClick, selected }) {
-  const selectedStyle = selected ? "ring-4 ring-red-600" : "";
-
+function MarketCardSales({ playerInfo, isInLineup, handleClick}) {
   const positions = {
     forward: "Delantero",
     defender: "Defensa",
@@ -13,11 +11,8 @@ function MarketCardSales({ playerInfo, isInLineup, handleClick, selected }) {
 
   return (
     <div
-      onClick={handleClick}
-      className={
-        "w-full h-full flex items-center bg-gradient-to-r rounded-l-lg bg-white relative rounded" +
-        selectedStyle
-      }
+    onClick={handleClick}
+      className="w-full h-full flex items-center rounded-l-lg bg-white relative rounded hover:bg-bg-contenedor hover:cursor-pointer"
     >
       <aside className="relative h-full w-2/6 flex justify-center rounded-lg bg-gradient-offside">
         <h1 className="-rotate-90 text-white text-sm font-semibold absolute left-[-32px] w-28 bottom-[39.5%] pl-1">

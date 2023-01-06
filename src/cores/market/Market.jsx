@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Navbar from "../../components/Navbar";
 import GlobalOffers from "./GlobalOffers";
+import MarketFilters from "./MarketFilters";
 import MyOffers from "./MyOffers";
 import MySales from "./MySales";
+import { BiQuestionMark } from "react-icons/bi";
 
 function Market() {
   const [mySales, setMySales] = useState(false);
@@ -56,7 +58,14 @@ function Market() {
           </button>
         </div>
       </div>
-      <div className="w-full h-full mt-10 flex justify-center  overflow-y-scroll banca">
+      <div className="w-full h-full flex flex-col items-center overflow-y-scroll banca">
+        <div className="mt-5 w-11/12 flex justify-between items-center">
+          <MarketFilters />
+          <button className="rounded-full bg-gradient-offside p-[2px] h-6">
+            <BiQuestionMark size="1.3rem" color="white" />
+          </button>
+        </div>
+
         {!myOffers && !mySales && <GlobalOffers />}
         {myOffers && <MyOffers />}
         {mySales && <MySales />}

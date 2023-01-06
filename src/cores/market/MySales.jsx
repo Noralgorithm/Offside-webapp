@@ -1,24 +1,25 @@
 import React from "react";
 import { useState } from "react";
-import { AiOutlinePlusCircle } from "react-icons/ai";
-import MarketBench from "./marketBench/MarketBench";
+import { AiOutlinePlus } from "react-icons/ai";
+import MarketSquad from "./marketSquad/MarketSquad";
 import MySalesCard from "./MySalesCard";
+import MySalesModalCard from "./MySalesModalCard";
 
 function MySales() {
-  const [marketBench, setMarketBench] = useState(false);
+  const [salesModal, setSalesModal] = useState(false);
+  const [marketSquad, setMarketSquad] = useState(false);
   return (
-    <section className="w-11/12 h-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
-      {marketBench && <MarketBench setMarketBench={setMarketBench} />}
-      <MySalesCard />
-      <MySalesCard />
+    <section className="w-5/6 h-full grid md:grid-cols-2 grid-cols-1 gap-y-3 gap-x-10">
+      {marketSquad && <MarketSquad setMarketSquad={setMarketSquad} />}
+      {salesModal && <MySalesModalCard setSalesModal={setSalesModal} />}
+      <MySalesCard setSalesModal={setSalesModal} />
       <button
-        className="flex h-28 items-center justify-center gap-4 bg-[#EFEFEF] text-offside-titles font-semibold rounded-lg"
+        className="flex h-16 w-16 items-center justify-center gap-4 bg-gradient-offside font-semibold rounded-2xl drop-shadow-xl absolute right-8 bottom-4"
         onClick={() => {
-          setMarketBench(true);
+          setMarketSquad(true);
         }}
       >
-        <AiOutlinePlusCircle size="1.5rem" color="#3D405B" />
-        Añade tus jugadores al mercado
+        <AiOutlinePlus size="1.5rem" color="black" />
       </button>
     </section>
   );

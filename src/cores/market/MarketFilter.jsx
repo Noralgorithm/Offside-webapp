@@ -1,10 +1,9 @@
 import React from "react";
 
-function Filter({ children, handleFilter, options }) {
+function MarketFilter({ children, options }) {
   return (
     <div className="px-[1px] py-[1px] bg-gradient-offside rounded">
       <select
-        onChange={(e) => handleFilter(e)}
         name=""
         id=""
         className="appearance-none bg-[#EAEAEA] text-black font-normal rounded md:text-start text-center px-1"
@@ -22,4 +21,4 @@ function Filter({ children, handleFilter, options }) {
   );
 }
 
-export default Filter;
+export default MarketFilter;
