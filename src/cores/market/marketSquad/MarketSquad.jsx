@@ -12,6 +12,7 @@ import {
 import * as teamServices from "../../../services/team.services";
 import SelectedPlayerModal from "../SelectedPlayerModal";
 import { BiQuestionMark } from "react-icons/bi";
+import Loading from "../../../components/Loading"
 
 function MarketSquad({ setMarketSquad }) {
   const eventId = 1;
@@ -56,7 +57,7 @@ function MarketSquad({ setMarketSquad }) {
   if (isLoading)
     return (
       <div className="w-screen h-screen absolute top-0 left-0 bg-black bg-opacity-25 z-30">
-        <h1>Loading...</h1>
+        <Loading />
       </div>
     );
 

@@ -9,7 +9,7 @@ function MySales() {
   const [salesModal, setSalesModal] = useState(false);
   const [marketSquad, setMarketSquad] = useState(false);
   return (
-    <section className="w-5/6 h-full grid md:grid-cols-2 grid-cols-1 gap-y-3 gap-x-10">
+    <section className="w-5/6 h-full grid lg:grid-cols-2 grid-cols-1 gap-y-3 gap-x-10">
       {marketSquad && <MarketSquad setMarketSquad={setMarketSquad} />}
       {salesModal && <MySalesModalCard setSalesModal={setSalesModal} />}
       <MySalesCard setSalesModal={setSalesModal} />
