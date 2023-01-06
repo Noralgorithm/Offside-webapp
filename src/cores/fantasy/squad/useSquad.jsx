@@ -34,7 +34,6 @@ const useSquad = () => {
       );
       dispatch(reduxInsertPlayer());
       fetchSquadInfo();
-      console.log("insertaoo")
     } catch (e) {
       alert(e.message);
     }
@@ -44,7 +43,6 @@ const useSquad = () => {
     try {
       await squadServices.removePlayer(token, eventId, id);
       fetchSquadInfo();
-      console.log("borraooo")
       dispatch(reduxRemovePlayer())
     } catch (e) {
       alert(e.message);
