@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import StickersCounter from "./StickersCounter";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
