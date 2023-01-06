@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import Navbar from "../../../components/Navbar";
 import Bench from "../bench/Bench";
 import Squad from "./Squad";
 import { useDispatch } from "react-redux";
@@ -18,7 +17,6 @@ export function Fantasy() {
 
   return (
     <div className="w-screen md:h-[970px] h-[1500px] flex flex-col">
-      <Navbar />
       <div className="w-full bg-black bg-opacity-40">
         <h1 className="text-white text-4xl w-1/4 text-center font-bold mt-4">
           Fantasy
