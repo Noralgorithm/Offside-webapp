@@ -44,7 +44,6 @@ const albumSlice = createSlice({
       ).length;
 
       if (state.filtering) {
-        console.log('hola')
         state.currentTeam.currentPage = 1;
         state.filtering = false;
         return;

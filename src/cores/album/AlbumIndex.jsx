@@ -16,7 +16,6 @@ function AlbumIndex({ currentTeam }) {
       e.value = "";
     }
   };
-  console.log(currentTeam);
 
   const renderCustomItem = (item) => {
     return (
