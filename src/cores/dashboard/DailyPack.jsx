@@ -5,6 +5,7 @@ import { useState } from "react";
 function DailyPack() {
   const [showDailyPack, setShowDailyPack] = useState(false);
   const [avalaiblePack, setAvailablePack] = useState(true);
+  
   return (
     <div className="h-[45%] w-full bg-skyblue-offside rounded-lg flex items-end bg-SobreOffside bg-no-repeat bg-[length:50%_110%] bg-[center_top_-2rem]">
       {showDailyPack && <GetChromes hideDailyPack={setShowDailyPack} />}
