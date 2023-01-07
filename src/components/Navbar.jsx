@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { TbCurrencyDollar } from "react-icons/tb"
+import { TbCurrencyDollar } from "react-icons/tb";
 import { SlOptionsVertical } from "react-icons/sl";
 import {
   IoBookOutline,
@@ -17,8 +17,7 @@ import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function Navbar() {
-
-  const money = useSelector(state => state.user.money);
+  const money = useSelector((state) => state.user.money);
   const location = useLocation().pathname;
 
   return (
@@ -60,8 +59,12 @@ function Navbar() {
           </div>
           <div className="w-0.5 h-full bg-black opacity-20"></div>
           <div className="w-1/2 h-full flex items-center justify-evenly">
-            <div className="rounded-full bg-stone-400 md:w-2/5 w-[70%] flex items-center h-4/6 text-xl">
-              <RiMoneyDollarCircleFill size="2rem" color="#63130B" />
+            <div className="rounded-full bg-[#D9D9D9] md:w-2/5 w-[70%] flex items-center h-4/6 text-xl pl-1 gap-1">
+              <TbCurrencyDollar
+                size="1.4rem"
+                color="#D9D9D9"
+                className="bg-gradient-offside rounded-full p-[1px]"
+              />
               <p>{money}</p>
             </div>
             <button className="hover:cursor-pointer rounded-full hover:bg-zinc-300 p-1">

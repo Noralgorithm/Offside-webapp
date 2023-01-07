@@ -39,7 +39,7 @@ function AlbumIndex() {
   };
 
   return (
-    <div className={`w-full md:h-4/5 h-full bg-white rounded-lg p-2`}>
+    <div className={`w-full md:h-4/5 h-full bg-white rounded-lg md:p-2 px-2 py-3`}>
       <Select
         value={{
           value: album.currentTeam ? album.currentTeam.id : "",
@@ -61,6 +61,8 @@ function AlbumIndex() {
             backgroundImage: "linear-gradient(to bottom, #D13256, #FE5F42)",
             borderTopRightRadius: "0.5rem",
             borderTopLeftRadius: "0.5rem",
+            borderBottomRightRadius: windowSize < 768 ? "0.5rem" : "0",
+            borderBottomLeftRadius: windowSize < 768 ? "0.5rem" : "0",
             cursor: "text",
             paddingLeft: "4px"
           }),
