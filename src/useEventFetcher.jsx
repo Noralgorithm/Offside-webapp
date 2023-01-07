@@ -12,11 +12,9 @@ const useEventFetcher = () => {
   const token = useSelector((state) => state.user.token);
   const user = useSelector((state) => state.user);
   const [ visibleModal, setVisibleModal ] = useState(false); 
+  const [ eventList, setEventList ] = useState([]);
 
   const dispatch = useDispatch();
-
-
-  const swichtModal = () => setVisibleModal(!visibleModal);
 
   const fetchEventsList = useCallback(async () => {
     try {
@@ -37,13 +35,14 @@ const useEventFetcher = () => {
   }, [token, user.event]);
 
   const fetchEventInfo = useCallback(async () => {
-    console.log(user.eventsList.filter((event) => event.id === user.event)[0]);
+    if (user.eventsList.length === 0) return;
     if (
-      !user.eventsList.filter((event) => event.id === user.event)[0]
-        .imAlreadyPlayingIn
+      !user?.eventsList?.filter((event) => event.id === user.event)[0]
+        ?.imAlreadyPlayingIn
     ) {
+      console.log(user?.eventsList?.filter((event) => event.id === user.event)[0])
       await joinEvent();
-      swichtModal();
+      setVisibleModal(true)
 
       //TODO: reemplazar este alert por un modal, utilizando el valor de "visibleModal" en un componente externo
       alert(
