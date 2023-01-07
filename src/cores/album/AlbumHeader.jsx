@@ -24,8 +24,9 @@ function AlbumHeader() {
   return (
     <header className="h-full w-full flex items-center justify-around text-gray-100">
       <IoIosArrowBack
-        size="2rem"
-        className={`cursor-pointer rounded-full hover:bg-black hover:bg-opacity-40 ${
+        size="1.7rem"
+        color=""
+        className={`cursor-pointer rounded-full bg-gradient-offside ${
           isInFirstPage ? "invisible" : "visible"
         }`}
         onClick={() => {
@@ -37,11 +38,11 @@ function AlbumHeader() {
           else dispatch(setPrevPage());
         }}
       />
-      <p className="text-xl font-semibold">{album.currentTeam.name}</p>
+      <p className="text-xl font-semibold text-offside-gradient">{album.currentTeam.name}</p>
       <StickersCounter />
       <IoIosArrowForward
-        size="2rem"
-        className={`cursor-pointer rounded-full hover:bg-black hover:bg-opacity-40 ${
+        size="1.7rem"
+        className={`cursor-pointer rounded-full bg-gradient-offside ${
           isInLastPage ? "invisible" : "visible"
         }`}
         onClick={() => {

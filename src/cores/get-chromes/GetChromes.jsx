@@ -1,12 +1,10 @@
 import React from "react";
 import ChromesScreen from "./ChromesScreen";
-import SobreOffside from "../../Images/SobreOffside.png";
 import { useState } from "react";
-import { AiOutlineClose } from "react-icons/ai";
 import WatchAds from "./WatchAds";
 
 function GetChromes({ hideDailyPack }) {
-  const [watchAd, setWatchAd] = useState(false);
+  const [watchAd, setWatchAd] = useState(true);
   const [useChromeScreen, setUseChromeScreen] = useState(false);
   //eslint-disable-next-line
   const [availablePack, setAvailablePack] = useState(true);
@@ -17,42 +15,7 @@ function GetChromes({ hideDailyPack }) {
         className={`w-full h-full flex justify-center items-center ${
           watchAd || useChromeScreen ? "hidden" : ""
         }`}
-      >
-        <div className="md:w-1/2 w-[90%] md:h-2/3 h-1/2 bg-white rounded">
-          <header className="w-full flex justify-end">
-            <button
-              className="py-1 px-2"
-              onClick={() => {
-                hideDailyPack(false);
-              }}
-            >
-              <AiOutlineClose size="2rem" />
-            </button>
-          </header>
-          <div className="w-full h-1/2 flex justify-center items-center mt-16 md:mt-0">
-            <div className="md:w-1/2 md:h-2/5 w-full flex items-center justify-center">
-              <img
-                src={SobreOffside}
-                alt="Sobre Offside"
-                className={`hover:cursor-pointer object-contain ${
-                  availablePack ? "opacity-100" : "opacity-70"
-                }`}
-                onClick={() => {
-                  setWatchAd(!watchAd);
-                }}
-              />
-            </div>
-          </div>
-          <div className="h-2/6 flex justify-center pt-8">
-            <div className="text-xl font-bold">
-              <h1>Disponible en:</h1>
-              <h1 className="text-red-600 w-full flex justify-center">
-                12:32:15
-              </h1>
-            </div>
-          </div>
-        </div>
-      </div>
+      ></div>
       {watchAd && (
         <WatchAds
           adScreen={setWatchAd}
@@ -60,7 +23,9 @@ function GetChromes({ hideDailyPack }) {
         />
       )}
       {useChromeScreen && (
-        <ChromesScreen hideChromesScreen={setUseChromeScreen} />
+        <ChromesScreen
+          hideDailyPack={hideDailyPack}
+        />
       )}
     </div>
   );
