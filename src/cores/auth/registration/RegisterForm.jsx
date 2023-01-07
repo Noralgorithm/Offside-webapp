@@ -56,7 +56,7 @@ function RegisterForm() {
       <button
         type="submit"
         className="w-full bg-offsideColorWine border-none p-3 text-white text-lg
-          hover:bg-red-800 hover:cursor-pointer font-semibold rounded-lg mt-5"
+          hover:bg-red-800 hover:cursor-pointer font-semibold rounded-lg"
       >
         Crear cuenta
       </button>

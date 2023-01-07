@@ -8,8 +8,8 @@ const Register = () => {
       <div className="h-1/6 lg:w-3/12 md:w-5/12 w-8/12 flex items-center justify-center">
         <img src={LogoOffside} alt="" className="" />
       </div>
-      <div className="md:w-7/12 h-3/4 bg-white p-7 rounded-xl text-black flex flex-col justify-around items-center w-10/12 lg:w-5/12">
-        <h1 className="text-3xl w-full text-center h-[20%] text-sticker-name font-bold">
+      <div className="md:w-7/12 h-[70%] bg-white p-7 rounded-xl text-black flex flex-col justify-around items-center w-10/12 lg:w-5/12">
+        <h1 className="text-3xl w-full text-center h-[15%] text-sticker-name font-bold">
           Regístrate
         </h1>
         <RegisterForm />
