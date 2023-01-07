@@ -24,27 +24,29 @@ function Squad() {
           </button>
         </div>
       </header>
-      <div className="w-full xl:h-[84%] lg:h-[70%] md:h-[62%] h-[85%] bg-campo-plantilla bg-center bg-contain bg-no-repeat flex flex-col justify-around items-center">
-        <GoalKeeper
-          players={players.filter((p) => p.position === "goalkeeper")}
-          insertPlayer={insertPlayer}
-          removePlayer={removePlayer}
-        />
-        <Defenders
-          players={players.filter((p) => p.position === "defender")}
-          insertPlayer={insertPlayer}
-          removePlayer={removePlayer}
-        />
-        <Midfielders
-          players={players.filter((p) => p.position === "midfielder")}
-          insertPlayer={insertPlayer}
-          removePlayer={removePlayer}
-        />
-        <Strikers
-          players={players.filter((p) => p.position === "forward")}
-          insertPlayer={insertPlayer}
-          removePlayer={removePlayer}
-        />
+      <div className="w-full xl:h-[84%] lg:h-[70%] md:h-[62%] h-[85%] bg-campo-plantilla bg-center bg-contain bg-no-repeat">
+        <div className="w-full h-full flex flex-col justify-around items-center bg-white bg-opacity-50">
+          <GoalKeeper
+            players={players.filter((p) => p.position === "goalkeeper")}
+            insertPlayer={insertPlayer}
+            removePlayer={removePlayer}
+          />
+          <Defenders
+            players={players.filter((p) => p.position === "defender")}
+            insertPlayer={insertPlayer}
+            removePlayer={removePlayer}
+          />
+          <Midfielders
+            players={players.filter((p) => p.position === "midfielder")}
+            insertPlayer={insertPlayer}
+            removePlayer={removePlayer}
+          />
+          <Strikers
+            players={players.filter((p) => p.position === "forward")}
+            insertPlayer={insertPlayer}
+            removePlayer={removePlayer}
+          />
+        </div>
       </div>
     </div>
   );
