@@ -35,25 +35,27 @@ function FilterPlayer({ dispatch }) {
   });
 
   return (
-    <div className="w-full h-full flex justify-evenly gap-2 items-center">
+    <div className="w-3/5 h-full flex flex-col sm:justify-center justify-end gap-2 items-center pb-2 sm:pb-0">
       <label
         htmlFor=""
-        className="flex bg-black bg-opacity-30 rounded md:p-2 p-1 gap-1"
+        className="flex bg-bg-contenedor bg-opacity-80 rounded-full md:p-2 p-1 gap-1 drop-shadow-xl text-offside-titles"
       >
+        <BiSearch size="1.5rem" color="#49454F" />
         <input
           type="text"
           onChange={handlePlayerNameSearch}
           placeholder="Buscar... "
-          className="rounded bg-black bg-opacity-0 text-white text-center font-semibold"
+          className="rounded bg-black bg-opacity-0 text-center font-semibold outline-none"
         />
-        <BiSearch size="1.5rem" color="white" />
       </label>
-      <Filter handleFilter={handleTeamFilter} options={teams}>
-        Equipo
-      </Filter>
-      <Filter handleFilter={handlePositionFilter} options={positions}>
-        Posición
-      </Filter>
+      <div className="flex w-full justify-evenly">
+        <Filter handleFilter={handleTeamFilter} options={teams}>
+          Equipo
+        </Filter>
+        <Filter handleFilter={handlePositionFilter} options={positions}>
+          Posición
+        </Filter>
+      </div>
     </div>
   );
 }

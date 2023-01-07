@@ -1,5 +1,8 @@
 import React, { useMemo } from "react";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import {
+  IoIosArrowDropleftCircle,
+  IoIosArrowDroprightCircle,
+} from "react-icons/io";
 import { useEffect } from "react";
 import { useState } from "react";
 import * as inventoryServices from "../../services/inventory.services";
@@ -22,7 +25,10 @@ function Carousel() {
   useEffect(() => {
     (async () => {
       try {
-        const data = await inventoryServices.fetchCarousel(token, album.eventId);
+        const data = await inventoryServices.fetchCarousel(
+          token,
+          album.eventId
+        );
         setStickers(data.items);
       } catch (e) {
         alert(e.message);
@@ -49,15 +55,20 @@ function Carousel() {
     } else setStickersView(stickers);
   }, [currentBaseStickerIndex, stickers, maxStickerIndex]);
 
-  if (isLoading) return <div className="w-full h-1/2 relative"><Loading /></div>;
+  if (isLoading)
+    return (
+      <div className="w-full h-1/2 relative">
+        <Loading />
+      </div>
+    );
 
   return (
     <div className="h-full w-full flex justify-center md:items-start items-center">
-      <div className="md:h-full h-1/2 md:w-7/12 w-full bg-gray-300 rounded flex justify-around">
+      <div className="md:h-full h-1/2 md:w-7/12 w-full bg-gradient-offside rounded flex justify-around">
         <div className="h-full flex items-center">
-          <IoIosArrowBack
-            size="1.5rem"
-            className="bg-offsideColorWine rounded-full text-gray-100 cursor-pointer hover:bg-red-800"
+          <IoIosArrowDropleftCircle
+            size="2rem"
+            className="rounded-full text-gray-100 cursor-pointer"
             onClick={() => {
               if (currentBaseStickerIndex === 0)
                 setCurrentBaseStickerIndex(maxStickerIndex);
@@ -67,18 +78,18 @@ function Carousel() {
         </div>
         {stickersView.map((sticker, index) => {
           return (
-            <CarouselSticker
-              eventId={album.eventId}
-              sticker={sticker}
-              index={index}
-              key={sticker.sticker.id}
-            />
+              <CarouselSticker
+                eventId={album.eventId}
+                sticker={sticker}
+                index={index}
+                key={sticker.sticker.id}
+              />
           );
         })}
         <div className="h-full flex items-center">
-          <IoIosArrowForward
-            size="1.5rem"
-            className="bg-offsideColorWine rounded-full text-gray-100 cursor-pointer hover:bg-red-800"
+          <IoIosArrowDroprightCircle
+            size="2rem"
+            className="rounded-full text-gray-100 cursor-pointer"
             onClick={() => {
               if (currentBaseStickerIndex === maxStickerIndex)
                 setCurrentBaseStickerIndex(0);

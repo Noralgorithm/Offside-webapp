@@ -22,7 +22,7 @@ function SelectEvent() {
 
   return (
     <Select
-      className=""
+      className="md:w-1/2 w-full"
       unstyled
       placeholder="Evento..."
       onChange={handleChange}

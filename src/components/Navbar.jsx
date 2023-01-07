@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { RiMoneyDollarCircleFill } from "react-icons/ri";
+import { TbCurrencyDollar } from "react-icons/tb"
 import { SlOptionsVertical } from "react-icons/sl";
 import {
   IoBookOutline,
@@ -31,28 +31,28 @@ function Navbar() {
           <div className="flex h-full md:w-1/2 items-center justify-evenly">
             <Link to="/album" className="rounded-full hover:bg-zinc-300 p-1">
               {location === "/album" ? (
-                <IoBook size="2rem" color="#B02419" />
+                <IoBook size="2rem" color="#E4454E" />
               ) : (
                 <IoBookOutline size="2rem" color="grey" />
               )}
             </Link>
             <Link to="/fantasy" className="rounded-full hover:bg-zinc-300 p-1">
               {location === "/fantasy" ? (
-                <IoFootball size="2rem" color="#B02419" />
+                <IoFootball size="2rem" color="#E4454E" />
               ) : (
                 <IoFootballOutline size="2rem" color="grey" />
               )}
             </Link>
             <Link className="rounded-full hover:bg-zinc-300 p-1">
               {location === "/market" ? (
-                <IoBasket size="2rem" color="#B02419" />
+                <IoBasket size="2rem" color="#E4454E" />
               ) : (
                 <IoBasketOutline size="2rem" color="grey" />
               )}
             </Link>
             <Link to="/profile" className="rounded-full hover:bg-zinc-300 p-1">
               {location === "/profile" ? (
-                <IoPerson size="2rem" color="#B02419" />
+                <IoPerson size="2rem" color="#E4454E" />
               ) : (
                 <IoPersonOutline size="2rem" color="grey" />
               )}

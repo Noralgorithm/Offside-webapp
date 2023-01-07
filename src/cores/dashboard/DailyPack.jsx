@@ -7,7 +7,7 @@ function DailyPack() {
   const [avalaiblePack, setAvailablePack] = useState(true);
   
   return (
-    <div className="h-[45%] w-full bg-skyblue-offside rounded-lg flex items-end bg-SobreOffside bg-no-repeat bg-[length:50%_110%] bg-[center_top_-2rem]">
+    <div className="h-full md:w-[32%] w-full bg-skyblue-offside rounded-lg flex items-end bg-SobreOffside bg-no-repeat bg-[length:100%_100%] bg-[center_top_-2rem] drop-shadow-xl">
       {showDailyPack && <GetChromes hideDailyPack={setShowDailyPack} />}
       <div className="h-[45%] w-full bg-white rounded-b-lg flex flex-col justify-around">
         <div className="w-full h-1/2 flex flex-col justify-around ml-7">
@@ -16,9 +16,9 @@ function DailyPack() {
             Desbloqueable en 00:00:00
           </h2>
         </div>
-        <footer className="w-full flex justify-end h-2/5">
+        <footer className="w-full flex justify-end md:h-1/5 h-2/6">
           <button
-            className="bg-gradient-offside text-white py-2 w-4/12 font-semibold rounded-full flex items-center justify-center mr-7 mb-2"
+            className="bg-gradient-offside text-white py-2 w-4/12 font-semibold rounded-full flex items-center justify-center mr-7 mb-2 md:text-sm"
             onClick={() => setShowDailyPack(true)}
           >
             Reclamar

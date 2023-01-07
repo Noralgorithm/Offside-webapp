@@ -5,7 +5,7 @@ import Loading from "../../components/Loading";
 import * as stickerServices from "../../services/sticker.services";
 import ObtainedSticker from "./ObtainedSticker";
 
-function ChromesScreen({ hideChromesScreen }) {
+function ChromesScreen({ hideDailyPack }) {
   const token = useSelector(state => state.user.token)
   const [stickers, setStickers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -35,7 +35,7 @@ function ChromesScreen({ hideChromesScreen }) {
           <button
             className="bg-green-700 text-white text-2xl md:w-2/12 w-1/2 rounded-full p-4 flex justify-around hover:bg-green-800"
             onClick={() => {
-              hideChromesScreen(false);
+              hideDailyPack(false); 
             }}
           >
             {" "}

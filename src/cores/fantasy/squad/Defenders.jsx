@@ -11,7 +11,7 @@ function Defenders({ players, insertPlayer, removePlayer }) {
   );
 
   return (
-    <div className="w-full flex justify-center items-end gap-2">
+    <div className="w-full h-1/5 flex justify-center items-end gap-2">
       {players.map((player) => (
         <FantasyPlayer playerInfo={player} key={player.id} handleClick={() => removePlayer(player.id)} />
       ))}
