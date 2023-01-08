@@ -13,6 +13,7 @@ export const fetchTeamsList = async (token, eventId, { onlyMyOwnTeams }) => {
         Authorization: "Bearer " + token,
       },
     });
+    if (!data.success) throw new Error(data.message);
     return data;
   } catch (e) {
     throw new Error(e?.response?.data?.message || "Error Desconocido");

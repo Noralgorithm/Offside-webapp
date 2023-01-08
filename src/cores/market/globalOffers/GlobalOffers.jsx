@@ -18,6 +18,7 @@ function GlobalOffers({ auctions }) {
       <GlobalOffersCard
         setGlobalOffersModal={setGlobalOffersModal}
         setGlobalBuyModal={setGlobalBuyModal}
+        auctions={auctions}
       />
     </section>
   );
