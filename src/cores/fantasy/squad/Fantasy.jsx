@@ -12,18 +12,18 @@ export function Fantasy() {
   useEffect(() => {
     return () => {
       dispatch(resetFilters());
-    }
-  }, [dispatch])
+    };
+  }, [dispatch]);
 
   return (
-    <div className="w-screen md:h-[970px] h-[1500px] flex flex-col">
-      <div className="w-full bg-black bg-opacity-40">
-        <h1 className="text-white text-4xl w-1/4 text-center font-bold mt-4">
+    <div className="w-screen md:h-[900px] sm:h-[1580px] h-[1390px] flex flex-col">
+      <div className="w-full bg-bg-titles bg-opacity-60">
+        <h1 className="text-offside-titles text-4xl w-1/4 text-center font-bold mt-4">
           Fantasy
         </h1>
-        <div className="w-2/5 flex justify-evenly items-end h-1/2 mb-6">
+        <div className="w-2/5 flex justify-evenly items-end h-1/2 mb-6 text-offside-titles">
           <button
-            className={`text-white font-semibold text-lg px-3 hover:border-b-red-offside hover:border-b-2 ${
+            className={`font-semibold text-lg px-3 hover:border-b-red-offside hover:border-b-2 ${
               showSquad
                 ? "border-b-red-offside border-b-2"
                 : "border-b-transparent border-b-0"
@@ -35,7 +35,7 @@ export function Fantasy() {
             Equipo
           </button>
           <button
-            className={`text-white font-semibold text-lg px-3 hover:border-b-red-offside hover:border-b-2 ${
+            className={`font-semibold text-lg px-3 hover:border-b-red-offside hover:border-b-2 ${
               !showSquad
                 ? "border-b-red-offside border-b-2"
                 : "border-b-transparent border-b-0"
@@ -50,7 +50,7 @@ export function Fantasy() {
       </div>
       <div className="w-full h-full mt-10">
         {showSquad ? (
-          <div className="w-full flex md:flex-row flex-col h-full md:justify-around items-center justify-around md:items-start">
+          <div className="w-full h-[90%] flex md:flex-row flex-col md:h-full md:justify-around items-center justify-around md:items-start">
             <Squad />
             <Bench />
           </div>

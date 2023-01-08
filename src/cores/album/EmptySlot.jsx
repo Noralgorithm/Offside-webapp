@@ -9,8 +9,8 @@ function EmptySlot({ stickerInfo }) {
   const token = useSelector((state) => state.user.token);
 
   const isSelectedStyles = album.selectedSticker
-    ? "bg-[#656565] w-full h-full flex flex-col justify-center items-center cursor-pointer"
-    : "bg-[#656565] w-full h-full flex flex-col justify-center items-center";
+    ? "bg-[#3D405B] w-full h-full flex flex-col justify-center items-center cursor-pointer"
+    : "bg-[#3D405B] w-full h-full flex flex-col justify-center items-center";
 
   const claimSticker = async (eventId, stickerId) => {
     try {
@@ -27,10 +27,10 @@ function EmptySlot({ stickerInfo }) {
       className={isSelectedStyles}
       onClick={() => claimSticker(album.eventId, stickerInfo.id)}
     >
-      <p className="text-gray-100 font-semibold text-center">
+      <p className="text-white font-semibold text-center">
         {stickerInfo.playerName}
       </p>
-      <p className="text-gray-100 font-semibold">{stickerInfo.id}</p>
+      <p className="text-white font-semibold">{stickerInfo.id}</p>
     </div>
   );
 }

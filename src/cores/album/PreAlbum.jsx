@@ -54,7 +54,7 @@ function PreAlbum() {
             <img
               src={AlbumOffside}
               alt=""
-              className="h-full md:w-1/2 w-full hover:cursor-pointer bg-gray-100 rounded-xl"
+              className="h-full md:w-1/2 w-full hover:cursor-pointer rounded-xl bg-white"
               onClick={() => {
                 setShowAlbum(true);
               }}
@@ -71,7 +71,7 @@ function PreAlbum() {
                 setShowAlbum(true);
               }}
             >
-              <h1 className="h-full md:w-1/2 w-11/12 bg-gray-100 rounded-xl text-sticker-name flex justify-center items-center text-3xl font-semibold">
+              <h1 className="h-full md:w-1/2 w-11/12 bg-bg-empty rounded-xl text-white flex justify-center items-center text-3xl font-semibold">
                 ¡Pega tus cromos!
               </h1>
             </div>

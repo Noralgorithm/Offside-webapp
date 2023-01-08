@@ -14,6 +14,7 @@ import Profile from "./cores/profile/Profile";
 import { Fantasy as Plantilla } from "./cores/fantasy/squad/Fantasy";
 import Navbar from "./components/Navbar";
 import useEventFetcher from "./useEventFetcher";
+import PreNavbar from "./components/PreNavbar";
 
 const App = () => {
   const user = useSelector((state) => state.user);
@@ -35,12 +36,12 @@ const App = () => {
 
   useEffect(() => {
     fetchEventInfo();
-  }, [fetchEventInfo])
+  }, [fetchEventInfo]);
 
   return (
     <>
       <BrowserRouter>
-        {user.success && <Navbar />}
+        {user.success ? <Navbar /> : <PreNavbar />}
         <Routes>
           <Route path="/" element={<UnprotectedRoutes />}>
             <Route path="/" element={<Homepage />} />

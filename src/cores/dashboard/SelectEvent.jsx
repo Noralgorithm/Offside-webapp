@@ -18,11 +18,11 @@ function SelectEvent() {
 
   const handleChange = (e) => {
     dispatch(setCurrentEvent(e.value));
-  }
+  };
 
   return (
     <Select
-      className=""
+      className="md:w-1/2 w-full"
       unstyled
       placeholder="Evento..."
       onChange={handleChange}
@@ -35,11 +35,21 @@ function SelectEvent() {
           border: "2px solid #3D405B",
           borderRadius: "0.5rem",
           paddingLeft: "8px",
+          fontWeight: 500,
+          color: "#3D405B",
         }),
         placeholder: (baseStyles, props) => ({
           ...baseStyles,
           color: "#3D405B",
           fontWeight: 500,
+        }),
+        option: (baseStyles, props) => ({
+          ...baseStyles,
+          backgroundColor: "#ffffff",
+          fontWeight: 500,
+          color: "#3D405B",
+          padding: "8px",
+          borderRadius: "0.5rem"
         }),
       }}
     ></Select>
