@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import Navbar from "../../components/Navbar";
 import GlobalOffers from "./globalOffers/GlobalOffers";
 import MarketFilters from "./MarketFilters";
 import MyOffers from "./myOffers/MyOffers";
 import MySales from "./mySales/MySales";
 import { BiQuestionMark } from "react-icons/bi";
+import useMarket from "./useMarket";
+import Loading from "../../components/Loading";
 
 function Market() {
   const [mySales, setMySales] = useState(false);
   const [myOffers, setMyOffers] = useState(false);
+
+  const { auctions, setFilters, teamId, position, playerName, loading } = useMarket();
+
+  if (loading) return <Loading />
+
   return (
     <div className="w-screen h-screen flex flex-col">
       <Navbar />
@@ -66,7 +73,7 @@ function Market() {
           </button>
         </div>
 
-        {!myOffers && !mySales && <GlobalOffers />}
+        {!myOffers && !mySales && <GlobalOffers auctions={auctions} />}
         {myOffers && <MyOffers />}
         {mySales && <MySales />}
       </div>

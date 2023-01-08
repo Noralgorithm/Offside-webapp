@@ -7,14 +7,14 @@ import {
   selectPlayer,
   storeBenchInfo,
   storeTeamList,
-  resetFilters
+  resetFilters,
 } from "../../../features/fantasy/fantasySlice";
 import * as teamServices from "../../../services/team.services";
 
 function Bench() {
   const eventId = 1;
   const token = useSelector((state) => state.user.token);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const fantasyState = useSelector((state) => state.fantasy);
 
   const dispatch = useDispatch();
@@ -26,6 +26,7 @@ function Bench() {
   useEffect(() => {
     (async () => {
       try {
+        setIsLoading(true);
         const data = await benchServices.fetchBench(
           token,
           eventId,
@@ -34,12 +35,15 @@ function Bench() {
           fantasyState.bench.playerNameSearch,
           fantasyState.bench.paginate.page
         );
-        const teamList = await teamServices.fetchTeamsList(token, eventId);
+        const teamList = await teamServices.fetchTeamsList(token, eventId, {
+          onlyMyOwnTeams: true,
+        });
         dispatch(storeTeamList(teamList));
         dispatch(storeBenchInfo(data));
-        setIsLoading(false);
       } catch (e) {
         alert(e.message);
+      } finally {
+        setIsLoading(false);
       }
     })();
   }, [
@@ -51,7 +55,7 @@ function Bench() {
     fantasyState.bench.playerNameSearch,
     fantasyState.bench.paginate.page,
     fantasyState.insertedPlayer,
-    fantasyState.removedPlayer
+    fantasyState.removedPlayer,
   ]);
 
   if (isLoading) return <h1>Loading...</h1>;

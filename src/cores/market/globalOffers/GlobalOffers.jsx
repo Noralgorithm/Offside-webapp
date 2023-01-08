@@ -4,7 +4,7 @@ import GlobalOffersCard from "./GlobalOffersCard";
 import GlobalOffersModal from "./GlobalOffersModal";
 import DirectBuyModal from "../DirectBuyModal";
 
-function GlobalOffers() {
+function GlobalOffers({ auctions }) {
   const [globalOffersModal, setGlobalOffersModal] = useState(false);
   const [globalBuyModal, setGlobalBuyModal] = useState(false);
   return (

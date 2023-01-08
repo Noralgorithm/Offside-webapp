@@ -28,7 +28,7 @@ export const fetchBench = async (
     );
     return data;
   } catch (e) {
-    throw new Error(e?.response?.data?.message || "unknown error");
+    throw new Error(e?.response?.data?.message || "Error Desconocido");
   }
 };
 
@@ -39,7 +39,7 @@ export const fetchSquadPlayers = async (token, eventId) => {
     });
     return data;
   } catch (e) {
-    throw new Error(e?.response?.data?.message || "unknown error");
+    throw new Error(e?.response?.data?.message || "Error Desconocido");
   }
 };
 
@@ -56,7 +56,7 @@ export const insertPlayer = async (token, eventId, playerId) => {
     );
     return res;
   } catch (e) {
-    throw new Error(e?.response?.data?.message || "unknown error");
+    throw new Error(e?.response?.data?.message || "Error Desconocido");
   }
 };
 
@@ -72,6 +72,6 @@ export const removePlayer = async (token, eventId, playerId) => {
     );
     return res;
   } catch (e) {
-    throw new Error(e?.response?.data?.message || "unknown error");
+    throw new Error(e?.response?.data?.message || "Error Desconocido");
   }
 };
