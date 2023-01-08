@@ -16,7 +16,7 @@ function FantasyPlayer({ playerInfo, handleClick }) {
       onClick={handleClick}
     >
       <div className="rounded-b-lg bg-gradient-offside w-full h-6 flex items-center justify-center">
-        <p className="text-white font-semibold md:text-[1vw] text-[10px] overflow-hidden">
+        <p className="text-white font-semibold md:text-[1vw] sm:text-base text-[10px] overflow-hidden">
           {playerInfo.playerName}
         </p>
       </div>

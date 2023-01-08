@@ -58,7 +58,7 @@ function Bench() {
   if (isLoading) return <div className="lg:w-5/12 md:w-[45%] sm:w-[60%] w-11/12 md:h-[80%] h-1/2 relative"><Loading /></div>;
 
   return (
-    <div className="lg:w-5/12 md:w-[45%] sm:w-[60%] w-11/12 md:h-[80%] h-1/2 bg-[#DBD0D0] rounded-t-lg">
+    <div className="lg:w-5/12 md:w-[45%] w-11/12 md:h-[91.5%] h-1/2 bg-[#DBD0D0] rounded-t-lg overflow-y-hidden">
       <header className="w-full bg-[#CAC4D0] bg-opacity-60 sm:h-[15%] h-1/5 flex justify-center rounded-lg">
         <h1 className="w-1/5 h-1/2 flex justify-center items-center text-offside-titles text-xl font-semibold">
           Plantilla

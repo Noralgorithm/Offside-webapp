@@ -14,7 +14,7 @@ function Squad() {
   }, [fetchSquadInfo]);
 
   return (
-    <div className="lg:w-5/12 md:w-[45%] sm:w-[60%] w-11/12 h-full">
+    <div className="lg:w-5/12 md:w-[45%] w-11/12 h-full">
       <header className="bg-bg-titles h-[8%] flex items-center justify-around rounded-t text-offside-titles">
         <h1 className="text-xl font-semibold">Alineación</h1>
         <div className="flex h-1/2 items-center">
@@ -24,7 +24,7 @@ function Squad() {
           </button>
         </div>
       </header>
-      <div className="w-full xl:h-[84%] lg:h-[70%] md:h-[62%] h-[85%] bg-campo-plantilla bg-center bg-contain bg-no-repeat">
+      <div className="w-full h-[84%] bg-campo-plantilla bg-center bg-[length:100%_100%]">
         <div className="w-full h-full flex flex-col justify-around items-center bg-white bg-opacity-50">
           <GoalKeeper
             players={players.filter((p) => p.position === "goalkeeper")}
