@@ -19,8 +19,8 @@ const useEventFetcher = () => {
   const fetchEventsList = useCallback(async () => {
     try {
       const data = await fantasyServices.fetchEventsInfo(token);
-      dispatch(setEventsList(data));
-      dispatch(setCurrentEvent(data[0].id));
+      dispatch(setEventsList(data.items));
+      dispatch(setCurrentEvent(data.items[0].id));
     } catch (e) {
       toast.error(e.message, {
         position: "bottom-right",

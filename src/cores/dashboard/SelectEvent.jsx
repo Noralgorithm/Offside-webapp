@@ -24,7 +24,7 @@ function SelectEvent() {
     <Select
       className="md:w-1/2 w-full"
       unstyled
-      placeholder="Evento..."
+      placeholder="Competiciones..."
       onChange={handleChange}
       options={eventsOptions}
       components={{ DropdownIndicator }}
@@ -49,7 +49,7 @@ function SelectEvent() {
           fontWeight: 500,
           color: "#3D405B",
           padding: "8px",
-          borderRadius: "0.5rem"
+          borderRadius: "0.5rem",
         }),
       }}
     ></Select>
