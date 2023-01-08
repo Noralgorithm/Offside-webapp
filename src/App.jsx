@@ -15,6 +15,9 @@ import { Fantasy as Plantilla } from "./cores/fantasy/squad/Fantasy";
 import Navbar from "./components/Navbar";
 import useEventFetcher from "./useEventFetcher";
 import PreNavbar from "./components/PreNavbar";
+import { ToastContainer } from "react-toastify";
+
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   const user = useSelector((state) => state.user);
@@ -27,7 +30,7 @@ const App = () => {
       dispatch(login(JSON.parse(localStorage.getItem("loggedUser"))));
   }, [dispatch]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     (async () => {
       if (!user.success) return;
       fetchEventsList();
@@ -40,6 +43,7 @@ const App = () => {
 
   return (
     <>
+    <ToastContainer />
       <BrowserRouter>
         {user.success ? <Navbar /> : <PreNavbar />}
         <Routes>

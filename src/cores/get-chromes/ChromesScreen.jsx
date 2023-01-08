@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import Loading from "../../components/Loading";
 import * as stickerServices from "../../services/sticker.services";
 import ObtainedSticker from "./ObtainedSticker";
+import { toast } from "react-toastify";
 
 function ChromesScreen({ hideDailyPack }) {
   const token = useSelector(state => state.user.token)
@@ -18,9 +19,17 @@ function ChromesScreen({ hideDailyPack }) {
         setStickers(data.stickers);
         setLoading(false);
       } catch(e) {
-        alert(e.message);
+        toast.error(e.message, {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
       }
-
     })();
   }, [token])
 

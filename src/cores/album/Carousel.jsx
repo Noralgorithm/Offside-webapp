@@ -9,6 +9,7 @@ import * as inventoryServices from "../../services/inventory.services";
 import { useSelector } from "react-redux";
 import CarouselSticker from "./CarouselSticker";
 import Loading from "../../components/Loading";
+import { toast } from "react-toastify";
 
 function Carousel() {
   const STICKERS_PER_VIEW = 4;
@@ -31,7 +32,16 @@ function Carousel() {
         );
         setStickers(data.items);
       } catch (e) {
-        alert(e.message);
+        toast.error(e.message, {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
       }
     })();
   }, [token, album.eventId, album.claimedSticker]);

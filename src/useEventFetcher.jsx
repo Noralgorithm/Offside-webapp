@@ -7,12 +7,12 @@ import {
   setMoney,
 } from "./features/user/userSlice";
 import { setPoints } from "./features/fantasy/fantasySlice";
+import { toast } from "react-toastify";
 
 const useEventFetcher = () => {
   const token = useSelector((state) => state.user.token);
   const user = useSelector((state) => state.user);
-  const [ visibleModal, setVisibleModal ] = useState(false); 
-  const [ eventList, setEventList ] = useState([]);
+  const [visibleModal, setVisibleModal] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -22,7 +22,16 @@ const useEventFetcher = () => {
       dispatch(setEventsList(data));
       dispatch(setCurrentEvent(data[0].id));
     } catch (e) {
-      alert(e);
+      toast.error(e.message, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   }, [token, dispatch]);
 
@@ -30,7 +39,16 @@ const useEventFetcher = () => {
     try {
       await fantasyServices.joinEvent(token, user.event);
     } catch (e) {
-      alert(e);
+      toast.error(e.message, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   }, [token, user.event]);
 
@@ -40,23 +58,46 @@ const useEventFetcher = () => {
       !user?.eventsList?.filter((event) => event.id === user.event)[0]
         ?.imAlreadyPlayingIn
     ) {
-      console.log(user?.eventsList?.filter((event) => event.id === user.event)[0])
       await joinEvent();
-      setVisibleModal(true)
+      await fetchEventsList();
+      setVisibleModal(true);
 
-      //TODO: reemplazar este alert por un modal, utilizando el valor de "visibleModal" en un componente externo
-      alert(
-        "felicidades, ahora estas participando en el evento " +
+      toast.success(
+        "Felicidades, ahora estas participando en el evento " +
           user.eventsList.filter((event) => event.id === user.event)[0]
-            .eventName
+            .eventName,
+        {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
       );
     }
     try {
+      if (
+        !user?.eventsList?.filter((event) => event.id === user.event)[0]
+          ?.imAlreadyPlayingIn
+      )
+        return;
       const data = await fantasyServices.fetchMoney(token, user.event);
       dispatch(setMoney(data.money));
       dispatch(setPoints(data.points));
     } catch (e) {
-      alert(e);
+      toast.error(e.message, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   }, [token, user.event, user.eventsList, joinEvent, dispatch]);
 

@@ -3,6 +3,7 @@ import PlayerCard from "../PlayerCard";
 import { useSelector } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
 import * as benchServices from "../../../services/squad.services";
+import { toast } from "react-toastify";
 
 function PlayerList({ handleSelectPlayer }) {
   const eventId = 1;
@@ -30,7 +31,16 @@ function PlayerList({ handleSelectPlayer }) {
       setNextPage(nextPage + 1);
       setPlayers(players.concat(data.items));
     } catch (e) {
-      alert(e.message);
+      toast.error(e.message, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
     }
   };
 
