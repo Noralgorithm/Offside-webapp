@@ -16,34 +16,25 @@ import Navbar from "./components/Navbar";
 import useEventFetcher from "./useEventFetcher";
 import PreNavbar from "./components/PreNavbar";
 import { ToastContainer } from "react-toastify";
-
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
+import Loading from "./components/Loading";
 
 const App = () => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  const { fetchEventsList, fetchEventInfo } = useEventFetcher();
+  const { loading } = useEventFetcher();
 
   useLayoutEffect(() => {
     if (localStorage.getItem("loggedUser"))
       dispatch(login(JSON.parse(localStorage.getItem("loggedUser"))));
   }, [dispatch]);
 
-  useLayoutEffect(() => {
-    (async () => {
-      if (!user.success) return;
-      fetchEventsList();
-    })();
-  }, [fetchEventsList, user.success]);
-
-  useEffect(() => {
-    fetchEventInfo();
-  }, [fetchEventInfo]);
+  if (loading) return <Loading />;
 
   return (
     <>
-    <ToastContainer />
+      <ToastContainer />
       <BrowserRouter>
         {user.success ? <Navbar /> : <PreNavbar />}
         <Routes>

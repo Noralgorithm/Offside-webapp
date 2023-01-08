@@ -1,8 +1,8 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState, useLayoutEffect } from "react";
 import * as fantasyServices from "./services/event.services";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  setCurrentEvent,
+  setEvent,
   setEventsList,
   setMoney,
 } from "./features/user/userSlice";
@@ -10,17 +10,22 @@ import { setPoints } from "./features/fantasy/fantasySlice";
 import { toast } from "react-toastify";
 
 const useEventFetcher = () => {
+  const [loading, setLoading] = useState(false);
   const token = useSelector((state) => state.user.token);
   const user = useSelector((state) => state.user);
-  const [visibleModal, setVisibleModal] = useState(false);
+  const [events, setEvents] = useState([]);
 
   const dispatch = useDispatch();
 
   const fetchEventsList = useCallback(async () => {
+    if (!user.success) return;
     try {
+      setLoading(true);
+      console.log(token);
       const data = await fantasyServices.fetchEventsInfo(token);
-      dispatch(setEventsList(data));
-      dispatch(setCurrentEvent(data[0].id));
+      dispatch(setEventsList(data.items));
+      dispatch(setEvent(data.items[0].id));
+      setEvents(data.items);
     } catch (e) {
       toast.error(e.message, {
         position: "bottom-right",
@@ -32,8 +37,10 @@ const useEventFetcher = () => {
         progress: undefined,
         theme: "light",
       });
+    } finally {
+      setLoading(false);
     }
-  }, [token, dispatch]);
+  }, [token, dispatch, user.success]);
 
   const joinEvent = useCallback(async () => {
     try {
@@ -53,19 +60,17 @@ const useEventFetcher = () => {
   }, [token, user.event]);
 
   const fetchEventInfo = useCallback(async () => {
-    if (user.eventsList.length === 0) return;
+    setLoading(true);
+    if (events.length === 0) return;
     if (
-      !user?.eventsList?.filter((event) => event.id === user.event)[0]
+      !events?.filter((event) => event.id === user.event)[0]
         ?.imAlreadyPlayingIn
     ) {
       await joinEvent();
       await fetchEventsList();
-      setVisibleModal(true);
-
       toast.success(
         "Felicidades, ahora estas participando en el evento " +
-          user.eventsList.filter((event) => event.id === user.event)[0]
-            .eventName,
+          events.filter((event) => event.id === user.event)[0].eventName,
         {
           position: "bottom-right",
           autoClose: 5000,
@@ -79,11 +84,6 @@ const useEventFetcher = () => {
       );
     }
     try {
-      if (
-        !user?.eventsList?.filter((event) => event.id === user.event)[0]
-          ?.imAlreadyPlayingIn
-      )
-        return;
       const data = await fantasyServices.fetchMoney(token, user.event);
       dispatch(setMoney(data.money));
       dispatch(setPoints(data.points));
@@ -99,9 +99,18 @@ const useEventFetcher = () => {
         theme: "light",
       });
     }
-  }, [token, user.event, user.eventsList, joinEvent, dispatch]);
+    setLoading(false);
+  }, [token, user.event, events, fetchEventsList, joinEvent, dispatch]);
 
-  return { fetchEventsList, fetchEventInfo, visibleModal, setVisibleModal };
+  useEffect(() => {
+    fetchEventsList();
+  }, [fetchEventsList]);
+
+  useEffect(() => {
+    fetchEventInfo();
+  }, [fetchEventInfo]);
+
+  return { loading };
 };
 
 export default useEventFetcher;

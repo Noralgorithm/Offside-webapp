@@ -26,7 +26,7 @@ const userSlice = createSlice({
       state.userToken = null;
       state.success = false;
     },
-    setCurrentEvent: (state, { payload }) => {
+    setEvent: (state, { payload }) => {
       state.event = payload;
     },
     setEventsList: (state, { payload }) => {
@@ -38,5 +38,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { login, logout, register, setCurrentEvent, setEventsList, setMoney } = userSlice.actions;
+export const { login, logout, register, setEvent, setEventsList, setMoney } = userSlice.actions;
 export default userSlice.reducer;
