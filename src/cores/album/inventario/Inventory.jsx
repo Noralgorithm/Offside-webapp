@@ -5,6 +5,7 @@ import * as inventoryServices from "../../../services/inventory.services";
 import { useDispatch, useSelector } from "react-redux";
 import { storeInventory } from "../../../features/inventory/inventorySlice";
 import Loading from "../../../components/Loading";
+import { toast } from "react-toastify";
 
 function Inventory() {
   const [loading, setLoading] = useState(true);
@@ -26,7 +27,16 @@ function Inventory() {
         dispatch(storeInventory(data));
         setLoading(false);
       } catch (e) {
-        alert(e.message);
+        toast.error(e.message, {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
       }
     })();
   }, [inventory.paginate.page]);

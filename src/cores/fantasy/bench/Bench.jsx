@@ -11,6 +11,7 @@ import {
 import * as teamServices from "../../../services/team.services";
 import { BiQuestionMark } from "react-icons/bi";
 import Loading from "../../../components/Loading"
+import { toast } from "react-toastify";
 
 function Bench() {
   const eventId = 1;
@@ -40,7 +41,16 @@ function Bench() {
         dispatch(storeBenchInfo(data));
         setIsLoading(false);
       } catch (e) {
-        alert(e.message);
+        toast.error(e.message, {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
       }
     })();
   }, [

@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as inventoryServices from "../../services/inventory.services";
 import { putSticker } from "../../features/album/albumSlice";
+import { toast } from "react-toastify";
 
 function EmptySlot({ stickerInfo }) {
   const album = useSelector((state) => state.album);
@@ -18,7 +19,16 @@ function EmptySlot({ stickerInfo }) {
         await inventoryServices.claimSticker(token, eventId, stickerId);
       dispatch(putSticker());
     } catch (e) {
-      alert(e.message);
+      toast.error(e.message, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
     }
   };
 
