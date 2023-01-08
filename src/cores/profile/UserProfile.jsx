@@ -28,7 +28,7 @@ function UserProfile() {
         </h1>
         <button
           onClick={logoutHandle}
-          className="w-1/2 bg-offsideColorWine block p-3 text-center text-white rounded-lg hover:bg-red-800"
+          className="w-1/2 bg-gradient-offside font-semibold block p-3 text-center text-white rounded-full"
         >
           Cerrar Sesión
         </button>
