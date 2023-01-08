@@ -20,7 +20,7 @@ function PlayerCard({ playerInfo, isInLineup, handleClick, selected }) {
       }
     >
       <aside className="relative h-full xl:w-[35%] lg:w-[40%] md:w-[45%] sm:w-[35%] w-[60%] flex justify-center rounded-lg bg-gradient-offside">
-        <h1 className="-rotate-90 text-white text-sm font-semibold absolute md:right-[25%] sm:right-[30%] right-[25%] w-32 h-10 bottom-[39%] pl-1">
+        <h1 className="-rotate-90 text-white text-sm font-semibold absolute md:right-[25%] right-[25%] w-32 h-10 bottom-[37%] pl-1">
           {playerInfo.playerName}
         </h1>
         <img src={playerInfo.img} alt="" className="h-full xl:ml-6" />

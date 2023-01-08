@@ -50,7 +50,7 @@ export function Fantasy() {
       </div>
       <div className="w-full h-full mt-10">
         {showSquad ? (
-          <div className="w-full h-[90%] flex md:flex-row flex-col md:h-full md:justify-around items-center justify-around md:items-start">
+          <div className="w-full h-[98%] flex md:flex-row flex-col md:h-full md:justify-around items-center justify-around md:items-start">
             <Squad />
             <Bench />
           </div>

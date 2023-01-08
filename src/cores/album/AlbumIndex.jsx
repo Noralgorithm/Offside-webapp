@@ -39,7 +39,9 @@ function AlbumIndex() {
   };
 
   return (
-    <div className={`w-full md:h-4/5 h-full bg-white rounded-lg md:p-2 px-2 py-3`}>
+    <div
+      className={`w-full md:h-4/5 h-full bg-white rounded-lg md:p-2 px-2 py-3`}
+    >
       <Select
         value={{
           value: album.currentTeam ? album.currentTeam.id : "",
@@ -64,7 +66,7 @@ function AlbumIndex() {
             borderBottomRightRadius: windowSize < 768 ? "0.5rem" : "0",
             borderBottomLeftRadius: windowSize < 768 ? "0.5rem" : "0",
             cursor: "text",
-            paddingLeft: "4px"
+            paddingLeft: "4px",
           }),
           option: (baseStyles, props) => ({
             ...baseStyles,
@@ -91,6 +93,27 @@ function AlbumIndex() {
           indicatorSeparator: (baseStyles, props) => ({
             ...baseStyles,
             display: windowSize < 768 ? "block" : "none",
+          }),
+          menuList: (baseStyles, props) => ({
+            ...baseStyles,
+            "::-webkit-scrollbar": {
+              width: "20px",
+            },
+
+            "::-webkit-scrollbar-track": {
+              backgroundColor: "transparent",
+            },
+
+            "::-webkit-scrollbar-thumb": {
+              backgroundColor: "#BBB9B9",
+              borderRadius: "20px",
+              border: "6px solid transparent",
+              backgroundClip: "content-box",
+            },
+
+            "::-webkit-scrollbar-thumb:hover": {
+              backgroundColor: "#939191",
+            },
           }),
         }}
       />

@@ -14,7 +14,7 @@ function Squad() {
   }, [fetchSquadInfo]);
 
   return (
-    <div className="lg:w-5/12 md:w-[45%] w-11/12 h-full">
+    <div className="lg:w-5/12 md:w-[45%] sm:w-9/12 w-11/12 md:h-full h-1/2">
       <header className="bg-bg-titles h-[8%] flex items-center justify-around rounded-t text-offside-titles">
         <h1 className="text-xl font-semibold">Alineación</h1>
         <div className="flex h-1/2 items-center">
