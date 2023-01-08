@@ -12,7 +12,7 @@ function SelectEvent() {
   const dispatch = useDispatch();
   const eventsList = useSelector((state) => state.user.eventsList);
 
-  const eventsOptions = eventsList.map((event) => {
+  const eventsOptions = eventsList?.map((event) => {
     return { label: event.eventName, value: event.id };
   });
 
