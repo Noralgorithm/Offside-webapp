@@ -60,8 +60,8 @@ const useEventFetcher = () => {
   }, [token, user.event]);
 
   const fetchEventInfo = useCallback(async () => {
-    setLoading(true);
     if (events.length === 0) return;
+    setLoading(true);
     if (
       !events?.filter((event) => event.id === user.event)[0]
         ?.imAlreadyPlayingIn
