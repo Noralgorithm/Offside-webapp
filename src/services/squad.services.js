@@ -17,7 +17,6 @@ export const fetchBench = async (
     if (teamFilter) queryString += `&teamname=${teamFilter}`;
     if (positionFilter) queryString += `&position=${positionFilter}`;
     if (page) queryString += `&page=${page}`;
-    console.log(BASE_URL + eventId + "/squad?" + queryString);
     const { data } = await axios.get(
       BASE_URL + eventId + "/squad?" + queryString,
       {
@@ -26,7 +25,6 @@ export const fetchBench = async (
         },
       }
     );
-    if (!data.success) throw new Error(data.message);
     return data;
   } catch (e) {
     throw new Error(e?.response?.data?.message || "Error Desconocido");

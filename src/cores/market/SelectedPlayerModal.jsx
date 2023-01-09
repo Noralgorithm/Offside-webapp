@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoExitOutline } from "react-icons/io5";
 import { BsQuestionCircle } from "react-icons/bs";
 import PlayerCircle from "./PlayerCircle";
 
-function SelectedPlayerModal({ player, setSelectedPlayer, setMarketSquad }) {
+function SelectedPlayerModal({
+  player,
+  setSelectedPlayer,
+  setMarketSquad,
+  createAuction,
+}) {
+  const [initialValue, setInitialValue] = useState();
+  const [directPurchase, setDirectPurchase] = useState();
+
   return (
     <div className="h-4/5 w-1/2 bg-gradient-offside rounded-lg flex flex-col justify-between relative">
       <header className="w-full h-[10%] flex items-center justify-between px-4">
@@ -36,6 +44,7 @@ function SelectedPlayerModal({ player, setSelectedPlayer, setMarketSquad }) {
                 type="number"
                 placeholder=""
                 className="appearance-none rounded-full text-center text-xl w-full p-1 text-offside-titles font-bold outline-none"
+                onChange={(e) => setInitialValue(e.target.value)}
               />
             </label>
           </div>
@@ -51,6 +60,7 @@ function SelectedPlayerModal({ player, setSelectedPlayer, setMarketSquad }) {
                 type="number"
                 placeholder=""
                 className="appearance-none rounded-full text-center text-xl w-full p-1 text-offside-titles font-bold outline-none"
+                onChange={(e) => setDirectPurchase(e.target.value)}
               />
             </label>
           </div>
@@ -67,7 +77,13 @@ function SelectedPlayerModal({ player, setSelectedPlayer, setMarketSquad }) {
             </button>
           </span>
 
-          <button className="bg-gradient-offside rounded-full text-white font-semibold py-1 px-14">
+          <button
+            onClick={() => {
+              createAuction(initialValue, directPurchase, player.id);
+              setMarketSquad(false);
+            }}
+            className="bg-gradient-offside rounded-full text-white font-semibold py-1 px-14"
+          >
             Aceptar
           </button>
         </div>

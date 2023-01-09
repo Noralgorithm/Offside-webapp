@@ -9,13 +9,11 @@ function Squad() {
   const { players, fetchSquadInfo, insertPlayer, removePlayer } = useSquad();
 
   useEffect(() => {
-    console.log('equisde')
     fetchSquadInfo();
   }, [fetchSquadInfo]);
 
   return (
     <div className="md:w-5/12 w-11/12 h-full">
-      {console.log('holaD')}
       <div className="bg-[#325D69] h-[8%] flex items-center justify-around rounded-t">
         <h1 className="text-white text-xl">Plantilla de jugadores</h1>
         <h1 className="bg-red-offside text-white text-lg font-bold py-2 px-5 rounded">

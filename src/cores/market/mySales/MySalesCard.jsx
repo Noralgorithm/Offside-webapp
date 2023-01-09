@@ -15,7 +15,7 @@ function MySalesCard({ setSalesModal }) {
               className="bg-gradient-offside rounded-full p-[1px]"
             />
             <h1 className="text-offside-titles font-bold text-lg">
-              100.100.100
+              100.100
             </h1>
           </div>
           <div className="flex gap-1 items-center">

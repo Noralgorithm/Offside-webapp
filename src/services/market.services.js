@@ -13,7 +13,9 @@ export const fetchAuctionsList = async (token, eventId) => {
     if (!data?.success) throw new Error(data?.message);
     return data;
   } catch (e) {
-    throw new Error(e?.response?.data?.message || e?.message || "Error Desconocido");
+    throw new Error(
+      e?.response?.data?.message || e?.message || "Error Desconocido"
+    );
   }
 };
 
@@ -33,12 +35,18 @@ export const fetchAuctionInfo = (token, eventId, auctionId) => {
   }
 };
 
-export const addAuction = (token, eventId) => {
+export const addAuction = async (
+  token,
+  { initialValue, directPurchase, event, playerId }
+) => {
   try {
-    const { data } = axios.post(
-      BASE_URL + eventId + "/market/add",
+    const data = await axios.post(
+      BASE_URL + event + "/market/add",
       {
-        /* TODO */
+        initialValue,
+        directPurchase,
+        eventId: event ,
+        playerId,
       },
       {
         headers: {
@@ -46,6 +54,7 @@ export const addAuction = (token, eventId) => {
         },
       }
     );
+    console.log(data)
     return data;
   } catch (e) {
     throw new Error(e?.response?.data?.message || "Error Desconocido");

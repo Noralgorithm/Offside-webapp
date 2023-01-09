@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import MarketPlayerList from "./MarketPlayerList";
 import Filters from "../../fantasy/bench/Filters";
 import * as benchServices from "../../../services/squad.services";
@@ -12,10 +12,11 @@ import {
 import * as teamServices from "../../../services/team.services";
 import SelectedPlayerModal from "../SelectedPlayerModal";
 import { BiQuestionMark } from "react-icons/bi";
-import Loading from "../../../components/Loading"
+import Loading from "../../../components/Loading";
+import * as marketServices from "../../../services/market.services";
 
 function MarketSquad({ setMarketSquad }) {
-  const eventId = 1;
+  const event = useSelector((state) => state.user.event);
   const token = useSelector((state) => state.user.token);
   const [isLoading, setIsLoading] = useState(true);
   const fantasyState = useSelector((state) => state.fantasy);
@@ -23,36 +24,59 @@ function MarketSquad({ setMarketSquad }) {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    (async () => {
+  const createAuction = async (initialValue, directPurchase, playerId) => {
+    try {
+      setIsLoading(true);
+      await marketServices.addAuction(token, {
+        initialValue,
+        directPurchase,
+        event,
+        playerId,
+      });
+      await fetchBench();
+    } catch (e) {
+      alert(e.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const fetchBench = useCallback(
+    async () => {
       try {
         const data = await benchServices.fetchBench(
           token,
-          eventId,
+          event,
           fantasyState.bench.teamFilter,
           fantasyState.bench.positionFilter,
           fantasyState.bench.playerNameSearch,
           fantasyState.bench.paginate.page
         );
-        const teamList = await teamServices.fetchTeamsList(token, eventId);
+        const teamList = await teamServices.fetchTeamsList(token, event);
         dispatch(storeTeamList(teamList));
         dispatch(storeBenchInfo(data));
         setIsLoading(false);
       } catch (e) {
         alert(e.message);
       }
-    })();
-  }, [
-    token,
-    eventId,
-    dispatch,
-    fantasyState.bench.teamFilter,
-    fantasyState.bench.positionFilter,
-    fantasyState.bench.playerNameSearch,
-    fantasyState.bench.paginate.page,
-    fantasyState.insertedPlayer,
-    fantasyState.removedPlayer,
-  ]);
+    },
+    [
+      token,
+      event,
+      dispatch,
+      fantasyState.bench.teamFilter,
+      fantasyState.bench.positionFilter,
+      fantasyState.bench.playerNameSearch,
+      fantasyState.bench.paginate.page,
+      fantasyState.insertedPlayer,
+      fantasyState.removedPlayer,
+    ],
+  )
+  
+
+  useEffect(() => {
+    fetchBench();
+  }, [fetchBench]);
 
   if (isLoading)
     return (
@@ -94,6 +118,7 @@ function MarketSquad({ setMarketSquad }) {
           player={selectedPlayer}
           setSelectedPlayer={setSelectedPlayer}
           setMarketSquad={setMarketSquad}
+          createAuction={createAuction}
         />
       )}
     </div>
