@@ -64,7 +64,7 @@ const Album = () => {
       </div>
     );
   return (
-    <div className="w-full h-[70%]">
+    <div className="w-full xl:h-[70%] min-[1152px]:h-[65%] lg:h-[55%] h-[70%]">
       <header className="md:h-[10%] h-[7%] w-full bg-[#FAF7F7] border border-[#CAC4D0] rounded-t">
         <AlbumHeader />
       </header>

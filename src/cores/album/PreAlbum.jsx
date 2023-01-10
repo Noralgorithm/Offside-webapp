@@ -34,11 +34,11 @@ function PreAlbum() {
   }, [token, eventId, album.claimedSticker, album.eventId, dispatch]);
   if (loading) return <Loading />;
   return (
-    <div className="w-full flex md:justify-around md:flex-row flex-col h-full md:items-start items-center">
-      <div className="xl:w-3/12 md:w-2/12 h-full md:flex items-center hidden">
+    <div className="w-screen flex md:justify-around md:flex-row flex-col h-full md:items-start items-center">
+      <div className="xl:w-[calc(1280px_*_3/12)] lg:w-[calc(1024px_*_3/12)] md:w-[calc(1024px_*_2/12)] md:h-[627px] md:flex items-center hidden w-2/12">
         <AlbumIndex currentTeam={album.currentTeam} />
       </div>
-      <div className="xl:w-[65%] md:w-[80%] w-11/12 flex flex-col md:justify-evenly justify-start gap-5 md:gap-0 md:mt-0 mt-5 h-full items-center md:items-start">
+      <div className="xl:w-[calc(1280px_*_0.65)] lg:w-[calc(1024px_*_0.70)] min-[1152px]:w-[calc(1024px_*_0.82)] md:w-[80%] w-[calc(414px_*_11/12)] flex flex-col md:justify-evenly justify-start gap-5 md:gap-0 md:mt-0 mt-5 h-full items-center md:items-start">
         <div className="w-full md:h-[5%] h-[3%]">
           <ProgressBar percentage={albumInfo.actualProgressPercentage} />
         </div>
