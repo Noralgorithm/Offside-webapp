@@ -74,7 +74,7 @@ function Carousel() {
 
   return (
     <div className="h-full w-full flex justify-center md:items-start items-center">
-      <div className="md:h-full h-1/2 md:w-7/12 w-full bg-gradient-offside rounded flex justify-around">
+      <div className="md:h-full h-1/2 xl:w-[62%] lg:w-[55%] md:w-[65%] w-full bg-gradient-offside rounded flex justify-around items-center">
         <div className="h-full flex items-center">
           <IoIosArrowDropleftCircle
             size="2rem"

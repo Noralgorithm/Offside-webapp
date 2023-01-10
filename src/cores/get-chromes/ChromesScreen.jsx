@@ -18,7 +18,7 @@ function ChromesScreen({ hideDailyPack }) {
         const data = await stickerServices.obtain(token);
         setStickers(data.stickers);
         setLoading(false);
-      } catch(e) {
+      } catch (e) {
         toast.error(e.message, {
           position: "bottom-right",
           autoClose: 5000,
@@ -28,7 +28,7 @@ function ChromesScreen({ hideDailyPack }) {
           draggable: true,
           progress: undefined,
           theme: "light",
-          });
+        });
       }
     })();
   }, [token]);
@@ -41,7 +41,7 @@ function ChromesScreen({ hideDailyPack }) {
     );
   return (
     <div className="w-full h-full flex justify-center md:items-center">
-      <div className="absolute md:h-[75%] h-[90%] md:w-10/12 w-11/12 md:mt-0 mt-4">
+      <div className="absolute lg:h-[75%] md:h-[65%] h-[90%] xl:w-10/12 w-11/12 md:mt-0 mt-4">
         <div className="md:h-1/2 h-[80%] md:flex w-full md:justify-around md:items-center md:my-20 grid grid-cols-2 gap-2">
           {stickers.map((sticker, index) => (
             <ObtainedSticker
@@ -53,7 +53,7 @@ function ChromesScreen({ hideDailyPack }) {
         </div>
         <div className="w-full flex justify-center">
           <button
-            className="bg-green-700 text-white text-2xl md:w-2/12 w-1/2 rounded-full p-4 flex justify-around hover:bg-green-800"
+            className="bg-green-700 text-white text-2xl lg:w-2/12 md:w-3/12 w-1/2 rounded-full p-4 flex justify-around hover:bg-green-800"
             onClick={() => {
               hideDailyPack(false);
             }}

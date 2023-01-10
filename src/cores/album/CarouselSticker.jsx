@@ -13,8 +13,8 @@ const CarouselSticker = ({ eventId, sticker, index }) => {
 
   const isSelectedStyles =
     album.selectedSticker === sticker.sticker.id
-      ? "w-1/6 cursor-pointer ring-4 ring-red-800 rounded-md"
-      : "w-1/6 cursor-pointer";
+      ? "md:w-1/6 w-[18%] h-[90%] cursor-pointer ring-4 ring-red-800 rounded-md"
+      : "md:w-1/6 w-[18%] h-[90%] cursor-pointer";
 
   return (
     <div
@@ -22,10 +22,7 @@ const CarouselSticker = ({ eventId, sticker, index }) => {
       onClick={handleClick}
       key={sticker.sticker.id + "" + index}
     >
-      <Sticker
-        fontSize={["6px", "8px"]}
-        stickerInfo={sticker.sticker}
-      />
+      <Sticker fontSize={["6px", "8px"]} stickerInfo={sticker.sticker} />
     </div>
   );
 };
