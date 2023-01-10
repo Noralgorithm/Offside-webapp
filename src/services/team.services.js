@@ -10,7 +10,7 @@ export const fetchTeamsList = async (token, eventId) => {
         Authorization: "Bearer " + token,
       },
     });
-    return data;
+    return data.items;
   } catch (e) {
     throw new Error(e?.response?.data?.message || 'unknown error');
   }
