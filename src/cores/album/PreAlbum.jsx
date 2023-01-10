@@ -35,10 +35,10 @@ function PreAlbum() {
   if (loading) return <Loading />;
   return (
     <div className="w-screen flex md:justify-around md:flex-row flex-col h-full md:items-start items-center">
-      <div className="xl:w-[calc(1280px_*_3/12)] lg:w-[calc(1024px_*_3/12)] md:w-[calc(1024px_*_2/12)] md:h-[627px] md:flex items-center hidden w-2/12">
+      <div className="xl:w-[calc(1280px_*_3/12)] lg:w-[calc(1024px_*_3/12)] md:w-[calc(1024px_*_2/12)] h-full md:flex items-center hidden w-2/12">
         <AlbumIndex currentTeam={album.currentTeam} />
       </div>
-      <div className="xl:w-[calc(1280px_*_0.65)] lg:w-[calc(1024px_*_0.70)] min-[1152px]:w-[calc(1024px_*_0.82)] md:w-[80%] w-[calc(414px_*_11/12)] flex flex-col md:justify-evenly justify-start gap-5 md:gap-0 md:mt-0 mt-5 h-full items-center md:items-start">
+      <div className="xl:w-[calc(1280px_*_0.70)] lg:w-[calc(1024px_*_0.70)] md:w-[calc(768px_*_0.80)] w-[calc(414px_*_11/12)] flex flex-col md:justify-evenly justify-start gap-5 md:gap-0 md:mt-0 mt-5 h-full items-center md:items-start">
         <div className="w-full md:h-[5%] h-[3%]">
           <ProgressBar percentage={albumInfo.actualProgressPercentage} />
         </div>
@@ -54,7 +54,7 @@ function PreAlbum() {
             <img
               src={AlbumOffside}
               alt=""
-              className="h-full md:w-1/2 w-full hover:cursor-pointer rounded-xl bg-white"
+              className="h-full xl:w-1/2 lg:w-3/5 md:w-4/6 w-full hover:cursor-pointer rounded-xl bg-white"
               onClick={() => {
                 setShowAlbum(true);
               }}
@@ -71,7 +71,7 @@ function PreAlbum() {
                 setShowAlbum(true);
               }}
             >
-              <h1 className="h-full md:w-1/2 w-11/12 bg-bg-empty rounded-xl text-white flex justify-center items-center text-3xl font-semibold">
+              <h1 className="h-full xl:w-1/2 lg:w-3/5 md:w-4/6 w-full bg-bg-empty rounded-xl text-white flex justify-center items-center text-3xl font-semibold">
                 ¡Pega tus cromos!
               </h1>
             </div>

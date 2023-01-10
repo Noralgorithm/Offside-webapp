@@ -40,7 +40,7 @@ function AlbumIndex() {
 
   return (
     <div
-      className={`w-full md:h-4/5 h-full bg-white rounded-lg md:p-2 px-2 py-3`}
+      className={`w-full xl:h-[85%] lg:h-[70%] md:h-[65%] h-full bg-white rounded-lg md:p-2 px-2 py-3`}
     >
       <Select
         value={{
