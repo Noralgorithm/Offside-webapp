@@ -1,7 +1,7 @@
 import axios from "axios";
 import { api } from "../config";
 
-const BASE_URL = api + '/ads';
+const BASE_URL = api + '/promotions';
 
 export const watch = async (token) => {
   try {
