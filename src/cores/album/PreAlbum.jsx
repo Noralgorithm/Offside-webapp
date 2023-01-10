@@ -34,7 +34,7 @@ function PreAlbum() {
   }, [token, eventId, album.claimedSticker, album.eventId, dispatch]);
   if (loading) return <Loading />;
   return (
-    <div className="w-screen flex md:justify-around md:flex-row flex-col h-full md:items-start items-center">
+    <div className="w-full flex md:justify-around md:flex-row flex-col h-full md:items-start items-center">
       <div className="xl:w-3/12 md:w-2/12 h-full md:flex items-center hidden">
         <AlbumIndex currentTeam={album.currentTeam} />
       </div>
