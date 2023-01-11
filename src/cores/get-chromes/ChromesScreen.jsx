@@ -16,7 +16,7 @@ function ChromesScreen({ hideDailyPack }) {
     (async () => {
       try {
         const data = await stickerServices.obtain(token);
-        setStickers(data.stickers);
+        setStickers(data.items);
         setLoading(false);
       } catch(e) {
         toast.error(e.message, {

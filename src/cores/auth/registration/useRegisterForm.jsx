@@ -20,16 +20,18 @@ const useRegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (!isSamePassword) return toast.error("Las contraseñas no coinciden.", {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
+      if (!isSamePassword) 
+        return toast.error("Las contraseñas no coinciden.", {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
         });
+
       await authServices.register(inputValues);
     } catch (e) {
       toast.error(e.message, {
@@ -41,7 +43,7 @@ const useRegisterForm = () => {
         draggable: true,
         progress: undefined,
         theme: "light",
-        });
+      });
     }
 
     navigate("/");
