@@ -7,7 +7,7 @@ import ObtainedSticker from "./ObtainedSticker";
 import { toast } from "react-toastify";
 
 function ChromesScreen({ hideDailyPack }) {
-  const token = useSelector((state) => state.user.token);
+  const { token, event } = useSelector((state) => state.user);
   const [stickers, setStickers] = useState([]);
   const [loading, setLoading] = useState(true);
   const fontSize = ["12px", "20px"];
@@ -15,7 +15,7 @@ function ChromesScreen({ hideDailyPack }) {
   useEffect(() => {
     (async () => {
       try {
-        const data = await stickerServices.obtain(token);
+        const data = await stickerServices.obtain(token, event);
         setStickers(data.items);
         setLoading(false);
       } catch(e) {
