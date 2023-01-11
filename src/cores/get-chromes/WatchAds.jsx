@@ -18,7 +18,7 @@ function WatchAds({ adScreen, showChromesScreen }) {
     (async () => {
       try {
         const data = await adServices.watch(token);
-        setAd(data.ad);
+        setAd(data.item);
         setLoading(false);
         setTimeout(setCloseAd, 2000, true);
       } catch (e) {

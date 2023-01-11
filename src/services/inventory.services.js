@@ -64,7 +64,7 @@ export const fetchTeamsList = async (token, eventId) => {
         },
       }
     );
-    return data;
+    return data.items;
   } catch (e) {
     throw new Error(e?.response?.data?.message || 'unknown error');
   }
