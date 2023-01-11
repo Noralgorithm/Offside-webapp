@@ -25,7 +25,6 @@ const useMySales = (setFilters, { teamId, position, playerName }) => {
     }
   }, [token, event, playerName, position, teamId]);
 
-
   useEffect(() => {
     fetchMyAuctions();
   }, [fetchMyAuctions]);

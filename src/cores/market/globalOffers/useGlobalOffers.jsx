@@ -6,6 +6,7 @@ import * as marketServices from "../../../services/market.services";
 const useGlobalOffers = (setFilters, { teamId, position, playerName }) => {
   const { token, event } = useSelector((state) => state.user);
   const [globalAuctions, setGlobalAuctions] = useState([]);
+  const [currentAuctionInfo, setCurrentAuctionInfo] = useState()
   const [loading, setLoading] = useState(true);
 
   const fetchGlobalAuctions = useCallback(async () => {
@@ -17,7 +18,6 @@ const useGlobalOffers = (setFilters, { teamId, position, playerName }) => {
         playerName,
       });
       setGlobalAuctions(data.items);
-      console.log(data.items);
     } catch (e) {
       toast.error(e.message);
     } finally {
@@ -25,12 +25,36 @@ const useGlobalOffers = (setFilters, { teamId, position, playerName }) => {
     }
   }, [token, event, teamId, position, playerName]);
 
+  const fetchAuctionInfo = useCallback(async (auctionId) => {
+    try {
+      setLoading(true);
+      const data = await marketServices.fetchAuctionInfo(token, event, auctionId);
+      setCurrentAuctionInfo(data.item);
+    } catch (e) {
+      toast.error(e.message);
+    } finally {
+      setLoading(false);
+    }
+  }, [token, event])
+
+  const makeAnOffer = async (value, marketId) => {
+    try {
+      setLoading(true);
+      await marketServices.addBid(token, event, { value, marketId, isDirectPurchase: false });
+      await fetchGlobalAuctions();
+      toast.success("¡Puja realizada con éxito!")
+    } catch (e) {
+      toast.error(e.message);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   useEffect(() => {
     fetchGlobalAuctions();
   }, [fetchGlobalAuctions]);
 
-  return { globalAuctions, loading };
+  return { globalAuctions, loading, currentAuctionInfo, fetchAuctionInfo, makeAnOffer };
 };
 
 export default useGlobalOffers;

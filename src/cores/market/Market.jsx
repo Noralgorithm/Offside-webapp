@@ -12,10 +12,7 @@ function Market() {
   const [mySales, setMySales] = useState(false);
   const [myOffers, setMyOffers] = useState(false);
 
-  const { globalAuctions, setFilters, teamId, position, playerName, loading } =
-    useMarket();
-
-  if (loading) return <Loading />;
+  const { setFilters, teamId, position, playerName } = useMarket();
 
   return (
     <div className="w-screen h-screen flex flex-col">
@@ -85,7 +82,12 @@ function Market() {
             filters={{ teamId, position, playerName }}
           />
         )}
-        {mySales && <MySales setFilters={setFilters} filters={{teamId,position,playerName}} />}
+        {mySales && (
+          <MySales
+            setFilters={setFilters}
+            filters={{ teamId, position, playerName }}
+          />
+        )}
       </div>
     </div>
   );

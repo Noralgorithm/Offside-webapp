@@ -2,6 +2,7 @@ import React from "react";
 import MarketCard from "../MarketCard";
 import { TbCurrencyDollar } from "react-icons/tb";
 import { FiClock } from "react-icons/fi";
+import { convertTime } from "../../../utils/convertTime";
 
 function MySalesCard({ auctions, setSalesModal }) {
   return (
@@ -17,13 +18,13 @@ function MySalesCard({ auctions, setSalesModal }) {
                   className="bg-gradient-offside rounded-full p-[1px]"
                 />
                 <h1 className="text-offside-titles font-bold text-lg">
-                  100.100
+                  {auction.initialPurchaseValue}
                 </h1>
               </div>
               <div className="flex gap-1 items-center">
                 <FiClock size="1.4rem" />
                 <h1 className="text-offside-titles font-bold text-lg">
-                  2h 20s
+                  {convertTime(auction.finishDate)}
                 </h1>
               </div>
             </div>

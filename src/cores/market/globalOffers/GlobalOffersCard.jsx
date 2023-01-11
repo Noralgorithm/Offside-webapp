@@ -2,11 +2,13 @@ import React from "react";
 import MarketCard from "../MarketCard";
 import { TbCurrencyDollar } from "react-icons/tb";
 import { FiClock } from "react-icons/fi";
+import { convertTime } from "../../../utils/convertTime";
 
 function GlobalOffersCard({
   setGlobalOffersModal,
   setGlobalBuyModal,
   auctions,
+  fetchAuctionInfo,
 }) {
   return (
     <>
@@ -27,7 +29,7 @@ function GlobalOffersCard({
               <div className="flex gap-1 items-center">
                 <FiClock size="1.4rem" />
                 <h1 className="text-offside-titles font-bold text-lg">
-                  2h 20s
+                  {convertTime(auction.finishDate)}
                 </h1>
               </div>
             </div>
@@ -35,6 +37,7 @@ function GlobalOffersCard({
               <button
                 className="bg-gradient-offside text-white px-9 py-1 rounded-full"
                 onClick={() => {
+                  fetchAuctionInfo(auction.id);
                   setGlobalOffersModal(true);
                 }}
               >

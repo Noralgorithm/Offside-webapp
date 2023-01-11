@@ -10,21 +10,35 @@ function GlobalOffers({ filters, setFilters }) {
   const [globalOffersModal, setGlobalOffersModal] = useState(false);
   const [globalBuyModal, setGlobalBuyModal] = useState(false);
 
-  const { globalAuctions, loading } = useGlobalOffers(setFilters, filters);
+  const {
+    globalAuctions,
+    loading,
+    currentAuctionInfo,
+    fetchAuctionInfo,
+    makeAnOffer,
+  } = useGlobalOffers(setFilters, filters);
 
-  if (loading) return <Loading />
+  if (loading) return <Loading />;
 
   return (
     <section className="w-5/6 h-full grid lg:grid-cols-2 grid-cols-1 gap-y-3 gap-x-10">
       {globalBuyModal && (
-        <DirectBuyModal setDirectBuyModal={setGlobalBuyModal} />
+        <DirectBuyModal
+          setDirectBuyModal={setGlobalBuyModal}
+          auctionInfo={currentAuctionInfo}
+        />
       )}
       {globalOffersModal && (
-        <GlobalOffersModal setGlobalOffersModal={setGlobalOffersModal} />
+        <GlobalOffersModal
+          setGlobalOffersModal={setGlobalOffersModal}
+          auctionInfo={currentAuctionInfo}
+          makeAnOffer={makeAnOffer}
+        />
       )}
       <GlobalOffersCard
         setGlobalOffersModal={setGlobalOffersModal}
         setGlobalBuyModal={setGlobalBuyModal}
+        fetchAuctionInfo={fetchAuctionInfo}
         auctions={globalAuctions}
       />
     </section>

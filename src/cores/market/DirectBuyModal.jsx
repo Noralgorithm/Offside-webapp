@@ -2,7 +2,7 @@ import React from "react";
 import MarketModal from "./MarketModal";
 import { TbCurrencyDollar } from "react-icons/tb";
 
-function DirectBuyModal({ setDirectBuyModal }) {
+function DirectBuyModal({ setDirectBuyModal, auctionInfo }) {
   return (
     <MarketModal>
       <div className="flex flex-col justify-evenly w-full h-full pt-5">
@@ -15,7 +15,7 @@ function DirectBuyModal({ setDirectBuyModal }) {
                 color="white"
                 className="bg-gradient-offside rounded-full p-[1px]"
               />
-              50
+              {auctionInfo.initialPurchaseValue}
             </h1>
           </div>
           <div className="flex flex-col items-center">
