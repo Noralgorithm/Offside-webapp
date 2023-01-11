@@ -21,7 +21,7 @@ function Navbar() {
   const location = useLocation().pathname;
 
   return (
-    <div className="w-screen">
+    <div className="w-screen sticky top-0">
       <nav className="w-full bg-white h-12 flex justify-between overflow-hidden">
         <Link className="h-full flex items-center" to="/">
           <img src={logoOffside} alt="" className="md:h-36 h-28" />

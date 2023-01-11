@@ -14,7 +14,7 @@ function HomePage() {
       <header className="md:w-11/12 w-10/12 flex">
         <SelectEvent />
       </header>
-      <section className="lg:w-11/12 md:w-[96%] h-full w-10/12 flex md:flex-row flex-col justify-between md:gap-0 gap-4">
+      <section className="xl:w-11/12 md:w-[96%] h-full w-10/12 flex md:flex-row flex-col justify-between md:gap-0 gap-4">
         <DailyPack setShowDailyPack={setShowDailyPack} />
         <Album />
         <Fantasy />
