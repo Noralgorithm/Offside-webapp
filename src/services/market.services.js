@@ -39,13 +39,16 @@ export const fetchMyAuctions = async (token, eventId) => {
 };
 
 export const fetchAuctionInfo = async (token, eventId, auctionId) => {
-  console.log(token, eventId, auctionId)
+  console.log(token, eventId, auctionId);
   try {
-    const { data } = await axios.get(BASE_URL + eventId + "/market/" + auctionId, {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    });
+    const { data } = await axios.get(
+      BASE_URL + eventId + "/market/" + auctionId,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
     if (!data.success) throw new Error(data.message);
     return data;
   } catch (e) {
@@ -123,12 +126,12 @@ export const addBid = async (
   }
 };
 
-export const updateBid = (token, eventId, bidId) => {
+export const updateBid = (token, eventId, bidId, value) => {
   try {
     const { data } = axios.put(
       BASE_URL + eventId + "/market/update/" + bidId,
       {
-        /* TODO */
+        value,
       },
       {
         headers: {

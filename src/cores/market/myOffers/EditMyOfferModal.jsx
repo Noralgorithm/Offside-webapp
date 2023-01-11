@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import MarketModal from "../MarketModal";
 import { TbCurrencyDollar } from "react-icons/tb";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
+import { useSelector } from "react-redux";
 
-function EditMyOfferModal({ setEditMyOfferModal }) {
+function EditMyOfferModal({ setEditMyOfferModal, auctionInfo }) {
+  const money = useSelector(state => state.user.money);
+
+  const [myOffer, setMyOffer] = useState(0);
+
+  console.log(auctionInfo)
   return (
-    <MarketModal>
+    <MarketModal player={auctionInfo.market.sticker}>
       <div className="flex flex-col justify-evenly w-full h-full pt-5">
         <div className="w-full flex justify-evenly text-offside-titles">
           <div className="flex flex-col items-center">
@@ -16,7 +22,7 @@ function EditMyOfferModal({ setEditMyOfferModal }) {
                 color="white"
                 className="bg-gradient-offside rounded-full p-[1px]"
               />
-              200
+              {auctionInfo.myLastBid.value}
             </h1>
           </div>
           <div className="flex flex-col items-center">
@@ -27,7 +33,7 @@ function EditMyOfferModal({ setEditMyOfferModal }) {
                 color="white"
                 className="bg-gradient-offside rounded-full p-[1px]"
               />
-              750
+              {auctionInfo.highestBid.value}
             </h1>
           </div>
         </div>
@@ -42,6 +48,8 @@ function EditMyOfferModal({ setEditMyOfferModal }) {
                 <input
                   type="number"
                   placeholder=""
+                  value={myOffer === 0 ? '' : myOffer}
+                  onChange={(e) => setMyOffer(e.target.value)}
                   className="appearance-none rounded-full text-center text-xl w-full p-1 text-offside-titles font-bold outline-none"
                 />
               </label>
@@ -49,7 +57,7 @@ function EditMyOfferModal({ setEditMyOfferModal }) {
             <h1 className="h-4/6 flex items-center text-[#00DB71] text-xl font-bold">
               (+
               <RiMoneyDollarCircleFill />
-              150)
+              {myOffer})
             </h1>
           </div>
           <div className="flex flex-col items-center">
@@ -60,7 +68,7 @@ function EditMyOfferModal({ setEditMyOfferModal }) {
                 color="white"
                 className="bg-gradient-offside rounded-full p-[1px]"
               />
-              500
+              {money - (myOffer + auctionInfo.highestBid.value)}
             </h1>
           </div>
         </div>

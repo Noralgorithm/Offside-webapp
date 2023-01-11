@@ -4,7 +4,7 @@ import { TbCurrencyDollar } from "react-icons/tb";
 import { FiClock } from "react-icons/fi";
 import { convertTime } from "../../../utils/convertTime";
 
-function MyOffersCard({ auctions, setEditMyOfferModal, setMyOffersBuyModal }) {
+function MyOffersCard({ auctions, fetchAuctionInfo, setEditMyOfferModal, setMyOffersBuyModal }) {
   return (
     <>
       {auctions.map((auction) => (
@@ -32,6 +32,7 @@ function MyOffersCard({ auctions, setEditMyOfferModal, setMyOffersBuyModal }) {
               <button
                 className="bg-gradient-offside text-white px-11 py-1 rounded-full"
                 onClick={() => {
+                  fetchAuctionInfo(auction.market.id);
                   setEditMyOfferModal(true);
                 }}
               >
