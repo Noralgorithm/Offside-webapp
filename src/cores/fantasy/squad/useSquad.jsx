@@ -6,6 +6,7 @@ import {
   insertPlayer as reduxInsertPlayer,
   removePlayer as reduxRemovePlayer
 } from "../../../features/fantasy/fantasySlice";
+import { toast } from "react-toastify";
 
 const useSquad = () => {
   const [players, setPlayers] = useState([]);
@@ -23,9 +24,16 @@ const useSquad = () => {
   const insertPlayer = async (position) => {
     if (!fantasy.selectedPlayer.position) return;
     if (!(position === fantasy.selectedPlayer.position))
-      return alert(
-        "NO VA ALLIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII"
-      );
+      return toast.error('El jugador no va en esa posición.', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
     try {
       await squadServices.insertPlayer(
         token,
@@ -34,9 +42,17 @@ const useSquad = () => {
       );
       dispatch(reduxInsertPlayer());
       fetchSquadInfo();
-      console.log("insertaoo")
     } catch (e) {
-      alert(e.message);
+      toast.error(e.message, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
     }
   };
 
@@ -44,10 +60,18 @@ const useSquad = () => {
     try {
       await squadServices.removePlayer(token, eventId, id);
       fetchSquadInfo();
-      console.log("borraooo")
       dispatch(reduxRemovePlayer())
     } catch (e) {
-      alert(e.message);
+      toast.error(e.message, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
     }
   };
 

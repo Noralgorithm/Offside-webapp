@@ -5,49 +5,51 @@ function PlayerCard({ playerInfo, isInLineup, handleClick, selected }) {
   const selectedStyle = selected ? "ring-4 ring-red-600" : "";
 
   const positions = {
-     forward: "Delantero" ,
-     defender: "Defensa" ,
-     midfielder: "Medio Campo" ,
-     goalkeeper: "Arquero" ,
+    forward: "Delantero",
+    defender: "Defensa",
+    midfielder: "Medio Campo",
+    goalkeeper: "Arquero",
   };
 
   return (
     <div
       onClick={handleClick}
       className={
-        "w-full h-full flex items-center bg-gradient-to-r from-[#92C8C9] to-[#254E5A] relative rounded " +
+        "w-full h-full flex items-center bg-white relative rounded-lg " +
         selectedStyle
       }
     >
-      <h1 className="-rotate-90 text-white text-base font-semibold absolute left-[-32px] w-28">
-        {playerInfo.playerName}
-      </h1>
-      <img src={playerInfo.img} alt="" className="h-full ml-7" />
-      <div className="h-full w-full flex flex-col justify-around">
-        <header className="w-full h-1/6 flex items-center gap-3">
-          <img
-            src={playerInfo.team.badge}
-            alt=""
-            className="h-[14%] rounded absolute left-[94px]"
-          />
+      <aside className="relative h-full xl:w-[35%] lg:w-[40%] md:w-[45%] sm:w-[35%] w-[60%] flex justify-center rounded-lg bg-gradient-offside">
+        <h1 className="-rotate-90 text-white text-sm font-semibold absolute md:right-[25%] right-[25%] w-32 h-10 bottom-[39%] pl-1">
+          {playerInfo.playerName}
+        </h1>
+        <img src={playerInfo.img} alt="" className="h-full xl:ml-6" />
+        <img
+          src={playerInfo.team.badge}
+          alt=""
+          className="h-1/6 rounded absolute top-2 right-2"
+        />
+      </aside>
+      <div className="h-full w-full flex flex-col justify-around pl-5">
+        <header className="w-full sm:h-1/6 h-[40%] flex items-center gap-3">
           <h1 className="bg-gradient-to-b from-[#B02419] to-[#FE4648] text-white p-0.5 text-xs rounded ml-2">
             {positions[playerInfo.position]}
           </h1>
         </header>
-        <section className="w-full h-4/6 flex relative">
+        <section className="w-full sm:h-4/6 h-[60%] flex relative">
           {isInLineup && (
-            <div className="w-4/6 h-full flex text-white font-semibold gap-2">
+            <div className="md:w-4/6 md:h-full text-lg flex text-offside-titles font-semibold gap-2">
               <BsCheck
-                size="1.3rem"
-                color="#FFFFFF"
-                className="bg-[#50DE2C] rounded-full"
+                size="1.5rem"
+                color="black"
+                className="bg-transparent rounded-full border-2 border-black"
               />
               En alineación
             </div>
           )}
-          <h1 className="text-white w-2/6 flex gap-2 font-semibold absolute right-0 top-[-8px]">
-            <span className="opacity-70 mt-2">PTS</span>{" "}
-            <span className="text-2xl">49</span>
+          <h1 className="text-white w-2/6 flex gap-2 font-semibold absolute md:right-0 right-1 md:top-[-8px] bottom-2">
+            <span className="opacity-70 mt-2 text-black">PTS</span>{" "}
+            <span className="text-2xl text-offside-titles">49</span>
           </h1>
         </section>
       </div>

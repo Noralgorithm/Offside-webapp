@@ -11,6 +11,7 @@ import {
 } from "../../features/album/albumSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../../components/Loading";
+import { toast } from "react-toastify";
 
 const Album = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -42,7 +43,16 @@ const Album = () => {
           dispatch(setCurrentTeam(teamInfo));
         }
       } catch (e) {
-        alert(e.message);
+        toast.error(e.message, {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
       }
     })();
   }, [album.currentTeam.index, album.claimedSticker]);
@@ -55,7 +65,7 @@ const Album = () => {
     );
   return (
     <div className="w-full h-[70%]">
-      <header className="md:h-[10%] h-[7%] w-full bg-sticker-name">
+      <header className="md:h-[10%] h-[7%] w-full bg-[#FAF7F7] border border-[#CAC4D0] rounded-t">
         <AlbumHeader />
       </header>
       <div className="w-full md:h-[90%] h-full">

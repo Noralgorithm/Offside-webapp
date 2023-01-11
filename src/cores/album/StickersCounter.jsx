@@ -5,7 +5,7 @@ function StickersCounter() {
   const currentTeam = useSelector(state => state.album.currentTeam)
 
   return (
-    <h1 className='text-xl font-semibold'>{currentTeam.currentPage}/{currentTeam.pages}</h1>
+    <h1 className='text-xl font-semibold text-offside-gradient'>{currentTeam.currentPage}/{currentTeam.pages}</h1>
   )
 }
 

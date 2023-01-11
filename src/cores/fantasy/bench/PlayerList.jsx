@@ -3,6 +3,7 @@ import PlayerCard from "../PlayerCard";
 import { useSelector } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
 import * as benchServices from "../../../services/squad.services";
+import { toast } from "react-toastify";
 
 function PlayerList({ handleSelectPlayer }) {
   const eventId = 1;
@@ -30,17 +31,26 @@ function PlayerList({ handleSelectPlayer }) {
       setNextPage(nextPage + 1);
       setPlayers(players.concat(data.items));
     } catch (e) {
-      alert(e.message);
+      toast.error(e.message, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
     }
   };
 
   return (
     <section
       id="scrollableSection"
-      className="bg-[#68878D] h-[80%] w-full justify-items-center overflow-y-scroll py-4 banca"
+      className="bg-[#DBD0D0] bg-opacity-50 h-[85%] w-full grid grid-cols-1 overflow-y-scroll py-4 banca"
     >
       <InfiniteScroll
-        className="bg-[#68878D] h-full w-full grid grid-cols-1 justify-items-center gap-2"
+        className="h-full w-full grid grid-cols-1 justify-items-center gap-2"
         scrollableTarget="scrollableSection"
         hasMore={nextPage < fantasy.bench.paginate.pages}
         dataLength={players.length}

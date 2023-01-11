@@ -5,6 +5,7 @@ import Ad from "./Ad";
 import * as adServices from "../../services/ad.services";
 import { useSelector } from "react-redux";
 import Loading from "../../components/Loading";
+import { toast } from "react-toastify";
 
 function WatchAds({ adScreen, showChromesScreen }) {
   const [closeAd, setCloseAd] = useState(false);
@@ -17,11 +18,20 @@ function WatchAds({ adScreen, showChromesScreen }) {
     (async () => {
       try {
         const data = await adServices.watch(token);
-        setAd(data.ad);
+        setAd(data.item);
         setLoading(false);
         setTimeout(setCloseAd, 2000, true);
       } catch (e) {
-        alert(e.message);
+        toast.error(e.message, {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
         setCloseAd(true);
       }
     })();
