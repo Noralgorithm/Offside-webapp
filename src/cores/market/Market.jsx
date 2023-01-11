@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import GlobalOffers from "./globalOffers/GlobalOffers";
 import MarketFilters from "./MarketFilters";
@@ -12,13 +12,13 @@ function Market() {
   const [mySales, setMySales] = useState(false);
   const [myOffers, setMyOffers] = useState(false);
 
-  const { auctions, setFilters, teamId, position, playerName, loading } = useMarket();
+  const { globalAuctions, setFilters, teamId, position, playerName, loading } =
+    useMarket();
 
-  if (loading) return <Loading />
+  if (loading) return <Loading />;
 
   return (
     <div className="w-screen h-screen flex flex-col">
-      <Navbar />
       <div className="w-full bg-black bg-opacity-40">
         <h1 className="text-white text-4xl w-1/4 text-center font-bold mt-4">
           Mercado
@@ -73,9 +73,19 @@ function Market() {
           </button>
         </div>
 
-        {!myOffers && !mySales && <GlobalOffers auctions={auctions} />}
-        {myOffers && <MyOffers />}
-        {mySales && <MySales />}
+        {!myOffers && !mySales && (
+          <GlobalOffers
+            setFilters={setFilters}
+            filters={{ teamId, position, playerName }}
+          />
+        )}
+        {myOffers && (
+          <MyOffers
+            setFilters={setFilters}
+            filters={{ teamId, position, playerName }}
+          />
+        )}
+        {mySales && <MySales setFilters={setFilters} filters={{teamId,position,playerName}} />}
       </div>
     </div>
   );

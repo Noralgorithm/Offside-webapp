@@ -67,9 +67,7 @@ function MarketSquad({ setMarketSquad }) {
       fantasyState.bench.teamFilter,
       fantasyState.bench.positionFilter,
       fantasyState.bench.playerNameSearch,
-      fantasyState.bench.paginate.page,
-      fantasyState.insertedPlayer,
-      fantasyState.removedPlayer,
+      fantasyState.bench.paginate.page
     ],
   )
   

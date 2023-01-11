@@ -19,6 +19,25 @@ export const fetchAuctionsList = async (token, eventId) => {
   }
 };
 
+export const fetchMyAuctions = async (token, eventId) => {
+  try {
+    const { data } = await axios.get(
+      BASE_URL + eventId + "/market?myAuction=true",
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
+    if (!data?.success) throw new Error(data?.message);
+    return data;
+  } catch (e) {
+    throw new Error(
+      e?.response?.data?.message || e?.message || "Error Desconocido"
+    );
+  }
+};
+
 export const fetchAuctionInfo = (token, eventId, auctionId) => {
   try {
     const { data } = axios.get(BASE_URL + eventId + "/market/" + auctionId, {
@@ -26,6 +45,23 @@ export const fetchAuctionInfo = (token, eventId, auctionId) => {
         Authorization: "Bearer " + token,
       },
     });
+    if (!data.success) throw new Error(data.message);
+    return data;
+  } catch (e) {
+    throw new Error(
+      e?.response?.data?.message || e?.message || "Error Desconocido"
+    );
+  }
+};
+
+export const fetchMyBids = async (token, eventId) => {
+  try {
+    const { data } = await axios.get(BASE_URL + eventId + "/market/myBids", {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
+    console.log(data)
     if (!data.success) throw new Error(data.message);
     return data;
   } catch (e) {
@@ -45,7 +81,7 @@ export const addAuction = async (
       {
         initialValue,
         directPurchase,
-        eventId: event ,
+        eventId: event,
         playerId,
       },
       {
@@ -54,7 +90,7 @@ export const addAuction = async (
         },
       }
     );
-    console.log(data)
+    console.log(data);
     return data;
   } catch (e) {
     throw new Error(e?.response?.data?.message || "Error Desconocido");

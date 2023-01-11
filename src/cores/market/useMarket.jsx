@@ -1,11 +1,13 @@
 import { useCallback, useState, useEffect } from "react";
 import * as marketServices from "../../services/market.services";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const useMarket = () => {
   const { token, event } = useSelector((state) => state.user);
-  const [auctions, setAuctions] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [globalAuctions, setGlobalAuctions] = useState([]);
+  const [myAuctions, setMyAuctions] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   //filters and search
   const [teamId, setTeamId] = useState(null);
@@ -18,7 +20,7 @@ const useMarket = () => {
     setPlayerName(playerName || null);
   };
 
-  const fetchAuctionsInfo = useCallback(async () => {
+  const fetchGlobalAuctions = useCallback(async () => {
     try {
       setLoading(true);
       const data = await marketServices.fetchAuctionsList(token, event, {
@@ -26,8 +28,8 @@ const useMarket = () => {
         position,
         playerName,
       });
-      setAuctions(data.items);
-      console.log(data.items)
+      setGlobalAuctions(data.items);
+      console.log(data.items);
     } catch (e) {
       alert(e);
     } finally {
@@ -35,11 +37,26 @@ const useMarket = () => {
     }
   }, [token, event, teamId, position, playerName]);
 
-  useEffect(() => {
-    fetchAuctionsInfo();
-  }, [fetchAuctionsInfo]);
+  const fetchMyAuctions = useCallback(async () => {
+    try {
+      setLoading(true);
+      const data = await marketServices.fetchMyAuctions(token, event, {
+        teamId,
+        position,
+        playerName,
+      });
+      setMyAuctions(data.items);
+    } catch (e) {
+      toast.error(e.message);
+    }
+  }, [token, event, playerName, position, teamId]);
 
-  return { auctions, setFilters, teamId, position, playerName, loading };
+  useEffect(() => {
+    fetchGlobalAuctions();
+    fetchMyAuctions();
+  }, [fetchGlobalAuctions, fetchMyAuctions]);
+
+  return { globalAuctions, setFilters, teamId, position, playerName, loading };
 };
 
 export default useMarket;
