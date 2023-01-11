@@ -11,7 +11,7 @@ import UnprotectedRoutes from "./cores/auth/login/UnprotectedRoutes";
 import Index from "./cores/album/Index";
 import Inventory from "./cores/album/inventario/Inventory";
 import Profile from "./cores/profile/Profile";
-import { Fantasy as Plantilla } from "./cores/fantasy/squad/Fantasy";
+import { Fantasy } from "./cores/fantasy/Fantasy";
 import Navbar from "./components/Navbar";
 import useEventFetcher from "./useEventFetcher";
 import PreNavbar from "./components/PreNavbar";
@@ -48,7 +48,7 @@ const App = () => {
             <Route path="album" element={<Index />} />
             <Route path="album/inventory" element={<Inventory />} />
             <Route path="profile" element={<Profile />} />
-            <Route path="fantasy" element={<Plantilla />} />
+            <Route path="fantasy" element={<Fantasy />} />
           </Route>
         </Routes>
       </BrowserRouter>

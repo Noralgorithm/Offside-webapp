@@ -48,7 +48,7 @@ function FilterPlayer({ dispatch }) {
           className="rounded bg-black bg-opacity-0 text-center font-semibold outline-none"
         />
       </label>
-      <div className="flex w-full justify-evenly">
+      <div className="flex w-full justify-evenly gap-5">
         <Filter handleFilter={handleTeamFilter} options={teams}>
           Equipo
         </Filter>
