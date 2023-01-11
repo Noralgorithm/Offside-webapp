@@ -10,10 +10,12 @@ const AvailableText = ({ isAvailable, setIsAvailable }) => {
 
   return (
     <>
-    {console.log('renderizao el texto')}
+      {console.log("renderizao el texto")}
       {isAvailable
         ? "¡Sobre Disponible!"
-        : `Desbloqueable en ${hours}:${minutes}:${seconds}.`}
+        : `Desbloqueable en ${hours < 10 ? "0" + hours : hours}:${
+            minutes < 10 ? "0" + minutes : minutes
+          }:${seconds < 10 ? "0" + seconds : seconds}.`}
     </>
   );
 };
