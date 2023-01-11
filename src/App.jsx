@@ -5,7 +5,7 @@ import Login from "./cores/auth/login/Login";
 import Homepage from "./cores/homepage/Homepage";
 import Dashboard from "./cores/dashboard/Dashboard";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "./features/user/userSlice";
+import { login, logout } from "./features/user/userSlice";
 import ProtectedRoutes from "./cores/auth/login/ProtectedRoutes";
 import UnprotectedRoutes from "./cores/auth/login/UnprotectedRoutes";
 import Index from "./cores/album/Index";
@@ -18,6 +18,7 @@ import PreNavbar from "./components/PreNavbar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loading from "./components/Loading";
+import { toast } from 'react-toastify';
 
 const App = () => {
   const user = useSelector((state) => state.user);
@@ -26,8 +27,23 @@ const App = () => {
   const { loading } = useEventFetcher();
 
   useLayoutEffect(() => {
-    if (localStorage.getItem("loggedUser"))
-      dispatch(login(JSON.parse(localStorage.getItem("loggedUser"))));
+    try {
+      if (localStorage.getItem("loggedUser"))
+        dispatch(login(JSON.parse(localStorage.getItem("loggedUser"))));
+    } catch (e) {
+      localStorage.clear();
+      dispatch(logout());
+      toast.error("Error con la sesion almacenada localmente, recargue la pagina.", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
   }, [dispatch]);
 
   if (loading) return <Loading />;
