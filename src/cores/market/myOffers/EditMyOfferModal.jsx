@@ -9,7 +9,6 @@ function EditMyOfferModal({ setEditMyOfferModal, auctionInfo }) {
 
   const [myOffer, setMyOffer] = useState(0);
 
-  console.log(auctionInfo)
   return (
     <MarketModal player={auctionInfo.market.sticker}>
       <div className="flex flex-col justify-evenly w-full h-full pt-5">
@@ -68,7 +67,7 @@ function EditMyOfferModal({ setEditMyOfferModal, auctionInfo }) {
                 color="white"
                 className="bg-gradient-offside rounded-full p-[1px]"
               />
-              {money - (myOffer + auctionInfo.highestBid.value)}
+              {money - myOffer - auctionInfo.highestBid.value}
             </h1>
           </div>
         </div>
