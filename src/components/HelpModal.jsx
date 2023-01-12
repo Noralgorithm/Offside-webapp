@@ -13,7 +13,7 @@ function HelpModal({ setHelpModal, screenStyles, helps }) {
         screenStyles
       }
     >
-      <div className="w-[500px] md:h-96 h-[360px] bg-white flex flex-col rounded-lg">
+      <div className="md:w-[500px] w-11/12 md:h-96 h-[360px] bg-white flex flex-col rounded-lg">
         <header className="h-1/6 w-full flex justify-end items-start">
           <button
             onClick={() => {

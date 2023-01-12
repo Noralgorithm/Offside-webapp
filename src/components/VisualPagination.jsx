@@ -7,7 +7,7 @@ function VisualPagination({ total, actual }) {
         return (
           <div
             className={`h-3 w-3 rounded-full ${
-              index === actual ? "bg-red-700" : "bg-gray-400"
+              index === actual ? "bg-gradient-offside" : "bg-[#D9D9D9]"
             }`}
           ></div>
         );
