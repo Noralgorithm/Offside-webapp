@@ -6,7 +6,7 @@ import * as stickerServices from "../../services/sticker.services";
 import ObtainedSticker from "./ObtainedSticker";
 import { toast } from "react-toastify";
 
-function ChromesScreen({ hideDailyPack }) {
+function ChromesScreen({ hideDailyPack, setIsAvailable }) {
   const { token, event } = useSelector((state) => state.user);
   const [stickers, setStickers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -17,8 +17,9 @@ function ChromesScreen({ hideDailyPack }) {
       try {
         const data = await stickerServices.obtain(token, event);
         setStickers(data.items);
-        setLoading(false);
+        setIsAvailable(false);
       } catch(e) {
+        hideDailyPack(false);
         toast.error(e.message, {
           position: "bottom-right",
           autoClose: 5000,
@@ -29,6 +30,8 @@ function ChromesScreen({ hideDailyPack }) {
           progress: undefined,
           theme: "light",
           });
+      } finally {
+        setLoading(false);
       }
     })();
   }, [token]);

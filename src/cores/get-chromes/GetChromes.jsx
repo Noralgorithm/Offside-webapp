@@ -3,7 +3,7 @@ import ChromesScreen from "./ChromesScreen";
 import { useState } from "react";
 import WatchAds from "./WatchAds";
 
-function GetChromes({ hideDailyPack }) {
+function GetChromes({ hideDailyPack, setIsAvailable }) {
   const [watchAd, setWatchAd] = useState(true);
   const [useChromeScreen, setUseChromeScreen] = useState(false);
   //eslint-disable-next-line
@@ -25,6 +25,7 @@ function GetChromes({ hideDailyPack }) {
       {useChromeScreen && (
         <ChromesScreen
           hideDailyPack={hideDailyPack}
+          setIsAvailable={setIsAvailable}
         />
       )}
     </div>

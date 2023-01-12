@@ -10,13 +10,14 @@ export const obtain = async (token, eventId) => {
         Authorization: "Bearer " + token,
       },
     });
+    if (!data.success) throw new Error(data.message || "Error Desconocido");
     return data;
   } catch (e) {
-    throw new Error(e?.response?.data?.message || "Error Desconocido.");
+    throw new Error(e?.response?.data?.message || e?.message || "Error Desconocido.");
   }
 };
 
-export const checkStatus = async (token) => {
+export const checkStatus = async (token, /* eventId */) => {
   try {
     const { data } = await axios.get(BASE_URL + "/get-diary-status", {
       headers: {

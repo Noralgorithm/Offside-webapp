@@ -20,7 +20,6 @@ const useEventFetcher = () => {
   const fetchEventsList = useCallback(async () => {
     if (!user.success) return;
     try {
-      setLoading(true);
       const data = await fantasyServices.fetchEventsInfo(token);
       dispatch(setEventsList(data.items));
       dispatch(setEvent(data.items[0].id));
@@ -36,8 +35,6 @@ const useEventFetcher = () => {
         progress: undefined,
         theme: "light",
       });
-    } finally {
-      setLoading(false);
     }
   }, [token, dispatch, user.success]);
 
