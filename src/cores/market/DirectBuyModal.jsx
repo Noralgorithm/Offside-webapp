@@ -1,11 +1,12 @@
 import React from "react";
 import MarketModal from "./MarketModal";
 import { TbCurrencyDollar } from "react-icons/tb";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setMoney } from "../../features/user/userSlice";
 
 function DirectBuyModal({ setDirectBuyModal, auctionInfo, makeDirectBuy }) {
-  
-  const money = useSelector(state => state.user.money);
+  const money = useSelector((state) => state.user.money);
+  const dispatch = useDispatch();
 
   return (
     <MarketModal player={auctionInfo.market.sticker}>
@@ -45,11 +46,22 @@ function DirectBuyModal({ setDirectBuyModal, auctionInfo, makeDirectBuy }) {
               <h1 className="text-offside-gradient font-semibold ">Cancelar</h1>
             </button>
           </span>
-          <button className="bg-gradient-offside rounded-full text-white font-semibold py-1 px-14"
-          onClick={() => {
-            makeDirectBuy(0, auctionInfo.market.id);
-            setDirectBuyModal(false);
-          }}>
+          <button
+            className="bg-gradient-offside rounded-full text-white font-semibold py-1 px-14"
+            onClick={() => {
+              const success = makeDirectBuy(
+                0,
+                auctionInfo.market.id,
+                auctionInfo.myLastBid.id,
+                true
+              );
+              if (success)
+                dispatch(
+                  setMoney(money - auctionInfo.market.immediatePurchaseValue)
+                );
+              setDirectBuyModal(false);
+            }}
+          >
             Aceptar
           </button>
         </div>

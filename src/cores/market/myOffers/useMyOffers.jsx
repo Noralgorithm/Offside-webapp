@@ -18,7 +18,6 @@ const useMyOffers = (setFilters, { teamId, position, playerName }) => {
         playerName,
       });
       setMyOffers(data.items);
-      console.log(data);
     } catch (e) {
       toast.error(e.message);
     } finally {
@@ -45,11 +44,47 @@ const useMyOffers = (setFilters, { teamId, position, playerName }) => {
     [token, event]
   );
 
+  const updateAnOffer = async (value, marketId, bidId, isDirectPurchase) => {
+    try {
+      setLoading(true);
+      await marketServices.updateBid(
+        token,
+        event,
+        marketId,
+        value,
+        bidId,
+        isDirectPurchase
+      );
+      await fetchMyOffers();
+      toast.success(
+        isDirectPurchase
+          ? "¡Jugador comprado con éxito!"
+          : "¡Puja realizada con éxito!"
+      );
+      return true;
+    } catch (e) {
+      toast.error(e.message);
+      return false;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    setFilters();
+  }, []);
+
   useEffect(() => {
     fetchMyOffers();
   }, [fetchMyOffers]);
 
-  return { myOffers, loading, currentAuctionInfo, fetchAuctionInfo };
+  return {
+    myOffers,
+    loading,
+    currentAuctionInfo,
+    fetchAuctionInfo,
+    updateAnOffer,
+  };
 };
 
 export default useMyOffers;

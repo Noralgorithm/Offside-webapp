@@ -83,16 +83,12 @@ function GlobalOffersModal({ setGlobalOffersModal, auctionInfo, makeAnOffer }) {
           </span>
           <button
             className="bg-gradient-offside rounded-full text-white font-semibold py-1 px-14"
-            onClick={() => {
-              makeAnOffer(
+            onClick={async () => {
+              const success = await makeAnOffer(
                 myOffer + auctionInfo.market.initialPurchaseValue,
                 auctionInfo.market.id
               );
-              dispatch(
-                setMoney(
-                 futureBalance
-                )
-              );
+              if (success) dispatch(setMoney(futureBalance));
               setGlobalOffersModal();
             }}
           >

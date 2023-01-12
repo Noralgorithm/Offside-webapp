@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import MarketModal from "../MarketModal";
 import { TbCurrencyDollar } from "react-icons/tb";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setMoney } from "../../../features/user/userSlice";
 
-function EditMyOfferModal({ setEditMyOfferModal, auctionInfo }) {
-  const money = useSelector(state => state.user.money);
+function EditMyOfferModal({ setEditMyOfferModal, auctionInfo, updateAnOffer }) {
+  const money = useSelector((state) => state.user.money);
+
+  const dispatch = useDispatch();
 
   const [myOffer, setMyOffer] = useState(0);
 
+  console.log(auctionInfo);
   return (
     <MarketModal player={auctionInfo.market.sticker}>
       <div className="flex flex-col justify-evenly w-full h-full pt-5">
@@ -47,8 +51,8 @@ function EditMyOfferModal({ setEditMyOfferModal, auctionInfo }) {
                 <input
                   type="number"
                   placeholder=""
-                  value={myOffer === 0 ? '' : myOffer}
-                  onChange={(e) => setMyOffer(e.target.value)}
+                  value={myOffer === 0 ? "" : myOffer}
+                  onChange={(e) => setMyOffer(Number(e.target.value))}
                   className="appearance-none rounded-full text-center text-xl w-full p-1 text-offside-titles font-bold outline-none"
                 />
               </label>
@@ -56,7 +60,7 @@ function EditMyOfferModal({ setEditMyOfferModal, auctionInfo }) {
             <h1 className="h-4/6 flex items-center text-[#00DB71] text-xl font-bold">
               (+
               <RiMoneyDollarCircleFill />
-              {myOffer})
+              {auctionInfo.highestBid.value})
             </h1>
           </div>
           <div className="flex flex-col items-center">
@@ -82,7 +86,22 @@ function EditMyOfferModal({ setEditMyOfferModal, auctionInfo }) {
               <h1 className="text-offside-gradient font-semibold ">Cancelar</h1>
             </button>
           </span>
-          <button className="bg-gradient-offside rounded-full text-white font-semibold py-1 px-14">
+          <button
+            className="bg-gradient-offside rounded-full text-white font-semibold py-1 px-14"
+            onClick={() => {
+              const success = updateAnOffer(
+                myOffer,
+                auctionInfo.market.id,
+                auctionInfo.myLastBid.id,
+                false
+              );
+              if (success)
+                dispatch(
+                  setMoney(money - myOffer - auctionInfo.highestBid.value)
+                );
+              setEditMyOfferModal(false);
+            }}
+          >
             Aceptar
           </button>
         </div>

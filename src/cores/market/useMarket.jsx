@@ -1,21 +1,18 @@
-import { useCallback, useState, useEffect } from "react";
-import * as marketServices from "../../services/market.services";
-import { useSelector } from "react-redux";
-import { toast } from "react-toastify";
+import { useState } from "react";
 
 const useMarket = () => {
   //filters and search
-  const [teamId, setTeamId] = useState(null);
-  const [position, setPosition] = useState(null);
-  const [playerName, setPlayerName] = useState(null);
+  const [teamId, setTeamId] = useState('');
+  const [position, setPosition] = useState('');
+  const [playerName, setPlayerName] = useState('');
 
-  const setFilters = ({ teamId, position, playerName }) => {
-    setTeamId(teamId || null);
-    setPosition(position || null);
-    setPlayerName(playerName || null);
+  const setFilters = () => {
+    setTeamId('');
+    setPosition('');
+    setPlayerName('');
   };
 
-  return { setFilters, teamId, position, playerName };
+  return { setFilters, teamId, position, playerName, setTeamId, setPosition, setPlayerName };
 };
 
 export default useMarket;

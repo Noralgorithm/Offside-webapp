@@ -62,6 +62,10 @@ const useMySales = (setFilters, { teamId, position, playerName }) => {
   };
 
   useEffect(() => {
+    setFilters();
+  }, []);
+
+  useEffect(() => {
     fetchMyAuctions();
   }, [fetchMyAuctions]);
 

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useState } from "react";
 import GlobalOffers from "./globalOffers/GlobalOffers";
 import MarketFilters from "./MarketFilters";
 import MyOffers from "./myOffers/MyOffers";
@@ -10,7 +10,7 @@ function Market() {
   const [mySales, setMySales] = useState(false);
   const [myOffers, setMyOffers] = useState(false);
 
-  const { setFilters, teamId, position, playerName } = useMarket();
+  const { setFilters, teamId, position, playerName, setTeamId, setPosition, setPlayerName } = useMarket();
 
   return (
     <div className="w-screen h-screen flex flex-col">
@@ -62,7 +62,12 @@ function Market() {
       </div>
       <div className="w-full h-full flex flex-col items-center overflow-y-scroll banca">
         <div className="mt-5 w-11/12 flex justify-between items-center">
-          <MarketFilters />
+          <MarketFilters
+            filters={{ teamId, position, playerName }}
+            setTeamId={setTeamId}
+            setPosition={setPosition}
+            setPlayerName={setPlayerName}
+          />
           <button className="rounded-full bg-gradient-offside p-[2px] h-6">
             <BiQuestionMark size="1.3rem" color="white" />
           </button>

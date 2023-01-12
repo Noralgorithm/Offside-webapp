@@ -3,13 +3,26 @@ import { api } from "../config";
 
 const BASE_URL = api + "/public-events/";
 
-export const fetchAuctionsList = async (token, eventId) => {
+export const fetchAuctionsList = async (
+  token,
+  eventId,
+  { teamId, position, playerName }
+) => {
+  console.log(teamId, position, playerName)
   try {
-    const { data } = await axios.get(BASE_URL + eventId + "/market", {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    });
+    let queryString = "";
+    if (teamId) queryString += `teamId=${teamId}`;
+    if (position) queryString += `position=${position}`;
+    if (playerName) queryString += `playername=${playerName}`;
+
+    const { data } = await axios.get(
+      BASE_URL + eventId + "/market?" + queryString,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
     if (!data?.success) throw new Error(data?.message);
     return data;
   } catch (e) {
@@ -39,7 +52,6 @@ export const fetchMyAuctions = async (token, eventId) => {
 };
 
 export const fetchAuctionInfo = async (token, eventId, auctionId) => {
-  console.log(token, eventId, auctionId);
   try {
     const { data } = await axios.get(
       BASE_URL + eventId + "/market/" + auctionId,
@@ -65,7 +77,6 @@ export const fetchMyBids = async (token, eventId) => {
         Authorization: "Bearer " + token,
       },
     });
-    console.log(data);
     if (!data.success) throw new Error(data.message);
     return data;
   } catch (e) {
@@ -126,13 +137,21 @@ export const addBid = async (
   }
 };
 
-export const updateBid = (token, eventId, bidId, value, isDirectPurchase) => {
+export const updateBid = async (
+  token,
+  eventId,
+  marketId,
+  value,
+  bidId,
+  isDirectPurchase
+) => {
   try {
-    const { data } = axios.put(
+    const { data } = await axios.put(
       BASE_URL + eventId + "/market/update/" + bidId,
       {
         value,
-        isDirectPurchase
+        marketId,
+        isDirectPurchase,
       },
       {
         headers: {
