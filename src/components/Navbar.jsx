@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { TbCurrencyDollar } from "react-icons/tb";
 import { SlOptionsVertical } from "react-icons/sl";
@@ -15,17 +15,38 @@ import {
 import logoOffside from "../Images/logo-offside.png";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import chavezOffside from "../HUGO-CHÁVEZ-OFFSIDE.mp3";
 
 function Navbar() {
   const money = useSelector((state) => state.user.money);
   const location = useLocation().pathname;
+  const [easterEgg, setEasterEgg] = useState(10);
 
   return (
     <div className="w-screen">
       <nav className="w-full bg-white h-12 flex justify-between overflow-hidden">
-        <Link className="h-full flex items-center" to="/">
+        <Link
+          className="h-full flex items-center"
+          to="/dashboard"
+          onClick={() => {
+            if (easterEgg > 1) {
+              setEasterEgg(easterEgg - 1);
+            } else if (easterEgg === 1) {
+              setEasterEgg(0);
+              setTimeout(() => {
+                setEasterEgg(10);
+              }, 10000);
+            }
+            console.log(easterEgg);
+          }}
+        >
           <img src={logoOffside} alt="" className="md:h-36 h-28" />
         </Link>
+        {easterEgg === 0 && (
+          <audio autoPlay>
+            <source src={chavezOffside} type="audio/mpeg" />
+          </audio>
+        )}
         <div className="h-full flex md:w-5/12 w-9/12 items-center justify-between">
           <div className="flex h-full md:w-1/2 items-center justify-evenly">
             <Link to="/album" className="rounded-full md:hover:bg-zinc-300 p-1">
