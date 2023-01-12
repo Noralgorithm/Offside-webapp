@@ -50,7 +50,7 @@ function PlayerList({ handleSelectPlayer }) {
       className="bg-[#DBD0D0] bg-opacity-50 h-[85%] w-full grid grid-cols-1 overflow-y-scroll py-4 banca"
     >
       <InfiniteScroll
-        className="h-full w-full grid grid-cols-1 justify-items-center gap-2"
+        className="h-full w-full grid grid-cols-1 justify-items-center gap-2 pt-1"
         scrollableTarget="scrollableSection"
         hasMore={nextPage < fantasy.bench.paginate.pages}
         dataLength={players.length}
