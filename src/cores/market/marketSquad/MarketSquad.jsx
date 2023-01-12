@@ -13,9 +13,8 @@ import * as teamServices from "../../../services/team.services";
 import SelectedPlayerModal from "../SelectedPlayerModal";
 import { BiQuestionMark } from "react-icons/bi";
 import Loading from "../../../components/Loading";
-import * as marketServices from "../../../services/market.services";
 
-function MarketSquad({ setMarketSquad }) {
+function MarketSquad({ setMarketSquad, createAuction }) {
   const event = useSelector((state) => state.user.event);
   const token = useSelector((state) => state.user.token);
   const [isLoading, setIsLoading] = useState(true);
@@ -23,23 +22,6 @@ function MarketSquad({ setMarketSquad }) {
   const [selectedPlayer, setSelectedPlayer] = useState();
 
   const dispatch = useDispatch();
-
-  const createAuction = async (initialValue, directPurchase, playerId) => {
-    try {
-      setIsLoading(true);
-      await marketServices.addAuction(token, {
-        initialValue,
-        directPurchase,
-        event,
-        playerId,
-      });
-      await fetchBench();
-    } catch (e) {
-      alert(e.message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   const fetchBench = useCallback(
     async () => {
@@ -70,7 +52,7 @@ function MarketSquad({ setMarketSquad }) {
       fantasyState.bench.paginate.page
     ],
   )
-  
+
 
   useEffect(() => {
     fetchBench();

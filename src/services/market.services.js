@@ -126,12 +126,13 @@ export const addBid = async (
   }
 };
 
-export const updateBid = (token, eventId, bidId, value) => {
+export const updateBid = (token, eventId, bidId, value, isDirectPurchase) => {
   try {
     const { data } = axios.put(
       BASE_URL + eventId + "/market/update/" + bidId,
       {
         value,
+        isDirectPurchase
       },
       {
         headers: {

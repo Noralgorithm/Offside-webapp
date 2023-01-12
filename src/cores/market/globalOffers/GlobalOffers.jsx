@@ -16,6 +16,7 @@ function GlobalOffers({ filters, setFilters }) {
     currentAuctionInfo,
     fetchAuctionInfo,
     makeAnOffer,
+    makeDirectBuy,
   } = useGlobalOffers(setFilters, filters);
 
   if (loading) return <Loading />;
@@ -26,6 +27,7 @@ function GlobalOffers({ filters, setFilters }) {
         <DirectBuyModal
           setDirectBuyModal={setGlobalBuyModal}
           auctionInfo={currentAuctionInfo}
+          makeDirectBuy={makeDirectBuy}
         />
       )}
       {globalOffersModal && (

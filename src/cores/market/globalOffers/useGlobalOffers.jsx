@@ -50,11 +50,24 @@ const useGlobalOffers = (setFilters, { teamId, position, playerName }) => {
     }
   }
 
+  const makeDirectBuy = async (value, marketId) => {
+    try {
+      setLoading(true);
+      await marketServices.addBid(token, event, { value, marketId, isDirectPurchase: true });
+      await fetchGlobalAuctions();
+      toast.success("¡Jugador comprado con éxito!");
+    } catch (e) {
+      toast.error(e.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   useEffect(() => {
     fetchGlobalAuctions();
   }, [fetchGlobalAuctions]);
 
-  return { globalAuctions, loading, currentAuctionInfo, fetchAuctionInfo, makeAnOffer };
+  return { globalAuctions, loading, currentAuctionInfo, fetchAuctionInfo, makeAnOffer, makeDirectBuy };
 };
 
 export default useGlobalOffers;

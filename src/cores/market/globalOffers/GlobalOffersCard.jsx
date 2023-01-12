@@ -46,6 +46,7 @@ function GlobalOffersCard({
               <button
                 className="bg-gradient-offside text-white px-2 py-1 rounded-full"
                 onClick={() => {
+                  fetchAuctionInfo(auction.id);
                   setGlobalBuyModal(true);
                 }}
               >

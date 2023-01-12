@@ -2,9 +2,10 @@ import React from "react";
 import MarketModal from "../MarketModal";
 import { TbCurrencyDollar } from "react-icons/tb";
 
-function MySalesModalCard({ setSalesModal }) {
+function MySalesModalCard({ setSalesModal, auctionInfo }) {
+  console.log(auctionInfo)
   return (
-    <MarketModal>
+    <MarketModal player={auctionInfo.market.sticker}>
       <div className="flex flex-col justify-evenly w-full h-full pt-5">
         <div className="w-full flex justify-evenly text-offside-titles">
           <div className="flex flex-col items-center">
@@ -15,7 +16,7 @@ function MySalesModalCard({ setSalesModal }) {
                 color="white"
                 className="bg-gradient-offside rounded-full p-[1px]"
               />
-              50
+              {auctionInfo.market.initialPurchaseValue}
             </h1>
           </div>
           <div className="flex flex-col items-center">
@@ -26,7 +27,7 @@ function MySalesModalCard({ setSalesModal }) {
                 color="white"
                 className="bg-gradient-offside rounded-full p-[1px]"
               />
-              750
+              {auctionInfo.market.immediatePurchaseValue}
             </h1>
           </div>
         </div>
@@ -38,13 +39,13 @@ function MySalesModalCard({ setSalesModal }) {
               color="white"
               className="bg-gradient-offside rounded-full p-[1px]"
             />
-            250
+            {auctionInfo.highestBid.value}
           </h1>
         </div>
         <div className="w-full flex justify-center">
           <button
             className="bg-gradient-offside rounded-full text-white font-semibold py-1 px-14"
-            onClick={() => {
+            onClick={async () => {
               setSalesModal(false);
             }}
           >

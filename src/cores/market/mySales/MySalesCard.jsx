@@ -4,7 +4,7 @@ import { TbCurrencyDollar } from "react-icons/tb";
 import { FiClock } from "react-icons/fi";
 import { convertTime } from "../../../utils/convertTime";
 
-function MySalesCard({ auctions, setSalesModal }) {
+function MySalesCard({ auctions, setSalesModal, fetchAuctionInfo }) {
   return (
     <>
       {auctions.map((auction) => (
@@ -31,7 +31,8 @@ function MySalesCard({ auctions, setSalesModal }) {
             <div className="h-3/4 w-1/2 flex justify-center items-center">
               <button
                 className="bg-gradient-offside text-white px-2 py-1 rounded-full"
-                onClick={() => {
+                onClick={async () => {
+                  await fetchAuctionInfo(auction.id);
                   setSalesModal(true);
                 }}
               >

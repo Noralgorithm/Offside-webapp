@@ -1,12 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
-import Navbar from "../../components/Navbar";
 import GlobalOffers from "./globalOffers/GlobalOffers";
 import MarketFilters from "./MarketFilters";
 import MyOffers from "./myOffers/MyOffers";
 import MySales from "./mySales/MySales";
 import { BiQuestionMark } from "react-icons/bi";
 import useMarket from "./useMarket";
-import Loading from "../../components/Loading";
 
 function Market() {
   const [mySales, setMySales] = useState(false);
@@ -69,7 +67,6 @@ function Market() {
             <BiQuestionMark size="1.3rem" color="white" />
           </button>
         </div>
-
         {!myOffers && !mySales && (
           <GlobalOffers
             setFilters={setFilters}
