@@ -106,7 +106,7 @@ const useEventFetcher = () => {
     fetchEventInfo();
   }, [fetchEventInfo]);
 
-  return { loading };
+  return { loading, setLoading };
 };
 
 export default useEventFetcher;

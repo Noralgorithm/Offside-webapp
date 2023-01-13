@@ -18,33 +18,39 @@ import PreNavbar from "./components/PreNavbar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loading from "./components/Loading";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 const App = () => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  const { loading } = useEventFetcher();
+  const { loading, setLoading } = useEventFetcher();
 
   useLayoutEffect(() => {
     try {
+      setLoading(true);
       if (localStorage.getItem("loggedUser"))
         dispatch(login(JSON.parse(localStorage.getItem("loggedUser"))));
     } catch (e) {
       localStorage.clear();
       dispatch(logout());
-      toast.error("Error con la sesion almacenada localmente, recargue la pagina.", {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.error(
+        "Error con la sesion almacenada localmente, recargue la pagina.",
+        {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
+      );
+    } finally {
+      setLoading(false);
     }
-  }, [dispatch]);
+  }, [dispatch, loading, setLoading]);
 
   if (loading) return <Loading />;
 
