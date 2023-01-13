@@ -25,7 +25,7 @@ const App = () => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  const { loading } = useEventFetcher();
+  const { loading, setLoading } = useEventFetcher();
 
   useLayoutEffect(() => {
     try {
@@ -44,6 +44,8 @@ const App = () => {
         progress: undefined,
         theme: "light",
       });
+    } finally {
+      setLoading(false);
     }
   }, [dispatch]);
 
