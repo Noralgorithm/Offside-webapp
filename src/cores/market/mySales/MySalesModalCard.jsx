@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import MarketModal from "../MarketModal";
 import { TbCurrencyDollar } from "react-icons/tb";
+import { helps } from "./helpModal/HelpsSalesInfo";
 
 function MySalesModalCard({ setSalesModal }) {
+  const [helpModal, setHelpModal] = useState(false);
   return (
-    <MarketModal>
+    <MarketModal
+      helpModal={helpModal}
+      setHelpModal={setHelpModal}
+      helps={helps}
+    >
       <div className="flex flex-col justify-evenly w-full h-full pt-5">
         <div className="w-full flex justify-evenly text-offside-titles">
           <div className="flex flex-col items-center">

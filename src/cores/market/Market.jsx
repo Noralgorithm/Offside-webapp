@@ -1,12 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
-import Navbar from "../../components/Navbar";
 import GlobalOffers from "./globalOffers/GlobalOffers";
 import MarketFilters from "./MarketFilters";
 import MyOffers from "./myOffers/MyOffers";
 import MySales from "./mySales/MySales";
 import { BiQuestionMark } from "react-icons/bi";
 import useMarket from "./useMarket";
-import Loading from "../../components/Loading";
 import { helps as globalHelps } from "./globalOffers/helpModal/Helps";
 import { helps as myOffersHelps } from "./myOffers/helpModal/Helps";
 import { helps as mySalesHelps } from "./mySales/helpModal/Helps";
@@ -20,11 +18,11 @@ function Market() {
   const { setFilters, teamId, position, playerName } = useMarket();
 
   return (
-    <div className="w-screen h-screen flex flex-col">
+    <div className="w-screen h-[calc(100vh-48px)] flex flex-col">
       {helpModal && (
         <HelpModal
           setHelpModal={setHelpModal}
-          screenStyles="h-[calc(100vh+48px)]"
+          screenStyles="h-screen"
           helps={
             mySales ? mySalesHelps : myOffers ? myOffersHelps : globalHelps
           }

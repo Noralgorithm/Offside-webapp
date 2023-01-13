@@ -85,7 +85,7 @@ function MarketSquad({ setMarketSquad }) {
     );
 
   return (
-    <div className="w-screen h-[calc(100vh+48px)] absolute top-0 left-0 bg-black bg-opacity-80 z-30 flex justify-center items-center">
+    <div className="w-screen h-screen absolute top-0 left-0 bg-black bg-opacity-80 z-30 flex justify-center items-center">
       {helpModal && (
         <HelpModal
           setHelpModal={setHelpModal}

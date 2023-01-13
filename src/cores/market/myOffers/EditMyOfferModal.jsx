@@ -3,14 +3,20 @@ import MarketModal from "../MarketModal";
 import { TbCurrencyDollar } from "react-icons/tb";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
 import { useSelector } from "react-redux";
+import { helps } from "./helpModal/HelpsEditMyOffer";
 
 function EditMyOfferModal({ setEditMyOfferModal, auctionInfo }) {
-  const money = useSelector(state => state.user.money);
-
+  const money = useSelector((state) => state.user.money);
+  const [helpModal, setHelpModal] = useState(false);
   const [myOffer, setMyOffer] = useState(0);
 
   return (
-    <MarketModal player={auctionInfo.market.sticker}>
+    <MarketModal
+      player={auctionInfo.market.sticker}
+      helpModal={helpModal}
+      setHelpModal={setHelpModal}
+      helps={helps}
+    >
       <div className="flex flex-col justify-evenly w-full h-full pt-5">
         <div className="w-full flex justify-evenly text-offside-titles">
           <div className="flex flex-col items-center">
@@ -47,7 +53,7 @@ function EditMyOfferModal({ setEditMyOfferModal, auctionInfo }) {
                 <input
                   type="number"
                   placeholder=""
-                  value={myOffer === 0 ? '' : myOffer}
+                  value={myOffer === 0 ? "" : myOffer}
                   onChange={(e) => setMyOffer(e.target.value)}
                   className="appearance-none rounded-full text-center text-xl w-full p-1 text-offside-titles font-bold outline-none"
                 />

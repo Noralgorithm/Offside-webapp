@@ -5,7 +5,7 @@ import HelpModal from "../../components/HelpModal";
 
 function MarketModal({ player, children, helpModal, setHelpModal, helps }) {
   return (
-    <div className="w-screen h-[calc(100vh+48px)] absolute bg-black bg-opacity-80 left-0 top-0 z-30 flex items-center justify-center">
+    <div className="w-screen h-screen absolute bg-black bg-opacity-80 left-0 top-0 z-30 flex items-center justify-center">
       {helpModal && (
         <HelpModal
           setHelpModal={setHelpModal}
