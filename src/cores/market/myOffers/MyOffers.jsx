@@ -16,12 +16,14 @@ function MyOffers({ setFilters, filters }) {
     currentAuctionInfo,
     fetchAuctionInfo,
     updateAnOffer,
+    handleFetchNextPage,
+    hasMore
   } = useMyOffers(setFilters, filters);
 
   if (loading) return <Loading />;
 
   return (
-    <section className="w-5/6 h-full grid lg:grid-cols-2 grid-cols-1 gap-y-3 gap-x-10">
+    <div className="w-full h-full">
       {myOffersBuyModal && (
         <DirectBuyModal
           setDirectBuyModal={setMyOffersBuyModal}
@@ -41,8 +43,10 @@ function MyOffers({ setFilters, filters }) {
         fetchAuctionInfo={fetchAuctionInfo}
         setEditMyOfferModal={setEditMyOfferModal}
         setMyOffersBuyModal={setMyOffersBuyModal}
+        handleFetchNextPage={handleFetchNextPage}
+        hasMore={hasMore}
       />
-    </section>
+    </div>
   );
 }
 

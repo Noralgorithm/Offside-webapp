@@ -12,7 +12,6 @@ function EditMyOfferModal({ setEditMyOfferModal, auctionInfo, updateAnOffer }) {
 
   const [myOffer, setMyOffer] = useState(0);
 
-  console.log(auctionInfo);
   return (
     <MarketModal player={auctionInfo.market.sticker}>
       <div className="flex flex-col justify-evenly w-full h-full pt-5">

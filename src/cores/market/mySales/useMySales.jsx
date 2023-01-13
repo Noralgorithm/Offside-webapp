@@ -8,6 +8,8 @@ const useMySales = (setFilters, { teamId, position, playerName }) => {
   const [myAuctions, setMyAuctions] = useState([]);
   const [currentAuctionInfo, setCurrentAuctionInfo] = useState();
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(false);
 
   const fetchMyAuctions = useCallback(async () => {
     try {
@@ -16,7 +18,9 @@ const useMySales = (setFilters, { teamId, position, playerName }) => {
         teamId,
         position,
         playerName,
-      });
+      },
+      0);
+      if (data.paginate.pages > 1) setHasMore(true)
       setMyAuctions(data.items);
     } catch (e) {
       toast.error(e.message);
@@ -24,6 +28,26 @@ const useMySales = (setFilters, { teamId, position, playerName }) => {
       setLoading(false);
     }
   }, [token, event, playerName, position, teamId]);
+
+  const handleFetchNextPage = async () => {
+    try {
+      const data = await marketServices.fetchAuctionsList(
+        token,
+        event,
+        {
+          teamId,
+          position,
+          playerName,
+        },
+        page
+      )
+      if (data.paginate.pages <= page) setHasMore(false);
+      setPage(page + 1)
+      setMyAuctions(myAuctions.concat(data.items));
+    } catch (e) {
+      toast.error(e.message);
+    }
+  }
 
   const fetchAuctionInfo = useCallback(
     async (auctionId) => {
@@ -75,6 +99,8 @@ const useMySales = (setFilters, { teamId, position, playerName }) => {
     currentAuctionInfo,
     fetchAuctionInfo,
     createAuction,
+    handleFetchNextPage,
+    hasMore
   };
 };
 

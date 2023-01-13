@@ -17,12 +17,14 @@ function GlobalOffers({ filters, setFilters }) {
     fetchAuctionInfo,
     makeAnOffer,
     makeDirectBuy,
+    handleFetchNextPage,
+    hasMore
   } = useGlobalOffers(setFilters, filters);
 
   if (loading) return <Loading />;
 
   return (
-    <section className="w-5/6 h-full grid lg:grid-cols-2 grid-cols-1 gap-y-3 gap-x-10">
+    <div className="h-full w-full">
       {globalBuyModal && (
         <DirectBuyModal
           setDirectBuyModal={setGlobalBuyModal}
@@ -42,8 +44,10 @@ function GlobalOffers({ filters, setFilters }) {
         setGlobalBuyModal={setGlobalBuyModal}
         fetchAuctionInfo={fetchAuctionInfo}
         auctions={globalAuctions}
+        handleFetchNextPage={handleFetchNextPage}
+        hasMore={hasMore}
       />
-    </section>
+    </div>
   );
 }
 

@@ -6,17 +6,18 @@ const BASE_URL = api + "/public-events/";
 export const fetchAuctionsList = async (
   token,
   eventId,
-  { teamId, position, playerName }
+  { teamId, position, playerName },
+  page = 0
 ) => {
-  console.log(teamId, position, playerName)
   try {
+    console.log(page);
     let queryString = "";
-    if (teamId) queryString += `teamId=${teamId}`;
-    if (position) queryString += `position=${position}`;
-    if (playerName) queryString += `playername=${playerName}`;
+    if (teamId) queryString += `&teamId=${teamId}`;
+    if (position) queryString += `&position=${position}`;
+    if (playerName) queryString += `&playername=${playerName}`;
 
     const { data } = await axios.get(
-      BASE_URL + eventId + "/market?" + queryString,
+      BASE_URL + eventId + `/market?size=6&page=${page}` + queryString,
       {
         headers: {
           Authorization: "Bearer " + token,
@@ -32,10 +33,23 @@ export const fetchAuctionsList = async (
   }
 };
 
-export const fetchMyAuctions = async (token, eventId) => {
+export const fetchMyAuctions = async (
+  token,
+  eventId,
+  { teamId, position, playerName },
+  page
+) => {
   try {
+    let queryString = "";
+    if (teamId) queryString += `&teamId=${teamId}`;
+    if (position) queryString += `&position=${position}`;
+    if (playerName) queryString += `&playername=${playerName}`;
+
     const { data } = await axios.get(
-      BASE_URL + eventId + "/market?myAuction=true",
+      BASE_URL +
+        eventId +
+        `/market?myAuction=true&size=6&page=${page}` +
+        queryString,
       {
         headers: {
           Authorization: "Bearer " + token,
@@ -70,13 +84,26 @@ export const fetchAuctionInfo = async (token, eventId, auctionId) => {
   }
 };
 
-export const fetchMyBids = async (token, eventId) => {
+export const fetchMyBids = async (
+  token,
+  eventId,
+  { teamId, position, playerName },
+  page
+) => {
   try {
-    const { data } = await axios.get(BASE_URL + eventId + "/market/myBids", {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    });
+    let queryString = "";
+    if (teamId) queryString += `&teamId=${teamId}`;
+    if (position) queryString += `&position=${position}`;
+    if (playerName) queryString += `&playername=${playerName}`;
+
+    const { data } = await axios.get(
+      BASE_URL + eventId + `/market/myBids?size=6&page=${page}` + queryString,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
     if (!data.success) throw new Error(data.message);
     return data;
   } catch (e) {

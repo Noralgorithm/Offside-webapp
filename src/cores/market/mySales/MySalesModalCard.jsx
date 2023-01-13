@@ -3,7 +3,6 @@ import MarketModal from "../MarketModal";
 import { TbCurrencyDollar } from "react-icons/tb";
 
 function MySalesModalCard({ setSalesModal, auctionInfo }) {
-  console.log(auctionInfo)
   return (
     <MarketModal player={auctionInfo.market.sticker}>
       <div className="flex flex-col justify-evenly w-full h-full pt-5">
