@@ -7,7 +7,7 @@ const initialState = {
   success: false,
   event: 1,
   eventsList: [],
-  money: 0
+  money: 1
 };
 
 const userSlice = createSlice({
