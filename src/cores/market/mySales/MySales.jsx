@@ -21,7 +21,7 @@ function MySales({ setFilters, filters }) {
 
   if (loading) return <Loading />;
   return (
-    <section className="w-5/6 h-full grid lg:grid-cols-2 grid-cols-1 gap-y-3 gap-x-10">
+    <div className="h-full w-full">
       {marketSquad && (
         <MarketSquad
           setMarketSquad={setMarketSquad}
@@ -44,7 +44,7 @@ function MySales({ setFilters, filters }) {
       >
         <AiOutlinePlus size="1.5rem" color="black" />
       </button>
-    </section>
+    </div>
   );
 }
 
