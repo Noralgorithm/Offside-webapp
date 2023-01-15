@@ -38,7 +38,7 @@ function MySalesModalCard({ setSalesModal, auctionInfo }) {
               color="white"
               className="bg-gradient-offside rounded-full p-[1px]"
             />
-            {auctionInfo.highestBid.value}
+            {auctionInfo.highestBid?.value || 'Sin ofertas aún.'}
           </h1>
         </div>
         <div className="w-full flex justify-center">
