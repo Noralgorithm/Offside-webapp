@@ -71,14 +71,14 @@ function MarketSquad({ setMarketSquad, createAuction }) {
       {helpModal && (
         <HelpModal
           setHelpModal={setHelpModal}
-          screenStyles="h-[calc(100vh+48px)]"
+          screenStyles="md:h-screen h-[944px]"
           helps={helps}
         />
       )}
       {helpModalSelectedPlayer && (
         <HelpModal
           setHelpModal={setHelpModalSelectedPlayer}
-          screenStyles="h-[calc(100vh+48px)]"
+          screenStyles="md:h-screen h-[944px]"
           helps={helpsSelectedPlayer}
         />
       )}
