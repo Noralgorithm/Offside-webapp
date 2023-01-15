@@ -77,7 +77,7 @@ function EditMyOfferModal({ setEditMyOfferModal, auctionInfo, updateAnOffer }) {
         <div className="w-full flex justify-evenly">
           <span className="bg-gradient-offside p-[1px] rounded-full">
             <button
-              className="bg-white rounded-full py-1 px-14"
+              className="bg-white rounded-full py-1 px-10 md:px-14"
               onClick={() => {
                 setEditMyOfferModal(false);
               }}
@@ -86,7 +86,7 @@ function EditMyOfferModal({ setEditMyOfferModal, auctionInfo, updateAnOffer }) {
             </button>
           </span>
           <button
-            className="bg-gradient-offside rounded-full text-white font-semibold py-1 px-14"
+            className="bg-gradient-offside rounded-full text-white font-semibold py-1 px-10 md:px-14"
             onClick={() => {
               const success = updateAnOffer(
                 myOffer,

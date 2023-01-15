@@ -21,7 +21,7 @@ function MySales({ setFilters, filters }) {
 
   if (loading) return <Loading />;
   return (
-    <div className="h-full w-full">
+    <div className="h-full w-full flex justify-center">
       {marketSquad && (
         <MarketSquad
           setMarketSquad={setMarketSquad}

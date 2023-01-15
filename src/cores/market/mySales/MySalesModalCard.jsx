@@ -6,7 +6,7 @@ function MySalesModalCard({ setSalesModal, auctionInfo }) {
   return (
     <MarketModal player={auctionInfo.market.sticker}>
       <div className="flex flex-col justify-evenly w-full h-full pt-5">
-        <div className="w-full flex justify-evenly text-offside-titles">
+        <div className="w-full flex md:flex-row flex-col justify-evenly text-offside-titles md:gap-0 gap-14">
           <div className="flex flex-col items-center">
             <span className="font-semibold">Precio inicial</span>
             <h1 className="flex text-xl font-bold items-center gap-1">

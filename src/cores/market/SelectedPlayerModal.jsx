@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IoExitOutline } from "react-icons/io5";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 import { BsQuestionCircle } from "react-icons/bs";
 import PlayerCircle from "./PlayerCircle";
 
@@ -13,10 +13,10 @@ function SelectedPlayerModal({
   const [directPurchase, setDirectPurchase] = useState();
 
   return (
-    <div className="h-4/5 w-1/2 bg-gradient-offside rounded-lg flex flex-col justify-between relative">
+    <div className="md:h-4/5 h-3/5 md:w-[600px] w-11/12 bg-gradient-offside rounded-lg flex flex-col justify-between relative">
       <header className="w-full h-[10%] flex items-center justify-between px-4">
-        <IoExitOutline
-          className="rotate-180 hover:cursor-pointer"
+        <AiOutlineArrowLeft
+          className="hover:cursor-pointer"
           size="2rem"
           onClick={() => {
             setSelectedPlayer();
@@ -24,14 +24,14 @@ function SelectedPlayerModal({
         />
         <BsQuestionCircle size="1.5rem" />
       </header>
-      <div className="absolute w-full top-16 flex flex-col items-center">
+      <div className="absolute w-full md:top-16 top-24 flex flex-col items-center">
         <PlayerCircle playerImg={player.img} />
         <h1 className="text-offside-titles text-xl font-bold">
           {player.playerName}
         </h1>
       </div>
       <section className="w-full h-2/3 bg-white rounded-b-lg flex flex-col justify-evenly">
-        <div className="w-full flex justify-evenly">
+        <div className="w-full flex md:justify-evenly justify-around">
           <div htmlFor="" className="flex flex-col items-center">
             <h1 className="font-semibold text-offside-titles">
               Precio inicial
@@ -68,7 +68,7 @@ function SelectedPlayerModal({
         <div className="w-full flex justify-evenly">
           <span className="bg-gradient-offside p-[1px] rounded-full">
             <button
-              className="bg-white rounded-full py-1 px-14"
+              className="bg-white rounded-full py-1 px-10 md:px-14"
               onClick={() => {
                 setMarketSquad(false);
               }}
@@ -82,7 +82,7 @@ function SelectedPlayerModal({
               createAuction(initialValue, directPurchase, player.id);
               setMarketSquad(false);
             }}
-            className="bg-gradient-offside rounded-full text-white font-semibold py-1 px-14"
+            className="bg-gradient-offside rounded-full text-white font-semibold py-1 px-10 md:px-14"
           >
             Aceptar
           </button>

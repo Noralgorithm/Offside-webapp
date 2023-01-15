@@ -40,7 +40,7 @@ function MarketPlayerList({ setSelectedPlayer }) {
       className="bg-[#EAEAEA] h-[80%] w-full justify-items-center overflow-y-scroll py-4 banca"
     >
       <InfiniteScroll
-        className="bg-[#EAEAEA] bg-opacity-80 h-full w-full grid grid-cols-1 justify-items-center gap-2 noScroll"
+        className="bg-[#EAEAEA] bg-opacity-80 h-full w-full grid grid-cols-1 justify-items-center gap-5"
         scrollableTarget="scrollableSection"
         hasMore={nextPage < fantasy.bench.paginate.pages}
         dataLength={players.length}

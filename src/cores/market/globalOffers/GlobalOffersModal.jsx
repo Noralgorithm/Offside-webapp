@@ -24,7 +24,7 @@ function GlobalOffersModal({ setGlobalOffersModal, auctionInfo, makeAnOffer }) {
   return (
     <MarketModal player={auctionInfo.market.sticker}>
       <div className="flex flex-col justify-evenly w-full h-full pt-5">
-        <div className="w-full flex justify-around text-offside-titles">
+        <div className="w-full flex flex-col md:flex-row md:items-start items-center justify-around text-offside-titles gap-10 md:gap-0">
           <div className="flex flex-col items-center">
             <span className="font-semibold">Oferta ganadora actual</span>
             <h1 className="flex text-xl font-bold items-center gap-1">
@@ -36,7 +36,7 @@ function GlobalOffersModal({ setGlobalOffersModal, auctionInfo, makeAnOffer }) {
               {auctionInfo.market.initialPurchaseValue}
             </h1>
           </div>
-          <div className="flex items-end justify-end w-2/6">
+          <div className="flex items-end justify-end md:w-2/6 w-[60%] md:ml-0 ml-[15%]">
             <div className="flex flex-col items-center">
               <span className="font-semibold">Mi oferta</span>
               <label
