@@ -37,7 +37,7 @@ function MarketFilters({ filters, setTeamId, setPosition, setPlayerName }) {
   }, [fetchTeamsList]);
 
   return (
-    <div className="w-11/12 h-full flex justify-start gap-2 items-center mb-5">
+    <div className="w-11/12 h-full flex justify-start flex-col md:flex-row gap-2 items-center md:mb-5 md:mt-0 mt-5 mb-3">
       <label
         htmlFor=""
         className="flex bg-bg-contenedor drop-shadow-xl rounded-full md:p-2 p-1 gap-1"
@@ -47,24 +47,26 @@ function MarketFilters({ filters, setTeamId, setPosition, setPlayerName }) {
           value={filters.playerName}
           onChange={(e) => setPlayerName(e.target.value)}
           placeholder="Buscar... "
-          className="rounded-full bg-black bg-opacity-0 text-offside-titles text-center font-semibold"
+          className="rounded-full bg-black bg-opacity-0 text-offside-titles text-center font-semibold outline-none"
         />
         <BiSearch size="1.5rem" color="black" />
-      </label>
-      <MarketFilter
-        value={filters.teamId}
-        options={teamsListOptions}
-        setFilter={setTeamId}
-      >
-        Equipo
-      </MarketFilter>
-      <MarketFilter
-        value={filters.position}
-        options={positionOptions}
-        setFilter={setPosition}
-      >
-        Posición
-      </MarketFilter>
+      </label>{" "}
+      <div className="flex gap-2">
+        <MarketFilter
+          value={filters.teamId}
+          options={teamsListOptions}
+          setFilter={setTeamId}
+        >
+          Equipo
+        </MarketFilter>
+        <MarketFilter
+          value={filters.position}
+          options={positionOptions}
+          setFilter={setPosition}
+        >
+          Posición
+        </MarketFilter>
+      </div>
     </div>
   );
 }
