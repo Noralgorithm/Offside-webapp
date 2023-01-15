@@ -9,7 +9,7 @@ function MarketModal({ player, children, helpModal, setHelpModal, helps }) {
       {helpModal && (
         <HelpModal
           setHelpModal={setHelpModal}
-          screenStyles="h-[calc(100vh+48px)]"
+          screenStyles="md:h-screen h-[944px]"
           helps={helps}
         />
       )}
