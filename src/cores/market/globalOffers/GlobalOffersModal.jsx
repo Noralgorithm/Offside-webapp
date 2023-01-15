@@ -47,7 +47,8 @@ function GlobalOffersModal({ setGlobalOffersModal, auctionInfo, makeAnOffer }) {
                   type="number"
                   placeholder=""
                   onChange={handleChange}
-                  value={myOffer === 0 ? "" : myOffer}
+                  min={1}
+                  value={myOffer < 1 ? "" : myOffer}
                   className="appearance-none rounded-full text-center text-xl w-full p-1 text-offside-titles font-bold outline-none"
                 />
               </label>

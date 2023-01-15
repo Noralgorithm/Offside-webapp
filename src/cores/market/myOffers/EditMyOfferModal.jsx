@@ -50,7 +50,8 @@ function EditMyOfferModal({ setEditMyOfferModal, auctionInfo, updateAnOffer }) {
                 <input
                   type="number"
                   placeholder=""
-                  value={myOffer === 0 ? "" : myOffer}
+                  min={1}
+                  value={myOffer < 1 ? "" : myOffer}
                   onChange={(e) => setMyOffer(Number(e.target.value))}
                   className="appearance-none rounded-full text-center text-xl w-full p-1 text-offside-titles font-bold outline-none"
                 />

@@ -43,6 +43,8 @@ function SelectedPlayerModal({
               <input
                 type="number"
                 placeholder=""
+                min={1}
+                value={initialValue < 1 ? "" : initialValue}
                 className="appearance-none rounded-full text-center text-xl w-full p-1 text-offside-titles font-bold outline-none"
                 onChange={(e) => setInitialValue(e.target.value)}
               />
@@ -59,6 +61,8 @@ function SelectedPlayerModal({
               <input
                 type="number"
                 placeholder=""
+                min={1}
+                value={directPurchase < 1 ? "" : directPurchase}
                 className="appearance-none rounded-full text-center text-xl w-full p-1 text-offside-titles font-bold outline-none"
                 onChange={(e) => setDirectPurchase(e.target.value)}
               />
