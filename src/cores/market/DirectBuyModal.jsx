@@ -52,7 +52,7 @@ function DirectBuyModal({ setDirectBuyModal, auctionInfo, makeDirectBuy }) {
               const success = makeDirectBuy(
                 0,
                 auctionInfo.market.id,
-                auctionInfo.myLastBid.id,
+                auctionInfo.myLastBid?.id,
                 true
               );
               if (success)
