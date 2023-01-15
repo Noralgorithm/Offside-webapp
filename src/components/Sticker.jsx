@@ -9,13 +9,13 @@ import peso from "../Images/peso.png";
 function Sticker({ stickerInfo, fontSize }) {
   const positionImage = () => {
     switch (stickerInfo.position) {
-      case "MedioCentro":
+      case "midfielder":
         return medioCentro;
-      case "Defensa":
+      case "defender":
         return defensa;
-      case "Delantero":
+      case "forward":
         return delantero;
-      case "Arquero":
+      case "goalkeeper":
         return arquero;
       default:
         return medioCentro;
