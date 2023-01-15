@@ -2,6 +2,7 @@ import React from "react";
 import { positions } from "../../utils/positions";
 
 function MarketCard({ children, stickerInfo }) {
+  console.log(stickerInfo)
   return (
     <div className="w-full h-[120px] flex items-center bg-gradient-to-r rounded-l-lg bg-white relative rounded">
       <aside className="relative h-full w-40 flex justify-center rounded-lg bg-gradient-offside">
