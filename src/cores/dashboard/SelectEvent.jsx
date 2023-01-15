@@ -10,7 +10,7 @@ function SelectEvent() {
   };
 
   const dispatch = useDispatch();
-  const {event,eventsList} = useSelector((state) => state.user);
+  const { event, eventsList } = useSelector((state) => state.user);
 
   const eventsOptions = eventsList?.map((event) => {
     return { label: event.eventName, value: event.id };
@@ -20,6 +20,10 @@ function SelectEvent() {
     dispatch(setEvent(e.value));
   };
 
+  const actualEvent = eventsList?.find((evento) => {
+      return evento.id === event;
+    });
+
   return (
     <Select
       className="md:w-1/2 w-full"
@@ -27,7 +31,7 @@ function SelectEvent() {
       placeholder="Competiciones..."
       onChange={handleChange}
       options={eventsOptions}
-      value={event}
+      value={{label: actualEvent.eventName}}
       components={{ DropdownIndicator }}
       styles={{
         control: (baseStyles, props) => ({
