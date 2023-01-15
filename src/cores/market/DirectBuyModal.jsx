@@ -55,8 +55,8 @@ function DirectBuyModal({ setDirectBuyModal, auctionInfo, makeDirectBuy }) {
           </span>
           <button
             className="bg-gradient-offside rounded-full text-white font-semibold py-1 px-10 md:px-14"
-            onClick={() => {
-              const success = makeDirectBuy(
+            onClick={async () => {
+              const success = await makeDirectBuy(
                 0,
                 auctionInfo.market.id,
                 auctionInfo.myLastBid?.id,
