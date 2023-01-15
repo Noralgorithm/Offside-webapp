@@ -4,6 +4,7 @@ import { TbCurrencyDollar } from "react-icons/tb";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { setMoney } from "../../../features/user/userSlice";
+import { helps } from "./helpModal/HelpsOffer";
 
 function GlobalOffersModal({ setGlobalOffersModal, auctionInfo, makeAnOffer }) {
   const money = useSelector((state) => state.user.money);
@@ -13,6 +14,7 @@ function GlobalOffersModal({ setGlobalOffersModal, auctionInfo, makeAnOffer }) {
   const [futureBalance, setFutureBalance] = useState(
     money - auctionInfo.market.initialPurchaseValue
   );
+  const [helpModal, setHelpModal] = useState(false);
 
   const handleChange = (e) => {
     setMyOffer(Number(e.target.value));
@@ -22,7 +24,12 @@ function GlobalOffersModal({ setGlobalOffersModal, auctionInfo, makeAnOffer }) {
   };
 
   return (
-    <MarketModal player={auctionInfo.market.sticker}>
+    <MarketModal
+      player={auctionInfo.market.sticker}
+      helpModal={helpModal}
+      setHelpModal={setHelpModal}
+      helps={helps}
+    >
       <div className="flex flex-col justify-evenly w-full h-full pt-5">
         <div className="w-full flex justify-around text-offside-titles">
           <div className="flex flex-col items-center">

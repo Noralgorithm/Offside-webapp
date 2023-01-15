@@ -13,6 +13,9 @@ import * as teamServices from "../../../services/team.services";
 import SelectedPlayerModal from "../SelectedPlayerModal";
 import { BiQuestionMark } from "react-icons/bi";
 import Loading from "../../../components/Loading";
+import HelpModal from "../../../components/HelpModal";
+import { helps } from "./helpModal/Helps";
+import { helps as helpsSelectedPlayer } from "./helpModal/HelpsSelectedModal";
 
 function MarketSquad({ setMarketSquad, createAuction }) {
   const event = useSelector((state) => state.user.event);
@@ -20,6 +23,8 @@ function MarketSquad({ setMarketSquad, createAuction }) {
   const [isLoading, setIsLoading] = useState(true);
   const fantasyState = useSelector((state) => state.fantasy);
   const [selectedPlayer, setSelectedPlayer] = useState();
+  const [helpModal, setHelpModal] = useState(false);
+  const [helpModalSelectedPlayer, setHelpModalSelectedPlayer] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -67,15 +72,34 @@ function MarketSquad({ setMarketSquad, createAuction }) {
 
   return (
     <div className="w-screen h-screen absolute top-0 left-0 bg-black bg-opacity-80 z-30 flex justify-center items-center">
+      {helpModal && (
+        <HelpModal
+          setHelpModal={setHelpModal}
+          screenStyles="h-[calc(100vh+48px)]"
+          helps={helps}
+        />
+      )}
+      {helpModalSelectedPlayer && (
+        <HelpModal
+          setHelpModal={setHelpModalSelectedPlayer}
+          screenStyles="h-[calc(100vh+48px)]"
+          helps={helpsSelectedPlayer}
+        />
+      )}
       {!selectedPlayer ? (
         <div className="md:w-5/12 w-11/12 md:h-[90%] h-1/2 bg-[#647B80] rounded-t">
           <header className="w-full bg-[#EAEAEA] h-[20%] flex flex-col justify-center rounded-t drop-shadow-2xl pt-2">
             <div className="w-full flex justify-between">
               <h1 className="w-1/5 text-center text-offside-titles text-xl font-semibold">
-                Almacén
+                Banca
               </h1>
               <div className="w-1/5 flex items-center justify-around">
-                <button className="rounded-full bg-gradient-offside p-[2px]">
+                <button
+                  className="rounded-full bg-gradient-offside p-[2px]"
+                  onClick={() => {
+                    setHelpModal(true);
+                  }}
+                >
                   <BiQuestionMark size="1.3rem" color="white" />
                 </button>
                 <button
@@ -99,6 +123,7 @@ function MarketSquad({ setMarketSquad, createAuction }) {
           setSelectedPlayer={setSelectedPlayer}
           setMarketSquad={setMarketSquad}
           createAuction={createAuction}
+          setHelpModal={setHelpModalSelectedPlayer}
         />
       )}
     </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { BsCheck } from "react-icons/bs";
 
-function MarketCardSales({ playerInfo, isInLineup, handleClick}) {
+function MarketCardSales({ playerInfo, isInLineup, handleClick }) {
   const positions = {
     forward: "Delantero",
     defender: "Defensa",
@@ -11,7 +11,7 @@ function MarketCardSales({ playerInfo, isInLineup, handleClick}) {
 
   return (
     <div
-    onClick={handleClick}
+      onClick={handleClick}
       className="w-full h-full flex items-center rounded-l-lg bg-white relative rounded hover:bg-bg-contenedor hover:cursor-pointer"
     >
       <aside className="relative h-full w-2/6 flex justify-center rounded-lg bg-gradient-offside">

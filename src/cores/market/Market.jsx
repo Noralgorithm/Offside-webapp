@@ -5,15 +5,37 @@ import MyOffers from "./myOffers/MyOffers";
 import MySales from "./mySales/MySales";
 import { BiQuestionMark } from "react-icons/bi";
 import useMarket from "./useMarket";
+import { helps as globalHelps } from "./globalOffers/helpModal/Helps";
+import { helps as myOffersHelps } from "./myOffers/helpModal/Helps";
+import { helps as mySalesHelps } from "./mySales/helpModal/Helps";
+import HelpModal from "../../components/HelpModal";
 
 function Market() {
   const [mySales, setMySales] = useState(false);
   const [myOffers, setMyOffers] = useState(false);
+  const [helpModal, setHelpModal] = useState(false);
 
-  const { setFilters, teamId, position, playerName, setTeamId, setPosition, setPlayerName } = useMarket();
+  const {
+    setFilters,
+    teamId,
+    position,
+    playerName,
+    setTeamId,
+    setPosition,
+    setPlayerName,
+  } = useMarket();
 
   return (
-    <div className="w-screen h-screen flex flex-col">
+    <div className="w-screen h-[calc(100vh-48px)] flex flex-col">
+      {helpModal && (
+        <HelpModal
+          setHelpModal={setHelpModal}
+          screenStyles="h-screen"
+          helps={
+            mySales ? mySalesHelps : myOffers ? myOffersHelps : globalHelps
+          }
+        />
+      )}
       <div className="w-full bg-black bg-opacity-40">
         <h1 className="text-white text-4xl w-1/4 text-center font-bold mt-4">
           Mercado
@@ -68,7 +90,12 @@ function Market() {
             setPosition={setPosition}
             setPlayerName={setPlayerName}
           />
-          <button className="rounded-full bg-gradient-offside p-[2px] h-6">
+          <button
+            className="rounded-full bg-gradient-offside p-[2px] h-6"
+            onClick={() => {
+              setHelpModal(true);
+            }}
+          >
             <BiQuestionMark size="1.3rem" color="white" />
           </button>
         </div>

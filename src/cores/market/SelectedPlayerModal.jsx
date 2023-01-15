@@ -8,12 +8,14 @@ function SelectedPlayerModal({
   setSelectedPlayer,
   setMarketSquad,
   createAuction,
+  setHelpModal
 }) {
   const [initialValue, setInitialValue] = useState();
   const [directPurchase, setDirectPurchase] = useState();
 
   return (
     <div className="h-4/5 w-1/2 bg-gradient-offside rounded-lg flex flex-col justify-between relative">
+      
       <header className="w-full h-[10%] flex items-center justify-between px-4">
         <IoExitOutline
           className="rotate-180 hover:cursor-pointer"
@@ -22,7 +24,13 @@ function SelectedPlayerModal({
             setSelectedPlayer();
           }}
         />
-        <BsQuestionCircle size="1.5rem" />
+        <BsQuestionCircle
+          className="hover:cursor-pointer"
+          size="1.5rem"
+          onClick={() => {
+            setHelpModal(true);
+          }}
+        />
       </header>
       <div className="absolute w-full top-16 flex flex-col items-center">
         <PlayerCircle playerImg={player.img} />

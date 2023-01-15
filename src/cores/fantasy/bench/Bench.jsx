@@ -10,14 +10,17 @@ import {
 } from "../../../features/fantasy/fantasySlice";
 import * as teamServices from "../../../services/team.services";
 import { BiQuestionMark } from "react-icons/bi";
-import Loading from "../../../components/Loading"
+import Loading from "../../../components/Loading";
 import { toast } from "react-toastify";
+import HelpModal from "../../../components/HelpModal";
+import { helps } from "./helpModal/Helps";
 
 function Bench() {
   const eventId = 1;
   const token = useSelector((state) => state.user.token);
   const [isLoading, setIsLoading] = useState(true);
   const fantasyState = useSelector((state) => state.fantasy);
+  const [helpModal, setHelpModal] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -50,7 +53,7 @@ function Bench() {
           draggable: true,
           progress: undefined,
           theme: "light",
-          });
+        });
       }
     })();
   }, [
@@ -65,17 +68,36 @@ function Bench() {
     fantasyState.removedPlayer,
   ]);
 
-  if (isLoading) return <div className="lg:w-5/12 md:w-[45%] sm:w-[60%] w-11/12 md:h-[80%] h-1/2 relative"><Loading /></div>;
+  if (isLoading)
+    return (
+      <div className="lg:w-5/12 md:w-[45%] sm:w-[60%] w-11/12 md:h-[80%] h-1/2 relative">
+        <Loading />
+      </div>
+    );
 
   return (
     <div className="lg:w-5/12 md:w-[45%] sm:w-9/12 w-11/12 md:h-[91.5%] h-1/2 bg-[#DBD0D0] rounded-t-lg overflow-y-hidden">
+      {helpModal && (
+        <HelpModal
+          setHelpModal={setHelpModal}
+          screenStyles={
+            "md:h-[calc(900px+48px+150px)] sm:h-[calc(1580px+48px+150px)] h-[calc(1390px+48px+150px)]"
+          }
+          helps={helps}
+        />
+      )}
       <header className="w-full bg-[#CAC4D0] bg-opacity-60 sm:h-[15%] h-1/5 flex justify-center rounded-lg">
         <h1 className="w-1/5 h-1/2 flex justify-center items-center text-offside-titles text-xl font-semibold">
           Plantilla
         </h1>
         <Filters dispatch={dispatch} />
         <div className="w-1/5 h-1/2 flex items-center justify-center">
-          <button className="rounded-full bg-gradient-offside p-[2px] h-6">
+          <button
+            className="rounded-full bg-gradient-offside p-[2px] h-6"
+            onClick={() => {
+              setHelpModal(true);
+            }}
+          >
             <BiQuestionMark size="1.3rem" color="white" />
           </button>
         </div>
