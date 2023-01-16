@@ -20,7 +20,7 @@ function PlayerCard({ playerInfo, isInLineup, handleClick, selected }) {
       }
     >
       <aside className="relative h-full xl:w-[35%] lg:w-[40%] md:w-[45%] sm:w-[35%] w-[60%] flex justify-center rounded-lg bg-gradient-offside">
-        <h1 className="-rotate-90 text-white text-sm font-semibold absolute md:right-[25%] right-[25%] w-32 h-10 bottom-[39%] pl-1">
+        <h1 className="-rotate-90 text-white text-[13px] font-semibold absolute md:right-[25%] right-[25%] w-32 h-10 bottom-[39%] pl-1">
           {playerInfo.playerName}
         </h1>
         <img src={playerInfo.img} alt="" className="h-full xl:ml-6" />
@@ -47,7 +47,7 @@ function PlayerCard({ playerInfo, isInLineup, handleClick, selected }) {
               En alineación
             </div>
           )}
-          <h1 className="text-white w-2/6 flex gap-2 font-semibold absolute md:right-0 right-1 md:top-[-8px] bottom-2">
+          <h1 className="text-white w-2/6 flex gap-2 font-semibold absolute md:right-0 right-3 md:top-[-8px] bottom-2">
             <span className="opacity-70 mt-2 text-black">PTS</span>{" "}
             <span className="text-2xl text-offside-titles">49</span>
           </h1>
