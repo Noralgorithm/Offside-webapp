@@ -1,8 +1,7 @@
 import React from "react";
 import { RiMedalLine } from "react-icons/ri";
 
-function RankingCard() {
-  const position = 2;
+function RankingCard({ position, userName, points }) {
   const positionColor = (position) => {
     switch (position) {
       case 1:
@@ -38,8 +37,8 @@ function RankingCard() {
           />
         </div>
         <div className="h-full w-full flex flex-col justify-center pl-[5%] font-semibold">
-          <h1>ChocoPaula</h1>
-          <p>1400 pts</p>
+          <h1>{userName}</h1>
+          <p>{points}</p>
         </div>
         <h1
           className={`font-semibold h-full w-32 rounded-br-xl flex justify-center items-center text-3xl ${positionColor(

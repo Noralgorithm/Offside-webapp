@@ -2,9 +2,13 @@ import React from "react";
 import RankingList from "./RankingList";
 import RankingGame from "../../../Images/RankingGame.png";
 import { GoStar } from "react-icons/go";
+import Loading from "../../../components/Loading"
+import useRanking from "./useRanking";
 
 function Ranking() {
-  const position = 1;
+
+  const { loading, position, myPoints, rankingList, handleFetchNextPage, userInfo, hasMore } = useRanking();
+
   const positionColor = (position) => {
     switch (position) {
       case 1:
@@ -29,6 +33,9 @@ function Ranking() {
         return "#3D405B";
     }
   };
+
+  if (loading) return <Loading />
+
   return (
     <div className="w-full h-full flex items-center justify-around">
       <div className="md:w-5/12 w-11/12 h-[90%] flex flex-col justify-between items-center">
@@ -38,8 +45,8 @@ function Ranking() {
               <GoStar size="3rem" color={star(position)} />
             </div>
             <div className="h-full w-full flex flex-col justify-center pl-[5%] font-semibold">
-              <h1>ChocoPaula</h1>
-              <p>1400 pts</p>
+              <h1>{userInfo.name}</h1>
+              <p>{myPoints}</p>
             </div>
             <h1
               className={`font-semibold h-full w-32 rounded-br-xl flex justify-center items-center text-3xl ${positionColor(
@@ -51,7 +58,7 @@ function Ranking() {
           </div>
         </div>
         <span className="w-full h-[2px] bg-[#3D405B]"></span>
-        <RankingList />
+        <RankingList rankingList={rankingList} hasMore={hasMore} handleFetchNextPage={handleFetchNextPage} />
       </div>
 
       <img
