@@ -61,7 +61,7 @@ function PreAlbum() {
             />
           </div>
         )}
-        <div className="w-full h-[18%]">
+        <div className="w-full h-[20%]">
           {showAlbum ? (
             <Carousel />
           ) : (
