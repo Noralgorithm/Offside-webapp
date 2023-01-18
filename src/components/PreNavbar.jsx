@@ -4,7 +4,7 @@ import logoOffside from "../Images/logo-offside.png";
 
 function PreNavbar() {
   return (
-    <div className="w-screen md:block hidden sticky top-0">
+    <div className="w-screen md:block hidden sticky top-0 z-10">
       <nav className="w-full bg-white h-12 flex justify-between overflow-hidden border-b-[1px] border-[#CECECE]">
         <Link className="h-full flex items-center" to="/">
           <img src={logoOffside} alt="" className="md:h-36 h-28" />
