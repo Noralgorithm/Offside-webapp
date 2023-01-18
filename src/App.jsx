@@ -19,7 +19,7 @@ import PreNavbar from "./components/PreNavbar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loading from "./components/Loading";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 const App = () => {
   const user = useSelector((state) => state.user);
@@ -29,6 +29,7 @@ const App = () => {
 
   useLayoutEffect(() => {
     try {
+      setLoading(true);
       if (localStorage.getItem("loggedUser"))
         dispatch(login(JSON.parse(localStorage.getItem("loggedUser"))));
     } catch (e) {
@@ -47,7 +48,7 @@ const App = () => {
     } finally {
       setLoading(false);
     }
-  }, [dispatch]);
+  }, [dispatch, loading, setLoading]);
 
   if (loading) return <Loading />;
 

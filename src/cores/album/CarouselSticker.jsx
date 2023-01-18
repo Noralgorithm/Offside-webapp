@@ -13,8 +13,8 @@ const CarouselSticker = ({ eventId, sticker, index }) => {
 
   const isSelectedStyles =
     album.selectedSticker === sticker.sticker.id
-      ? "w-1/6 cursor-pointer ring-4 ring-red-800 rounded-md"
-      : "w-1/6 cursor-pointer";
+      ? "w-1/6 h-[90%] cursor-pointer ring-4 ring-red-800 rounded-md"
+      : "w-1/6 h-[90%] cursor-pointer";
 
   return (
     <div

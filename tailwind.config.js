@@ -26,7 +26,8 @@ module.exports = {
         "campo-homepage":"url('/src/Images/campo-fantasy-gray.png')",
         "jugador":"url('/src/Images/jugador.png')",
         "SobreOffside": "url('/src/Images/SobreOffside.png')",
-        "AlbumOffside": "url('/src/Images/AlbumOffside.png')"
+        "AlbumOffside": "url('/src/Images/AlbumOffside.png')",
+        "SobreOffsideDeshabilitado": "url('/src/Images/SobreOffsideDeshabilitado.png')"
       },
     },
   },
