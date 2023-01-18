@@ -27,7 +27,7 @@ export const fetchBench = async (
     );
     return data;
   } catch (e) {
-    throw new Error(e?.response?.data?.message || "unknown error");
+    throw new Error(e?.response?.data?.message || "Error Desconocido");
   }
 };
 
@@ -36,9 +36,10 @@ export const fetchSquadPlayers = async (token, eventId) => {
     const { data } = await axios.get(BASE_URL + eventId + "/squad/players", {
       headers: { Authorization: "Bearer " + token },
     });
+    if (!data.success) throw new Error(data.message);
     return data;
   } catch (e) {
-    throw new Error(e?.response?.data?.message || "unknown error");
+    throw new Error(e?.response?.data?.message || "Error Desconocido");
   }
 };
 
@@ -55,7 +56,7 @@ export const insertPlayer = async (token, eventId, playerId) => {
     );
     return res;
   } catch (e) {
-    throw new Error(e?.response?.data?.message || "unknown error");
+    throw new Error(e?.response?.data?.message || "Error Desconocido");
   }
 };
 
@@ -71,6 +72,6 @@ export const removePlayer = async (token, eventId, playerId) => {
     );
     return res;
   } catch (e) {
-    throw new Error(e?.response?.data?.message || "unknown error");
+    throw new Error(e?.response?.data?.message || "Error Desconocido");
   }
 };

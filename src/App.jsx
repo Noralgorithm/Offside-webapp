@@ -11,6 +11,7 @@ import UnprotectedRoutes from "./cores/auth/login/UnprotectedRoutes";
 import Index from "./cores/album/Index";
 import Inventory from "./cores/album/inventario/Inventory";
 import Profile from "./cores/profile/Profile";
+import Market from "./cores/market/Market";
 import { Fantasy as Plantilla } from "./cores/fantasy/squad/Fantasy";
 import Navbar from "./components/Navbar";
 import useEventFetcher from "./useEventFetcher";
@@ -34,19 +35,16 @@ const App = () => {
     } catch (e) {
       localStorage.clear();
       dispatch(logout());
-      toast.error(
-        "Error con la sesion almacenada localmente, recargue la pagina.",
-        {
-          position: "bottom-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        }
-      );
+      toast.error("Error con la sesion almacenada localmente, recargue la pagina.", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } finally {
       setLoading(false);
     }
@@ -69,6 +67,7 @@ const App = () => {
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="album" element={<Index />} />
             <Route path="album/inventory" element={<Inventory />} />
+            <Route path="market" element={<Market />} />
             <Route path="profile" element={<Profile />} />
             <Route path="fantasy" element={<Plantilla />} />
           </Route>
