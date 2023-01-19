@@ -68,7 +68,7 @@ function GlobalOffersModal({ setGlobalOffersModal, auctionInfo, makeAnOffer }) {
           </div>
         </div>
         <div className="w-full flex flex-col items-center text-offside-titles">
-          <span className="font-semibold">Saldo luego de la recuperación</span>
+          <span className="font-semibold">Saldo luego de la operación</span>
           <h1 className="flex text-xl font-bold items-center gap-1">
             <TbCurrencyDollar
               size="1.4rem"
