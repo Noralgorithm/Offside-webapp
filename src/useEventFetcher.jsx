@@ -8,6 +8,8 @@ import {
 } from "./features/user/userSlice";
 import { setPoints } from "./features/fantasy/fantasySlice";
 import { toast } from "react-toastify";
+import { fetchAlbumInfo } from "./services/inventory.services";
+import { setPercentage } from "./features/album/albumSlice";
 
 const useEventFetcher = () => {
   const [loading, setLoading] = useState(true);
@@ -83,6 +85,8 @@ const useEventFetcher = () => {
       const data = await fantasyServices.fetchMoney(token, user.event);
       dispatch(setMoney(data.money));
       dispatch(setPoints(data.points));
+      const albumInfo = await fetchAlbumInfo(token, user.event);
+      dispatch(setPercentage(albumInfo.actualProgressPercentage))
     } catch (e) {
       toast.error(e.message, {
         position: "bottom-right",
