@@ -13,7 +13,7 @@ export const helps = [
   },
   {
     message:
-      "Busca un espacio vacio en tu alineación, asegurante que concuerden las posiciones con tu jugador",
+      "Busca un espacio vacio en tu alineación, asegurate que concuerden las posiciones con tu jugador",
     image: Image2,
     style: "w-[80%]",
   },

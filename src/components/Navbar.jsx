@@ -65,7 +65,7 @@ function Navbar() {
           </div>
           <div className="w-0.5 h-full bg-black bg-opacity-30"></div>
           <div className="w-1/2 h-full flex items-center justify-evenly">
-            <div className="rounded-full bg-[#D9D9D9] md:w-2/5 w-[70%] flex items-center h-4/6 text-xl pl-1 gap-1">
+            <div className="rounded-full bg-[#D9D9D9] md:w-3/5 w-[80%] flex items-center h-4/6 text-xl pl-1 gap-1">
               <TbCurrencyDollar
                 size="1.4rem"
                 color="#D9D9D9"
@@ -73,9 +73,6 @@ function Navbar() {
               />
               <p>{money}</p>
             </div>
-            <button className="hover:cursor-pointer rounded-full md:hover:bg-zinc-300 p-1">
-              <SlOptionsVertical size="1.5rem" color="grey" />
-            </button>
           </div>
         </div>
       </nav>

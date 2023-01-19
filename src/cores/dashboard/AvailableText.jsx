@@ -12,7 +12,7 @@ const AvailableText = ({ isAvailable, setIsAvailable }) => {
     <>
       {isAvailable
         ? "¡Sobre Disponible!"
-        : `Desbloqueable en ${hours < 10 ? "0" + hours : hours}:${
+        : `Disponible en ${hours < 10 ? "0" + hours : hours}:${
             minutes < 10 ? "0" + minutes : minutes
           }:${seconds < 10 ? "0" + seconds : seconds}.`}
     </>
