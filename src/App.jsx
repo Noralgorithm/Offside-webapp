@@ -20,6 +20,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loading from "./components/Loading";
 import { toast } from "react-toastify";
+import RecoverPassword from "./cores/auth/recoverPassword/RecoverPassword";
 
 const App = () => {
   const user = useSelector((state) => state.user);
@@ -62,6 +63,7 @@ const App = () => {
             <Route path="/" element={<Langingpage />} />
             <Route path="/signup" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="recoverpass" element={<RecoverPassword />} />
           </Route>
           <Route path="/" element={<ProtectedRoutes />}>
             <Route path="dashboard" element={<Dashboard />} />
