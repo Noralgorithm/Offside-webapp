@@ -9,7 +9,7 @@ function Login() {
   if (state.success) return <Navigate to="/dashboard" />;
 
   return (
-    <div className="w-screen h-screen flex flex-col md:flex-row-reverse items-center justify-evenly">
+    <div className="w-screen md:h-screen h-[896px] flex flex-col md:flex-row-reverse items-center justify-evenly">
       <div className="h-1/6 lg:w-5/12 md:w-6/12 w-9/12 flex items-center justify-center">
         <img src={LogoOffside} alt="" className="lg:w-3/4" />
       </div>
