@@ -53,7 +53,7 @@ function MarketPlayerList({ setSelectedPlayer }) {
         {players.map((player) => {
           return (
             !player.isInLineup && (
-              <div className="w-[90%] h-28" key={player.id}>
+              <div className="w-[90%] h-[120px]" key={player.id}>
                 <MarketCardSales
                   playerInfo={player}
                   isInLineup={player.isInLineup}
