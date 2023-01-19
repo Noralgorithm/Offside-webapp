@@ -8,6 +8,7 @@ function SelectedPlayerModal({
   setSelectedPlayer,
   setMarketSquad,
   createAuction,
+  setHelpModal,
 }) {
   const [initialValue, setInitialValue] = useState();
   const [directPurchase, setDirectPurchase] = useState();
@@ -22,7 +23,13 @@ function SelectedPlayerModal({
             setSelectedPlayer();
           }}
         />
-        <BsQuestionCircle size="1.5rem" />
+        <BsQuestionCircle
+          className="hover:cursor-pointer"
+          size="1.5rem"
+          onClick={() => {
+            setHelpModal(true);
+          }}
+        />
       </header>
       <div className="absolute w-full md:top-16 top-24 flex flex-col items-center">
         <PlayerCircle playerImg={player.img} />

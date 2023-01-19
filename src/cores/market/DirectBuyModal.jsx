@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import MarketModal from "./MarketModal";
 import { TbCurrencyDollar } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 import { setMoney } from "../../features/user/userSlice";
+import { helps } from "./globalOffers/helpModal/HelpsDirect";
 
 function DirectBuyModal({ setDirectBuyModal, auctionInfo, makeDirectBuy }) {
   const money = useSelector((state) => state.user.money);
   const dispatch = useDispatch();
+  const [helpModal, setHelpModal] = useState(false);
 
   return (
-    <MarketModal player={auctionInfo.market.sticker}>
+    <MarketModal
+      player={auctionInfo.market.sticker}
+      helpModal={helpModal}
+      setHelpModal={setHelpModal}
+      helps={helps}
+    >
       <div className="flex flex-col justify-evenly w-full h-full pt-5">
         <div className="w-full flex justify-evenly text-offside-titles">
           <div className="flex flex-col items-center">
