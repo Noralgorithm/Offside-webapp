@@ -30,7 +30,7 @@ function Market() {
       {helpModal && (
         <HelpModal
           setHelpModal={setHelpModal}
-          screenStyles="h-screen"
+          screenStyles="md:h-screen h-[calc(896px+48px)]"
           helps={
             mySales ? mySalesHelps : myOffers ? myOffersHelps : globalHelps
           }
