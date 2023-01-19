@@ -22,7 +22,7 @@ function ProgressBarAlbum() {
         <p>
           {Math.trunc(percentage)}%
         </p>
-        <h1>completado</h1>
+        <h1>Completado</h1>
       </div>
     </div>
   );

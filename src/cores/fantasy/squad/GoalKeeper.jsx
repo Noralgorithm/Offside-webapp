@@ -7,7 +7,8 @@ function GoalKeeper({ players, insertPlayer, removePlayer }) {
   const { emptyPositions } = useEmptyPositions(
     players.length,
     MAX_GOALKEEPER_AMOUNT,
-    () => insertPlayer('goalkeeper')
+    () => insertPlayer('goalkeeper'),
+    "Portero"
   );
 
   return (
