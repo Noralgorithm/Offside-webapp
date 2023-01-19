@@ -4,7 +4,7 @@ import LogoOffside from "../../../Images/logo-offside-vertical.png";
 
 const Register = () => {
   return (
-    <div className="w-screen h-screen flex flex-col md:flex-row-reverse items-center">
+    <div className="w-screen md:h-screen h-[896px] flex flex-col md:flex-row-reverse items-center">
       <div className="h-[30%] lg:w-5/12 md:w-6/12 w-9/12 flex items-center justify-center">
         <img src={LogoOffside} alt="" className="lg:w-3/4 max-[768px]:h-full" />
       </div>
