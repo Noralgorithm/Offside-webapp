@@ -35,7 +35,7 @@ function FilterPlayer({ dispatch }) {
   });
 
   return (
-    <div className="w-3/5 h-full flex flex-col sm:justify-center justify-end gap-2 items-center pb-2 sm:pb-0">
+    <div className="w-full h-full flex flex-col sm:justify-center justify-end gap-2 items-center pb-2">
       <label
         htmlFor=""
         className="flex bg-bg-contenedor bg-opacity-80 rounded-full md:p-2 p-1 gap-1 drop-shadow-xl text-offside-titles"
@@ -48,7 +48,7 @@ function FilterPlayer({ dispatch }) {
           className="rounded bg-black bg-opacity-0 text-center font-semibold outline-none"
         />
       </label>
-      <div className="flex w-full justify-evenly gap-5">
+      <div className="flex w-full gap-5 justify-center">
         <Filter handleFilter={handleTeamFilter} options={teams}>
           Equipo
         </Filter>

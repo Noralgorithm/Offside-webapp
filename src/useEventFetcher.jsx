@@ -10,7 +10,7 @@ import { setPoints } from "./features/fantasy/fantasySlice";
 import { toast } from "react-toastify";
 
 const useEventFetcher = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const token = useSelector((state) => state.user.token);
   const user = useSelector((state) => state.user);
   const [events, setEvents] = useState([]);
@@ -36,8 +36,6 @@ const useEventFetcher = () => {
         progress: undefined,
         theme: "light",
       });
-    } finally {
-      setLoading(false);
     }
   }, [token, dispatch, user.success]);
 
@@ -109,7 +107,7 @@ const useEventFetcher = () => {
     fetchEventInfo();
   }, [fetchEventInfo]);
 
-  return { loading };
+  return { loading, setLoading };
 };
 
 export default useEventFetcher;

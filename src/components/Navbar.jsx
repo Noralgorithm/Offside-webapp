@@ -21,7 +21,7 @@ function Navbar() {
   const location = useLocation().pathname;
 
   return (
-    <div className="w-screen">
+    <div className="w-screen sticky top-0 z-10">
       <nav className="w-full bg-white h-12 flex justify-between overflow-hidden">
         <Link className="h-full flex items-center" to="/">
           <img src={logoOffside} alt="" className="md:h-36 h-28" />
@@ -45,7 +45,7 @@ function Navbar() {
                 <IoFootballOutline size="2rem" color="grey" />
               )}
             </Link>
-            <Link className="rounded-full md:hover:bg-zinc-300 p-1">
+            <Link to="/market" className="rounded-full hover:bg-zinc-300 p-1">
               {location === "/market" ? (
                 <IoBasket size="2rem" color="#E4454E" />
               ) : (
@@ -63,7 +63,7 @@ function Navbar() {
               )}
             </Link>
           </div>
-          <div className="w-0.5 h-full bg-black opacity-20"></div>
+          <div className="w-0.5 h-full bg-black bg-opacity-30"></div>
           <div className="w-1/2 h-full flex items-center justify-evenly">
             <div className="rounded-full bg-[#D9D9D9] md:w-2/5 w-[70%] flex items-center h-4/6 text-xl pl-1 gap-1">
               <TbCurrencyDollar
