@@ -17,7 +17,6 @@ const useRecoverPassword = () => {
     try {
       setIsLoading(true);
       const data = await authServices.sendCode(email);
-      console.log(data);
       setEmailAdress(false);
       setRecoverCode(true);
     } catch (e) {
@@ -31,7 +30,6 @@ const useRecoverPassword = () => {
     try {
       setIsLoading(true);
       const data = await authServices.verifyCode(code);
-      console.log(data);
       setRecoverCode(false);
     } catch (e) {
       toast.error(e.message);
@@ -44,7 +42,6 @@ const useRecoverPassword = () => {
     try {
       setIsLoading(true);
       const data = await authServices.createNewPassword(password, code);
-      console.log(data);
       toast.success(data.message);
       navigate("/login");
     } catch (e) {

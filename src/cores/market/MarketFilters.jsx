@@ -25,7 +25,6 @@ function MarketFilters({ filters, setTeamId, setPosition, setPlayerName }) {
   const fetchTeamsList = useCallback(async () => {
     try {
       const data = await teamServices.fetchTeamsList(token, event);
-      console.log(data);
       setTeamsList(data);
     } catch (e) {
       toast.error(e.message);

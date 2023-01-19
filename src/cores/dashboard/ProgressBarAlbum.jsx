@@ -5,8 +5,6 @@ function ProgressBarAlbum() {
   const token = useSelector((state) => state.user.token);
   const percentage = useSelector((state) => state.album.percentage);
   const eventId = useSelector((state) => state.album.eventId);
-  console.log(token);
-  console.log(eventId);
 
   return (
     <div className="w-[45%] h-8 absolute top-1/4 left-[52%]">

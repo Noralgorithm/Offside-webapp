@@ -16,7 +16,6 @@ const useRanking = () => {
   const fetchRankingList = useCallback(async () => {
     try {
       const data = await eventServices.fetchRankingList(token, event, 0);
-      console.log(data);
       setPosition(data.myPosition.rank);
       setMyPoints(data.myPosition.points);
       setRankingList(data.items);

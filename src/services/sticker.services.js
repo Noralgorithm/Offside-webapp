@@ -24,7 +24,6 @@ export const checkStatus = async (token, /* eventId */) => {
         Authorization: "Bearer " + token,
       },
     });
-    console.log(data)
     return data;
   } catch (e) {
     throw new Error(e?.response?.data?.message || "Error Desconocido.");

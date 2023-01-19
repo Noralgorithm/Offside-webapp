@@ -11,7 +11,6 @@ const useTimer = () => {
     tomorrow.setMinutes(0);
     tomorrow.setSeconds(0);
     tomorrow.setDate(tomorrow.getDate() + 1);
-    console.log(tomorrow);
     return tomorrow;
   }, []);
 

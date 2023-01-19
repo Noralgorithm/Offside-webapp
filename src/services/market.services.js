@@ -10,7 +10,6 @@ export const fetchAuctionsList = async (
   page = 0
 ) => {
   try {
-    console.log(page);
     let queryString = "";
     if (teamId) queryString += `&teamId=${teamId}`;
     if (position) queryString += `&position=${position}`;
@@ -132,7 +131,6 @@ export const addAuction = async (
         },
       }
     );
-    console.log(data);
     return data;
   } catch (e) {
     throw new Error(e?.response?.data?.message || "Error Desconocido");

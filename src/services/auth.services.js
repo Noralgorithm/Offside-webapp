@@ -4,8 +4,6 @@ import { api } from "../config";
 const LOGIN_URL = api + "/auth/login";
 const REGISTER_URL = api + "/auth/register";
 
-console.log(api)
-
 export const register = async ({ name, email, password }) => {
   try {
     const { data } = await axios.post(REGISTER_URL, { name, email, password });
