@@ -1,12 +1,17 @@
 import React from "react";
 import { FiMail } from "react-icons/fi";
 
-function RecoverForm({ setEmailAdress, setRecoverCode }) {
+function RecoverForm({
+  setEmailAdress,
+  setRecoverCode,
+  email,
+  sendCode,
+  setEmail,
+}) {
   return (
     <form
       onSubmit={(e) => {
-        setEmailAdress(false);
-        setRecoverCode(true);
+        sendCode();
       }}
       className="h-[65%] w-10/12 flex flex-col justify-around items-center"
     >
@@ -17,6 +22,8 @@ function RecoverForm({ setEmailAdress, setRecoverCode }) {
           required
           placeholder="Correo electrónico"
           name="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           className="w-full p-2 rounded border-none font-semibold focus:outline-none"
         />
       </label>

@@ -5,10 +5,29 @@ import LogoOffside from "../../../Images/logo-offside-vertical.png";
 import ChangePassword from "./ChangePassword";
 import CodeForm from "./CodeForm";
 import RecoverForm from "./RecoverForm";
+import useRecoverPassword from "./useRecoverPassword";
+import Loading from "../../../components/Loading";
 
 function RecoverPassword() {
-  const [emailAdress, setEmailAdress] = useState(true);
-  const [recoverCode, setRecoverCode] = useState(false);
+  const {
+    isLoading,
+    emailAdress,
+    setEmailAdress,
+    recoverCode,
+    setRecoverCode,
+    email,
+    setEmail,
+    code,
+    setCode,
+    sendCode,
+    verifyCode,
+    password,
+    setPassword,
+    resetPassword,
+  } = useRecoverPassword();
+
+  if (isLoading) return <Loading />;
+
   return (
     <div className="w-screen h-screen flex flex-col md:flex-row-reverse items-center justify-evenly">
       <div className="h-1/6 lg:w-5/12 md:w-6/12 w-9/12 flex items-center justify-center">
@@ -23,18 +42,30 @@ function RecoverPassword() {
             {emailAdress
               ? "Ingrese su correo para enviar un código para recuperar su contraseña"
               : recoverCode
-              ? "Se le envió un código de 5 dígitos al correo para poder recuperar su contraseña"
+              ? "Se le envió un código de 5 caracteres al correo para poder recuperar su contraseña"
               : "Ingrese la nueva contraseña que desea utilizar"}
           </h1>
           {emailAdress ? (
             <RecoverForm
+              email={email}
+              setEmail={setEmail}
+              sendCode={sendCode}
               setEmailAdress={setEmailAdress}
               setRecoverCode={setRecoverCode}
             />
           ) : recoverCode ? (
-            <CodeForm setRecoverCode={setRecoverCode} />
+            <CodeForm
+              setRecoverCode={setRecoverCode}
+              code={code}
+              verifyCode={verifyCode}
+              setCode={setCode}
+            />
           ) : (
-            <ChangePassword />
+            <ChangePassword
+              password={password}
+              setPassword={setPassword}
+              resetPassword={resetPassword}
+            />
           )}
         </div>
       </div>

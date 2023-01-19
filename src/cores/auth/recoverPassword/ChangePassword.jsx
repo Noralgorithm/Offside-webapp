@@ -3,11 +3,11 @@ import { BiLockAlt } from "react-icons/bi";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useState } from "react";
 
-function ChangePassword() {
+function ChangePassword({ password, setPassword, resetPassword }) {
   const [visiblePassword, setVisiblePassword] = useState(false);
   return (
     <form
-      onSubmit={(e) => {}}
+      onSubmit={resetPassword}
       className="h-[65%] w-10/12 flex flex-col justify-around items-center"
     >
       <label className="w-full border-b-2 border-black border-opacity-20 flex items-center justify-between">
@@ -17,6 +17,8 @@ function ChangePassword() {
             type={visiblePassword ? "text" : "password"}
             required
             placeholder="Nueva contraseña"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             name="email"
             className="w-full p-2 rounded border-none font-semibold focus:outline-none"
           />
