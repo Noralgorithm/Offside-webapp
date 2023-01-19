@@ -1,13 +1,16 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import Bench from "../bench/Bench";
-import Squad from "./Squad";
+import Bench from "./bench/Bench";
+import Squad from "./squad/Squad";
+import Ranking from "./ranking/Ranking";
 import { useDispatch } from "react-redux";
-import { resetFilters } from "../../../features/fantasy/fantasySlice";
+import { resetFilters } from "../../features/fantasy/fantasySlice";
 
 export function Fantasy() {
   const [showSquad, setShowSquad] = useState(true);
   const dispatch = useDispatch();
+
+  const FantasyStyles = showSquad ? "w-screen md:h-[900px] sm:h-[1580px] h-[1390px] flex flex-col" : "w-screen md:h-screen flex flex-col h-[900px]"; 
 
   useEffect(() => {
     return () => {
@@ -16,7 +19,7 @@ export function Fantasy() {
   }, [dispatch]);
 
   return (
-    <div className="w-screen md:h-[900px] sm:h-[1580px] h-[1390px] flex flex-col">
+    <div className={FantasyStyles}>
       <div className="w-full bg-bg-titles bg-opacity-60">
         <h1 className="text-offside-titles text-4xl w-1/4 text-center font-bold mt-4">
           Fantasy
@@ -48,14 +51,14 @@ export function Fantasy() {
           </button>
         </div>
       </div>
-      <div className="w-full h-full mt-10">
+      <div className={`w-full h-full ${showSquad ? "mt-10" : "mt-2"}`}>
         {showSquad ? (
           <div className="w-full h-[98%] flex md:flex-row flex-col md:h-full md:justify-around items-center justify-around md:items-start">
             <Squad />
             <Bench />
           </div>
         ) : (
-          <h1>Ranking</h1>
+          <Ranking />
         )}
       </div>
     </div>

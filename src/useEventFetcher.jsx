@@ -20,6 +20,7 @@ const useEventFetcher = () => {
   const fetchEventsList = useCallback(async () => {
     if (!user.success) return;
     try {
+      setLoading(true);
       const data = await fantasyServices.fetchEventsInfo(token);
       dispatch(setEventsList(data.items));
       dispatch(setEvent(data.items[0].id));
