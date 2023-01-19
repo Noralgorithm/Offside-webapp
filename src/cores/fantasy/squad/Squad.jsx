@@ -31,7 +31,6 @@ function Squad() {
       <header className="bg-bg-titles h-[8%] flex items-center justify-around rounded-t text-offside-titles">
         <h1 className="text-xl font-semibold">Alineación</h1>
         <div className="flex h-1/2 items-center">
-          <h1 className="text-lg font-bold py-2 px-5 rounded">180 PTS</h1>
           <button
             className="rounded-full bg-gradient-offside p-[2px] h-6"
             onClick={() => {
