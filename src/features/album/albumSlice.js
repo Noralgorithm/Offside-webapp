@@ -18,7 +18,7 @@ const initialState = {
   selectedSticker: null,
   claimedSticker: false,
   claimedFlag: false,
-  filtering: false
+  filtering: false,
 };
 
 const albumSlice = createSlice({
@@ -52,7 +52,10 @@ const albumSlice = createSlice({
       }
 
       if (!state.claimedFlag) {
-        if (state.currentTeam.currentPage === pagesQuantity || prevPagesQuantiy === 1) {
+        if (
+          state.currentTeam.currentPage === pagesQuantity ||
+          prevPagesQuantiy === 1
+        ) {
           state.currentTeam.currentPage = 1;
         } else {
           state.currentTeam.currentPage = pagesQuantity;
@@ -92,6 +95,9 @@ const albumSlice = createSlice({
       if (state.selectedSticker === payload) state.selectedSticker = null;
       else state.selectedSticker = payload;
     },
+    setPercentage: (state, { payload }) => {
+      state.percentage = payload;
+    },
   },
 });
 
@@ -106,5 +112,6 @@ export const {
   putSticker,
   selectSticker,
   clickEmptySlot,
+  setPercentage,
 } = albumSlice.actions;
 export default albumSlice.reducer;
