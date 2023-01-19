@@ -40,7 +40,7 @@ function EmptySlot({ stickerInfo }) {
       <p className="text-white font-semibold text-center">
         {stickerInfo.playerName}
       </p>
-      <p className="text-white font-semibold">{stickerInfo.id}</p>
+      <p className="text-white font-semibold">{stickerInfo.jerseyNumber}</p>
     </div>
   );
 }
