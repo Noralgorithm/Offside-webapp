@@ -1,16 +1,16 @@
 import React from 'react'
 import { BiLockAlt } from "react-icons/bi";
 
-function CodeForm() {
+function CodeForm({ setRecoverCode }) {
   return (
     <form
-      onSubmit={(e) => {}}
+      onSubmit={(e) => {setRecoverCode(false)}}
       className="h-[65%] w-10/12 flex flex-col justify-around items-center"
     >
       <label className="w-full border-b-2 border-black border-opacity-20 flex items-center">
       <BiLockAlt size="1.5rem" color="#808080" />
         <input
-          type="email"
+          type="number"
           required
           placeholder="Código"
           name="email"

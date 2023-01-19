@@ -1,11 +1,14 @@
 import React from "react";
 import { useState } from "react";
+import { BiHomeAlt } from "react-icons/bi";
 import LogoOffside from "../../../Images/logo-offside-vertical.png";
+import ChangePassword from "./ChangePassword";
 import CodeForm from "./CodeForm";
 import RecoverForm from "./RecoverForm";
 
 function RecoverPassword() {
-  const [emailAdress, setEmailAdress] = useState(false);
+  const [emailAdress, setEmailAdress] = useState(true);
+  const [recoverCode, setRecoverCode] = useState(false);
   return (
     <div className="w-screen h-screen flex flex-col md:flex-row-reverse items-center justify-evenly">
       <div className="h-1/6 lg:w-5/12 md:w-6/12 w-9/12 flex items-center justify-center">
@@ -18,13 +21,20 @@ function RecoverPassword() {
           </h1>
           <h1 className="md:w-3/4 w-full h-[15%] font-bold">
             {emailAdress
+              ? "Ingrese su correo para enviar un código para recuperar su contraseña"
+              : recoverCode
               ? "Se le envió un código de 5 dígitos al correo para poder recuperar su contraseña"
-              : "Ingrese su correo para enviar un código para recuperar su contraseña"}
+              : "Ingrese la nueva contraseña que desea utilizar"}
           </h1>
           {emailAdress ? (
-            <CodeForm />
+            <RecoverForm
+              setEmailAdress={setEmailAdress}
+              setRecoverCode={setRecoverCode}
+            />
+          ) : recoverCode ? (
+            <CodeForm setRecoverCode={setRecoverCode} />
           ) : (
-            <RecoverForm setEmailAdress={setEmailAdress} />
+            <ChangePassword />
           )}
         </div>
       </div>

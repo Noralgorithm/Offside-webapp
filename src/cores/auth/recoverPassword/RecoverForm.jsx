@@ -1,10 +1,13 @@
 import React from "react";
 import { FiMail } from "react-icons/fi";
 
-function RecoverForm({ setEmailAdress }) {
+function RecoverForm({ setEmailAdress, setRecoverCode }) {
   return (
     <form
-      onSubmit={(e) => {setEmailAdress(true)}}
+      onSubmit={(e) => {
+        setEmailAdress(false);
+        setRecoverCode(true);
+      }}
       className="h-[65%] w-10/12 flex flex-col justify-around items-center"
     >
       <label className="w-full border-b-2 border-black border-opacity-20 flex items-center">

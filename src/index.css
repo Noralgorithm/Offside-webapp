@@ -18,6 +18,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
 .text-offside-gradient{
   background: -webkit-linear-gradient(#D13256, #FE5F42);
   -webkit-background-clip: text;
