@@ -2,7 +2,7 @@ import React, { useEffect, useLayoutEffect } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Register from "./cores/auth/registration/Register";
 import Login from "./cores/auth/login/Login";
-import Homepage from "./cores/homepage/Homepage";
+import Langingpage from "./cores/landingpage/Landingpage";
 import Dashboard from "./cores/dashboard/Dashboard";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "./features/user/userSlice";
@@ -59,7 +59,7 @@ const App = () => {
         {user.success ? <Navbar /> : <PreNavbar />}
         <Routes>
           <Route path="/" element={<UnprotectedRoutes />}>
-            <Route path="/" element={<Homepage />} />
+            <Route path="/" element={<Langingpage />} />
             <Route path="/signup" element={<Register />} />
             <Route path="/login" element={<Login />} />
           </Route>
