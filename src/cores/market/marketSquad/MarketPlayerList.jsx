@@ -45,20 +45,24 @@ function MarketPlayerList({ setSelectedPlayer }) {
         hasMore={nextPage < fantasy.bench.paginate.pages}
         dataLength={players.length}
         next={fetchNextPage}
-        endMessage={<h1 className="text-offside-titles font-bold">No hay más</h1>}
+        endMessage={
+          <h1 className="text-offside-titles font-bold">No hay más</h1>
+        }
         loader={<h1 className="text-offside-titles font-bold">Loading...</h1>}
       >
         {players.map((player) => {
           return (
-            <div className="w-[90%] h-28" key={player.id}>
-              <MarketCardSales
-                playerInfo={player}
-                isInLineup={player.isInLineup}
-                handleClick={() => {
-                  setSelectedPlayer(player); 
-                }}
-              />
-            </div>
+            !player.isInLineup && (
+              <div className="w-[90%] h-28" key={player.id}>
+                <MarketCardSales
+                  playerInfo={player}
+                  isInLineup={player.isInLineup}
+                  handleClick={() => {
+                    setSelectedPlayer(player);
+                  }}
+                />
+              </div>
+            )
           );
         })}
       </InfiniteScroll>

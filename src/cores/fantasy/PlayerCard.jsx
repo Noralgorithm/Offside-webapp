@@ -49,7 +49,7 @@ function PlayerCard({ playerInfo, isInLineup, handleClick, selected }) {
           )}
           <h1 className="text-white w-2/6 flex gap-2 font-semibold absolute md:right-0 right-3 md:top-[-8px] bottom-2">
             <span className="opacity-70 mt-2 text-black">PTS</span>{" "}
-            <span className="text-2xl text-offside-titles">49</span>
+            <span className="text-2xl text-offside-titles">{playerInfo.latestPoints}</span>
           </h1>
         </section>
       </div>
